@@ -36,7 +36,7 @@
 								Sei sicuro di voler eliminare la superficie?
 								<x-slot name="footer">
 									<x-link-button x-on:click="open = false">Annulla</x-link-button>
-									<x-danger-button class="ml-2" wire:click="deleteSurface({{ $surface->id }})">
+									<x-danger-button type="button" class="ml-2" wire:click="deleteSurface({{ $surface->id }})">
 										Elimina
 									</x-danger-button>
 								</x-slot>
