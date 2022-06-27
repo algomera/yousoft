@@ -1,5 +1,5 @@
 <div class="lg:flex">
-	<img class="w-full h-full lg:max-w-[450px] lg:max-h-[450px] aspect-square" src="{{ asset($photo->image) }}"
+	<img class="w-full h-full lg:max-w-[450px] lg:max-h-[450px] aspect-square" src="{{ $photo->image }}"
 	     alt="{{$photo->name}}">
 	<div class="p-4 w-full">
 		<div class="flex flex-col space-y-2">
