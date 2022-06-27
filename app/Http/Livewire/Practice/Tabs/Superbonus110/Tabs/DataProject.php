@@ -22,7 +22,7 @@
 			'data_project.filed_date'                 => 'nullable|date|date_format:Y-m-d|before_or_equal:today',
 			'data_project.filed_protocol'             => 'nullable|string',
 			'data_project.technical_report_exclusion' => 'nullable|boolean',
-			'data_project.work_start'                 => 'nullable|date|date_format:Y-m-d|after:today',
+			'data_project.work_start'                 => 'nullable|date|date_format:Y-m-d|after_or_equal:today',
 			'data_project.end_of_works'               => 'nullable|date|date_format:Y-m-d|after:work_start',
 			'data_project.type_building'              => 'nullable|string',
 			'data_project.building_unit'              => 'nullable|numeric',
