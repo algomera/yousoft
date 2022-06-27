@@ -3,7 +3,7 @@
 		<div wire:click="$emit('openModal', 'practice.tabs.media.modals.photo-lightbox', {{ json_encode([$photo]) }})"
 		     class="relative cursor-pointer">
 			<div class="relative group block w-full aspect-square rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-				<img src="{{ Storage::url($photo->image) }}"
+				<img src="{{ asset($photo->image) }}"
 				     alt="" class="object-cover aspect-square pointer-events-none group-hover:opacity-75">
 				<div class="flex items-center justify-center absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 group-hover:bg-black/80">
 					<x-icon name="eye" class="w-6 h-6 text-white"></x-icon>
