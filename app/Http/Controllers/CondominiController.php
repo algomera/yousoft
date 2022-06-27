@@ -32,7 +32,7 @@ class CondominiController extends Controller
         // Create Sheets
         $main = $this->spreadsheet->getActiveSheet();
         $this->spreadsheet->setActiveSheetIndex(0);
-        $main->setTitle($this->applicant->name || $this->applicant->lastName ? $this->applicant->name . ' ' . $this->applicant->lastName : 'Scheda 1');
+        $main->setTitle($this->applicant->company_name ?: 'Scheda 1');
         $ceilings = $this->spreadsheet->createSheet();
         $ceilings->setTitle('Calcolo massimali');
         $list = $this->spreadsheet->createSheet();
