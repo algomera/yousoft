@@ -68,7 +68,7 @@
 		}
 
 		public function importExcel() {
-			$extension = $this->tmp_excel_file->extension();
+			$extension = pathinfo($this->tmp_excel_file->getClientOriginalName(), PATHINFO_EXTENSION);
 			$filename = pathinfo($this->tmp_excel_file->getClientOriginalName(), PATHINFO_FILENAME);
 			// Dovendo avere un solo file caricato, cancello gli altri (se presenti) nella cartella
 			if (count(Storage::allFiles('practices/' . $this->practice->id . '/excel'))) {
