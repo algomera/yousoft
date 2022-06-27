@@ -20,6 +20,10 @@
 			return $v[0];
 		}
 
+		public function getPathAttribute() {
+			return '/storage/' . $this->video;
+		}
+
 		public function practice() {
 			return $this->belongsTo(Practice::class);
 		}
