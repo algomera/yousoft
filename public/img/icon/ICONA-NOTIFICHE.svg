@@ -1,0 +1,12 @@
+<svg id="ICONA_NOTIFICHE_OFF" data-name="ICONA NOTIFICHE / OFF" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24.02" height="27.129" viewBox="0 0 24.02 27.129">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rettangolo_12" data-name="Rettangolo 12" width="24.02" height="27.129" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Raggruppa_3" data-name="Raggruppa 3" clip-path="url(#clip-path)">
+    <path id="Tracciato_39" data-name="Tracciato 39" d="M20.8,57.822a12.424,12.424,0,0,0-1.009-4.97,8.345,8.345,0,0,0-1.089-1.932l-.213-.272a8.381,8.381,0,0,0-12.966,0l-.213.272a8.345,8.345,0,0,0-1.089,1.932,12.424,12.424,0,0,0-1.009,4.97C3.216,62.374,0,63.676,0,66.159s2.388,3.423,12.01,3.423,12.01-.94,12.01-3.423S20.8,62.374,20.8,57.822" transform="translate(0 -45.626)" fill="#fff"/>
+    <path id="Tracciato_40" data-name="Tracciato 40" d="M251.825,1.824A1.824,1.824,0,1,1,250,0a1.824,1.824,0,0,1,1.824,1.824" transform="translate(-237.991)" fill="#fff"/>
+    <path id="Tracciato_41" data-name="Tracciato 41" d="M223.043,612.65a3.432,3.432,0,0,1-6.221,0c.944.028,1.978.041,3.111.041s2.166-.013,3.11-.041" transform="translate(-207.922 -587.503)" fill="#fff"/>
+  </g>
+</svg>

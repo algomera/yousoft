@@ -1,0 +1,39 @@
+.btn-login{
+    width: 160px;
+    height: 47px;
+    background-color: $bg-bt-blue;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.row-custom{
+    width: 80%;
+}
+
+.title-login{
+    font-size: 23px;
+    font-weight: 600;
+    color: $text;
+    padding: 5% 10% 0%;
+}
+
+.user-login{
+    background-color: $bg-lgt-grey;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pass-forghet{
+    text-decoration: underline;
+    color: $text;
+}
+
+.center{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,18 @@
+.practices-info {
+    height: 50px;
+    background-color: #fff;
+    padding: 0 35px;
+    position: fixed;
+    bottom: 0;
+    left: 15.2%;
+    right: 0;
+}
+
+// input border
+.border-blue {
+    border-radius: 3px;
+    border: 2px solid $bg-bt-blue !important;
+    &:focus {
+        outline: none;
+    }
+}

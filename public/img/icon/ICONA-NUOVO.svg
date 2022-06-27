@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42" height="51" viewBox="0 0 42 51">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rettangolo_326" data-name="Rettangolo 326" width="23.807" height="29.691" fill="#61a4d7"/>
+    </clipPath>
+  </defs>
+  <g id="ICONA_NUOVO" data-name="ICONA NUOVO" transform="translate(1)">
+    <text id="Nuovo" transform="translate(20 47)" fill="#818387" font-size="14" font-family="AcuminPro-Regular, Acumin Pro"><tspan x="-20.041" y="0">Nuovo</tspan></text>
+    <g id="Raggruppa_2623" data-name="Raggruppa 2623" transform="translate(8 0)">
+      <g id="Raggruppa_2622" data-name="Raggruppa 2622" transform="translate(0 0)" clip-path="url(#clip-path)">
+        <path id="Tracciato_3882" data-name="Tracciato 3882" d="M3.6,0H15.913l.248.253,5.214,5.339.237.578V17.029a7.967,7.967,0,0,0-1.662-.508V6.534H17.921a2.8,2.8,0,0,1-2.788-2.788V1.663H3.6A1.948,1.948,0,0,0,1.663,3.6V25.214A1.948,1.948,0,0,0,3.6,27.153h7.384a7.939,7.939,0,0,0,.861,1.663H3.6a3.611,3.611,0,0,1-3.6-3.6V3.6A3.611,3.611,0,0,1,3.6,0M18.458,19.012a5.339,5.339,0,1,1-5.349,5.339,5.344,5.344,0,0,1,5.349-5.339M17.9,20.579h1.108a.313.313,0,0,1,.312.312v2.6h2.6a.313.313,0,0,1,.312.312v1.108a.312.312,0,0,1-.312.311h-2.6v2.6a.313.313,0,0,1-.312.312H17.9a.313.313,0,0,1-.312-.312v-2.6H15a.312.312,0,0,1-.312-.311V23.8A.313.313,0,0,1,15,23.486h2.6v-2.6a.313.313,0,0,1,.312-.312M17.04,13.8H4.572a.623.623,0,0,0,0,1.247H17.04a.623.623,0,1,0,0-1.247m-6.046,7.726H4.572a.623.623,0,0,0,0,1.247h6.063a7.931,7.931,0,0,1,.359-1.247M17.04,9.94H4.572a.623.623,0,0,0,0,1.247H17.04a.623.623,0,1,0,0-1.247m-1.87-3.9H6.442a.623.623,0,0,0,0,1.247H15.17a.623.623,0,1,0,0-1.247M14.113,17.666H4.572a.623.623,0,0,0,0,1.247h8.054a8.034,8.034,0,0,1,1.487-1.247" transform="translate(0 0)" fill="#61a4d7" fill-rule="evenodd"/>
+      </g>
+    </g>
+  </g>
+</svg>
