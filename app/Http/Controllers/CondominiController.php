@@ -65,7 +65,7 @@ class CondominiController extends Controller
     private function mainGenerateCells($sheet) {
         $sheet->setCellValue('A1', 'TABELLA RIEPILOGATIVA');
         $sheet->setCellValue('A3', 'SOGGETTO/I RICHIEDENTE/I');
-        $sheet->setCellValue('A4', $this->applicant->name . ' ' . $this->applicant->lastName);
+        $sheet->setCellValue('A4', $this->applicant->company_name);
         $sheet->mergeCells('A4:B4');
         $sheet->setCellValue('C4', $this->practice->address . ' ' . $this->practice->civic . ' ' . $this->practice->common . ' ' . $this->practice->province);
         $sheet->mergeCells('C4:P4');
