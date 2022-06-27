@@ -188,10 +188,10 @@
 							@endcan
 							@can('download_computo')
 								{{-- TODO: Visualizza solo se c'è il computo metrico --}}
-								<a href="#"
-								   class="text-indigo-600 hover:text-indigo-900">
-									<x-icon name="download" class="w-5 h-5"></x-icon>
-								</a>
+{{--								<a href="#"--}}
+{{--								   class="text-indigo-600 hover:text-indigo-900">--}}
+{{--									<x-icon name="download" class="w-5 h-5"></x-icon>--}}
+{{--								</a>--}}
 							@endcan
 						</div>
 					</x-table.td>
