@@ -43,13 +43,13 @@ class Navigation extends Component
 				'icon' => 'collection',
 				'permission' => 'access_practices'
 			],
-			[
-				'name' => 'Gestione File/Cartelle',
-				'url' => route('folder.index'),
-				'active' => $this->isActiveRoute('folder*'),
-				'icon' => 'folder',
-				'permission' => 'access_folders'
-			],
+//			[
+//				'name' => 'Gestione File/Cartelle',
+//				'url' => route('folder.index'),
+//				'active' => $this->isActiveRoute('folder*'),
+//				'icon' => 'folder',
+//				'permission' => 'access_folders'
+//			],
 			[
 				'name' => 'Documenti Contrattuali',
 				'url' => route('contractual_documents.index'),
