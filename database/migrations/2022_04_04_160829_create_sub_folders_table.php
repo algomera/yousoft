@@ -23,7 +23,7 @@ class CreateSubFoldersTable extends Migration
             $table->string('assev_t_status')->default(0);
 	        $table->string('assev_f_status')->default(0);
 	        $table->string('bank_status')->default(0);
-            $table->string('name');
+            $table->text('name');
             $table->string('role');
             $table->timestamps();
         });
