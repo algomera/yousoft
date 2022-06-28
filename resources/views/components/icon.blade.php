@@ -540,6 +540,9 @@
 	@case('m²')
 		<span class="text-sm text-gray-500">m²</span>
 		@break
+	@case('m³')
+		<span class="text-sm text-gray-500">m³</span>
+		@break
 	@case('€')
 		<span class="text-sm text-gray-500">€</span>
 		@break
@@ -564,7 +567,12 @@
 	@case('MJ')
 		<span class="text-sm text-gray-500">MJ</span>
 		@break
-
+	@case('°C')
+		<span class="text-sm text-gray-500">°C</span>
+		@break
+	@case('kWh/m²')
+		<span class="text-sm text-gray-500">kWh/m²</span>
+		@break
 	@default
 
 @endswitch

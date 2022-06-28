@@ -34,13 +34,13 @@
 				<livewire:practice.tabs.superbonus110.tabs.towed-intervention :practice="$practice" />
 				@break
 			@case('final_state')
-				Final State
+				<livewire:practice.tabs.superbonus110.tabs.final-state :practice="$practice" />
 				@break
 			@case('fees_declaration')
-				Fees Declaration
+				<livewire:practice.tabs.superbonus110.tabs.fees-declaration :practice="$practice" />
 				@break
 			@case('variants')
-				Variants
+				<livewire:practice.tabs.superbonus110.tabs.variants :practice="$practice" />
 				@break
 		@endswitch
 	</x-card>
