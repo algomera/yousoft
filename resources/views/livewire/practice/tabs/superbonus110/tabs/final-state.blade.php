@@ -63,8 +63,7 @@
 				</x-select>
 			</div>
 			<div>
-				<x-label class="font-bold">Tipo e numero di generatori presenti prima dell'intervento</x-label>
-				--- SEZIONE DINAMICA ---
+				<livewire:practice.tabs.superbonus110.tabs.final-state.generators :practice="$practice"/>
 			</div>
 			<div>
 				<x-label for="final_state.overall_power">Potenza nominale complessiva</x-label>

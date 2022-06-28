@@ -140,4 +140,7 @@ class Practice extends Model
     public function policies(){
         return $this->hasMany(Policy::class);
     }
+	public function generators() {
+		return $this->hasMany(Generator::class);
+	}
 }
