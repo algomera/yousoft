@@ -68,7 +68,7 @@
 				</li>
 			@empty
 				<li class="py-4 text-sm text-gray-500">
-					Nessuna generatore inserito
+					Nessun generatore inserito
 				</li>
 			@endforelse
 		</ul>
