@@ -11,9 +11,9 @@
 </x-slot>
 <x-card>
 	<div class="w-full md:w-1/2 lg:w-1/3">
-		<x-input wire:model.debounce="search" type="text" name="search" append="search" iconColor="text-gray-400" label="Cerca" placeholder="Associato a.."></x-input>
+		<x-input wire:model.debounce.500ms="search" type="text" name="search" append="search" iconColor="text-gray-400" label="Cerca" placeholder="Associato a.."></x-input>
 	</div>
-	<x-table.table>
+	<x-table.table wire:loading.class="opacity-50">
 		<x-table.thead>
 			<tr>
 				<x-table.th>#</x-table.th>
