@@ -29,7 +29,7 @@
 			'final_state.SV_report'                   => 'nullable|numeric',
 			'final_state.useful_heated_surface'       => 'nullable|numeric',
 			'final_state.useful_cooled_surface'       => 'nullable|numeric',
-			'final_state.generator_inst_date'         => 'nullable|string|max:4',
+			'final_state.generator_inst_date'         => 'nullable|numeric|integer|digits:4',
 			'final_state.extra_maintenance'           => 'nullable|string',
 			'final_state.winter_acs'                  => 'nullable|boolean',
 			'final_state.hot_water_production'        => 'nullable|boolean',
