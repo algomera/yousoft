@@ -9,6 +9,7 @@
 	{
 		public $users;
 		public $business;
+		public $search = '';
 		protected $listeners = [
 			'user-added'   => '$refresh',
 			'user-updated' => '$refresh',
@@ -17,7 +18,6 @@
 
 		public function deleteUser($id) {
 			User::destroy($id);
-
 			$this->dispatchBrowserEvent('close-modal');
 			$this->emitSelf('user-deleted');
 			$this->dispatchBrowserEvent('open-notification', [
@@ -28,7 +28,7 @@
 
 		public function render() {
 			if (auth()->user()->isAdmin()) {
-				$this->users = User::all();
+				$this->users = User::SearchParent('name', $this->search)->get();
 			} else {
 				$this->users = User::withAssociated()->get();
 			}
