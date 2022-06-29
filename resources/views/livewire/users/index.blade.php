@@ -10,9 +10,12 @@
 	</x-page-header>
 </x-slot>
 <x-card>
-	<div class="w-full md:w-1/2 lg:w-1/3">
-		<x-input wire:model.debounce.500ms="search" type="text" name="search" append="search" iconColor="text-gray-400" label="Cerca" placeholder="Associato a.."></x-input>
-	</div>
+	@if(auth()->user()->isAdmin())
+		<div class="w-full md:w-1/2 lg:w-1/3">
+			<x-input wire:model.debounce.500ms="search" type="text" name="search" append="search"
+			         iconColor="text-gray-400" label="Cerca" placeholder="Associato a.."></x-input>
+		</div>
+	@endif
 	<x-table.table wire:loading.class="opacity-50">
 		<x-table.thead>
 			<tr>
