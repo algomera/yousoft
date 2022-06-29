@@ -4,7 +4,8 @@
 #/storage/*.key
 /node_modules
 /vendor
-/storage/app/public/*/**
+/storage/app/public/livewire-tmp
+/storage/app/public/practices
 .env
 .env.backup
 .phpunit.result.cache
