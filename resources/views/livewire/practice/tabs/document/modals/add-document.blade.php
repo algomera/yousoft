@@ -48,7 +48,7 @@
 			</div>
 		</div>
 		<div class="sm:flex sm:items-center sm:justify-between space-y-2 sm:space-y-0">
-			<x-button class="w-full justify-center sm:w-auto">Carica</x-button>
+			<x-button wire:loading.attr="disabled" wire:target="allega" class="w-full justify-center sm:w-auto">Carica</x-button>
 			<x-link-button wire:click="$emit('closeModal')">Annulla</x-link-button>
 		</div>
 	</form>
