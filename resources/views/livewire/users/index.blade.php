@@ -10,6 +10,9 @@
 	</x-page-header>
 </x-slot>
 <x-card>
+	<div class="w-full md:w-1/2 lg:w-1/3">
+		<x-input wire:model.debounce="search" type="text" name="search" append="search" iconColor="text-gray-400" label="Cerca" placeholder="Associato a.."></x-input>
+	</div>
 	<x-table.table>
 		<x-table.thead>
 			<tr>

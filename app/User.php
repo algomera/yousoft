@@ -37,6 +37,14 @@
 			'email_verified_at' => 'datetime',
 		];
 
+		public function scopeSearchParent($query, $field, $string) {
+			return $string ? $query->whereHas('parents', function ($q) use ($field, $string) {
+				$q->whereHas('user_data', function ($u) use ($field, $string) {
+					$u->where($field, 'like', '%' . $string . '%');
+				});
+			}) : $query;
+		}
+
 		public function scopeWithAssociated($query) {
 			return $query->whereHas('user_data', function ($q) {
 				$q->where('created_by', auth()->user()->id);
