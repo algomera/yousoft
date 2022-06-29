@@ -11,18 +11,18 @@
 			$data = [
 				[
 					'practice_id' => $id,
-					'name'        => 'Contratto.pdf',
-					'path'        => 'default/polizza.pdf'
+					'name'        => 'Contratto 1.pdf',
+					'path'        => 'default/fac-simile.pdf'
 				],
 				[
 					'practice_id' => $id,
-					'name'        => 'Contratto.pdf',
-					'path'        => 'default/polizza.pdf'
+					'name'        => 'Contratto 2.pdf',
+					'path'        => 'default/fac-simile.pdf'
 				],
 				[
 					'practice_id' => $id,
-					'name'        => 'Contratto.pdf',
-					'path'        => 'default/polizza.pdf'
+					'name'        => 'Contratto 3.pdf',
+					'path'        => 'default/fac-simile.pdf'
 				]
 			];
 			foreach ($data as $d) {
