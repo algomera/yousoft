@@ -1,6 +1,6 @@
 <x-card class="space-y-5 border p-4 rounded-md">
 	<form wire:submit.prevent="save" class="space-y-5">
-		<x-section-heading class="!py-0 border-t-0">Spese complessive e dichiarazioni</x-section-heading>
+		<x-section-heading class="!py-0 !border-t-0">Spese complessive e dichiarazioni</x-section-heading>
 		<dt class="text-lg font-semibold text-indigo-700">Ecobonus:</dt>
 		<div>
 			<div class="pb-4 sm:grid sm:grid-cols-3 sm:gap-4">

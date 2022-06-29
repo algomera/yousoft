@@ -1,7 +1,7 @@
 <x-card class="space-y-5 border p-4 rounded-md">
 	<form wire:submit.prevent="save" class="space-y-5">
 		<div>
-			<x-section-heading class="pt-0 border-t-0">Dati di Progetto</x-section-heading>
+			<x-section-heading class="pt-0 !border-t-0">Dati di Progetto</x-section-heading>
 			<div class="flex flex-col py-4">
 				<x-label class="text-wrap">È stata depositata la relazione tecnica prevista dall'art. 28 della legge
 					10/91 e

@@ -1,6 +1,6 @@
 <x-card class="space-y-5 border p-4 rounded-md">
 	<form wire:submit.prevent="save" class="space-y-5">
-		<x-section-heading class="!py-0 border-t-0">Interventi trainanti oggetto dei lavori</x-section-heading>
+		<x-section-heading class="!py-0 !border-t-0">Interventi trainanti oggetto dei lavori</x-section-heading>
 		<div class="space-y-3">
 			<div class="flex items-center mt-3">
 				<input wire:model="driving_intervention.thermical_isolation_intervention"
