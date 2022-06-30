@@ -1,12 +1,9 @@
-#/public/hot
-#/public/css/
-#/public/js/
-#/storage/*.key
 /node_modules
 /vendor
 /storage/app/public/livewire-tmp
 /storage/app/public/practices
 /storage/app/public/folder
+/storage/app/public/price_lists
 .env
 .env.backup
 .phpunit.result.cache
