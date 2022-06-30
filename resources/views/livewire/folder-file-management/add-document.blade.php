@@ -2,7 +2,7 @@
 	<form wire:submit.prevent="save" class="space-y-5">
 		<div class="grid grid-cols-6 gap-6">
 			<div class="col-span-12">
-				<p class="text-sm text-gray-900">Aggiungi documento a:</p>
+				<p class="text-sm text-gray-900">Aggiungi file a:</p>
 				<p class="text-sm text-gray-500 italic">{{ $folder->name }}</p>
 			</div>
 			<div class="col-span-12 space-y-4">

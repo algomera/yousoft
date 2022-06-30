@@ -97,12 +97,18 @@
 				'delete_files',
 				'download_files',
 				'upload_files',
-				// Folders
+				// Files/Folders Management (FOLDERS)
 				'access_folders',
 				'create_folders',
 				'read_folders',
 				'update_folders',
 				'delete_folders',
+				// Files/Folders Management (FILES)
+				'upload_folder_files',
+				'download_folder_files',
+				'read_folder_files',
+				'update_folder_files',
+				'delete_folder_files',
 				// Contractual Documents
 				'access_contractual_documents',
 				'upload_contractual_documents',
@@ -142,8 +148,18 @@
 				'upload_policies',
 				'download_policies',
 				'delete_policies',
-				// Folders
+				// Files/Folders Management (FOLDERS)
 				'access_folders',
+				'create_folders',
+				'read_folders',
+				'update_folders',
+				'delete_folders',
+				// Files/Folders Management (FILES)
+				'upload_folder_files',
+				'download_folder_files',
+				'read_folder_files',
+				'update_folder_files',
+				'delete_folder_files',
 				// Contractual Documents
 				'access_contractual_documents',
 				'upload_contractual_documents',

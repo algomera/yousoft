@@ -3,13 +3,14 @@
 	namespace App\Http\Livewire\FolderFileManagement;
 
 	use App\Folder as FolderModel;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Illuminate\Support\Str;
 	use Livewire\WithFileUploads;
 	use LivewireUI\Modal\ModalComponent;
 
 	class AddDocument extends ModalComponent
 	{
-		use WithFileUploads;
+		use WithFileUploads, AuthorizesRequests;
 
 		public FolderModel $folder;
 		public $title;
@@ -29,6 +30,7 @@
 		}
 
 		public function save() {
+			$this->authorize('upload_folder_files');
 			$validated = $this->validate();
 			$extension = $this->file->extension();
 			$path = $this->file->storeAs('folder/' . auth()->user()->id . '/' . $this->folder->uuid, Str::slug($this->title) . '.' . $extension);

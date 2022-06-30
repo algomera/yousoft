@@ -3,10 +3,13 @@
 	namespace App\Http\Livewire\FolderFileManagement;
 
 	use App\Folder as FolderModel;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use LivewireUI\Modal\ModalComponent;
 
 	class EditFolder extends ModalComponent
 	{
+		use AuthorizesRequests;
+
 		public FolderModel $folder;
 
 		public function mount(FolderModel $folder) {
@@ -19,6 +22,7 @@
 		];
 
 		public function save() {
+			$this->authorize('update_folders');
 			$this->validate();
 			$this->folder->update();
 			$this->closeModal();
