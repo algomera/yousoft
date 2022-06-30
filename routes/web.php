@@ -7,6 +7,7 @@
 		Http\Livewire\Users\Index as UserIndex,
 		Http\Livewire\ContractualDocument\Index as ContractualDocumentIndex,
 		Http\Livewire\PriceList\Index as PriceListIndex,
+		Http\Livewire\FolderFileManagement\Index as FolderFileManagementIndex,
 		Practice,
 		Condomini,
 		Photo,
@@ -49,8 +50,11 @@
 			});
 
 			// Gestione Cartelle/File
-			Route::resource('/folder', 'FolderController');
-			Route::resource('/file', 'FileController');
+			Route::name('folder-file-management.')->group(function() {
+				Route::get('/folder', [FolderFileManagementIndex::class, '__invoke'])->name('index');
+			});
+//			Route::resource('/folder', 'FolderController');
+//			Route::resource('/file', 'FileController');
 
 			// Documenti contrattuali
 			Route::name('contractual_documents.')->group(function() {

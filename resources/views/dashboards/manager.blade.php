@@ -24,7 +24,7 @@
 						<p><b>Gestione Accessi</b></p>
 					</div>
 				</a>
-				<a class="flex items-center justify-center bg-white text-center border p-3" href="{{route('folder.index')}}">
+				<a class="flex items-center justify-center bg-white text-center border p-3" href="{{route('folder-file-management.index')}}">
 					<div class="dash-box d-flex flex-column align-items-center justify-content-center mx-2">
 						<div class="mb-2">
 							<img src="{{asset('img/icon/ICONA GESTIONE FILE.svg')}}" alt="" class="img-fluid">
