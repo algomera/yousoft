@@ -24,14 +24,14 @@
 						<p><b>Gestione Accessi</b></p>
 					</div>
 				</a>
-				<a class="flex items-center justify-center bg-white text-center border p-3" href="{{route('folder.index')}}">
-					<div class="dash-box d-flex flex-column align-items-center justify-content-center mx-2">
-						<div class="mb-2">
-							<img src="{{asset('img/icon/ICONA GESTIONE FILE.svg')}}" alt="" class="img-fluid">
-						</div>
-						<p><b>Gestione File</b></p>
-					</div>
-				</a>
+{{--				<a class="flex items-center justify-center bg-white text-center border p-3" href="{{route('folder.index')}}">--}}
+{{--					<div class="dash-box d-flex flex-column align-items-center justify-content-center mx-2">--}}
+{{--						<div class="mb-2">--}}
+{{--							<img src="{{asset('img/icon/ICONA GESTIONE FILE.svg')}}" alt="" class="img-fluid">--}}
+{{--						</div>--}}
+{{--						<p><b>Gestione File</b></p>--}}
+{{--					</div>--}}
+{{--				</a>--}}
 			</div>
 			<div class="space-y-2">
 				<h4 class="font-semibold">Scarica l'app</h4>
