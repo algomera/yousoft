@@ -24,7 +24,7 @@
 			@forelse ($folders as $folder)
 				<tr wire:key="{{ $loop->index }}">
 					<x-table.td>{{$folder->name}}</x-table.td>
-					<x-table.td>{{ date('d/m/Y', strtotime($folder->created_at)) }}</x-table.td>
+					<x-table.td>{{$folder->created_at->format('d/m/Y')}}</x-table.td>
 					<x-table.td>{{$folder->type}}</x-table.td>
 					<x-table.td>{{$folder->user->user_data->name}}</x-table.td>
 					<x-table.td>

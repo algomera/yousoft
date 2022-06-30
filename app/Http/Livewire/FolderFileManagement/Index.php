@@ -3,6 +3,7 @@
 	namespace App\Http\Livewire\FolderFileManagement;
 
 	use App\Folder;
+	use Illuminate\Support\Facades\Storage;
 	use Livewire\Component;
 
 	class Index extends Component
@@ -15,7 +16,9 @@
 		];
 
 		public function deleteFolder($id) {
-			Folder::destroy($id);
+			$folder = Folder::find($id);
+			$folder->delete();
+			Storage::deleteDirectory('/folder/'. auth()->user()->id . '/' . $folder->name);
 			$this->dispatchBrowserEvent('close-modal');
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Cartella Eliminata'),

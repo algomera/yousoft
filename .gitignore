@@ -6,6 +6,7 @@
 /vendor
 /storage/app/public/livewire-tmp
 /storage/app/public/practices
+/storage/app/public/folder
 .env
 .env.backup
 .phpunit.result.cache
