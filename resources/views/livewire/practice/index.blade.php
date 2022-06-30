@@ -154,7 +154,7 @@
 					<x-table.td>{{$practice->policy_name}}</x-table.td>
 					<x-table.td>{{$practice->practical_phase}}</x-table.td>
 					<x-table.td>{{$practice->month_processing}}</x-table.td>
-					<x-table.td>{{$practice->bonus}}</x-table.td>
+					<x-table.td>{{$practice->superbonus ? '110%' : '-'}}</x-table.td>
 					<x-table.td>{{$practice->applicant->company_name}}</x-table.td>
 					<x-table.td>{{Money::format($practice->import) ?? '-'}}</x-table.td>
 					<x-table.td>
