@@ -24,7 +24,7 @@
 			@forelse ($folders as $folder)
 				<tr wire:key="{{ $loop->index }}">
 					<x-table.td>{{$folder->name}}</x-table.td>
-					<x-table.td>{{$folder->created_at}}</x-table.td>
+					<x-table.td>{{ date('d/m/Y', strtotime($folder->created_at)) }}</x-table.td>
 					<x-table.td>{{$folder->type}}</x-table.td>
 					<x-table.td>{{$folder->user->user_data->name}}</x-table.td>
 					<x-table.td>
@@ -33,6 +33,24 @@
 							        wire:click="$emit('openModal', 'folder-file-management.show', {{ json_encode([$folder->id]) }})"></x-icon>
 							<x-icon name="pencil-alt" class="w-5 h-5 text-indigo-500 flex-shrink-0"
 							        wire:click="$emit('openModal', 'folder-file-management.edit', {{ json_encode([$folder->id]) }})"></x-icon>
+							<x-modal>
+								<x-slot name="trigger">
+									<div class="text-red-600 hover:text-red-900">
+										<x-icon name="trash" class="w-5 h-5"></x-icon>
+									</div>
+								</x-slot>
+								<x-slot name="title">
+									Conferma eliminazione
+								</x-slot>
+								Sei sicuro di voler eliminare la cartella "{{ $folder->name }}"?
+								<x-slot name="footer">
+									<x-link-button x-on:click="open = false">Annulla</x-link-button>
+									<x-danger-button class="ml-2" wire:click="deleteFolder({{ $folder->id }})"
+									                 wire:loading.attr="disabled">
+										Elimina
+									</x-danger-button>
+								</x-slot>
+							</x-modal>
 						</div>
 					</x-table.td>
 				</tr>

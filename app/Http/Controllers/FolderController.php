@@ -12,21 +12,21 @@ class FolderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $folders = Folder::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->paginate(100);
-        return view('pages.folder_file.index', compact('folders'));
-    }
+//    public function index()
+//    {
+//        $folders = Folder::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->paginate(100);
+//        return view('pages.folder_file.index', compact('folders'));
+//    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('pages.folder_file.create');
-    }
+//    public function create()
+//    {
+//        return view('pages.folder_file.create');
+//    }
 
     /**
      * Store a newly created resource in storage.
@@ -34,19 +34,19 @@ class FolderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'name' => 'required | string',
-            'type' => 'required | string ',
-            'created_by' => 'nullable',
-        ]);
-
-        $validated['created_by'] = auth()->user()->name;
-        $folder = auth()->user()->folders()->create($validated);
-
-        return redirect()->route('folder.index')->with('message', "Nuova Cartella: $folder->name inserita!");
-    }
+//    public function store(Request $request)
+//    {
+//        $validated = $request->validate([
+//            'name' => 'required | string',
+//            'type' => 'required | string ',
+//            'created_by' => 'nullable',
+//        ]);
+//
+//        $validated['created_by'] = auth()->user()->name;
+//        $folder = auth()->user()->folders()->create($validated);
+//
+//        return redirect()->route('folder.index')->with('message', "Nuova Cartella: $folder->name inserita!");
+//    }
 
     /**
      * Display the specified resource.
