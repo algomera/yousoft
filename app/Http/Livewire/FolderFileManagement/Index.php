@@ -9,16 +9,16 @@
 	class Index extends Component
 	{
 		public $folders;
-
 		protected $listeners = [
-			'folder-added' => '$refresh',
+			'folder-added'   => '$refresh',
 			'folder-deleted' => '$refresh',
+			'folder-edited'  => '$refresh',
 		];
 
 		public function deleteFolder($id) {
 			$folder = Folder::find($id);
 			$folder->delete();
-			Storage::deleteDirectory('/folder/'. auth()->user()->id . '/' . $folder->name);
+			Storage::deleteDirectory('/folder/' . auth()->user()->id . '/' . $folder->uuid);
 			$this->dispatchBrowserEvent('close-modal');
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Cartella Eliminata'),

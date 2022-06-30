@@ -31,7 +31,7 @@
 		public function save() {
 			$validated = $this->validate();
 			$extension = $this->file->extension();
-			$path = $this->file->storeAs('folder/' . auth()->user()->id . '/' . $this->folder->name, Str::slug($this->title) . '.' . $extension);
+			$path = $this->file->storeAs('folder/' . auth()->user()->id . '/' . $this->folder->uuid, Str::slug($this->title) . '.' . $extension);
 			$validated['file'] = $path;
 			$this->folder->files()->create($validated);
 			$this->emit('file-added');

@@ -17,6 +17,7 @@ class CreateFoldersTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+			$table->string('uuid');
             $table->string('name');
             $table->string('type');
             $table->timestamps();

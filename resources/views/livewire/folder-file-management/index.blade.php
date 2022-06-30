@@ -32,7 +32,7 @@
 							<x-icon name="eye" class="w-5 h-5 text-indigo-500 flex-shrink-0"
 							        wire:click="$emit('openModal', 'folder-file-management.show', {{ json_encode([$folder->id]) }})"></x-icon>
 							<x-icon name="pencil-alt" class="w-5 h-5 text-indigo-500 flex-shrink-0"
-							        wire:click="$emit('openModal', 'folder-file-management.edit', {{ json_encode([$folder->id]) }})"></x-icon>
+							        wire:click="$emit('openModal', 'folder-file-management.edit-folder', {{ json_encode([$folder->id]) }})"></x-icon>
 							<x-modal>
 								<x-slot name="trigger">
 									<div class="text-red-600 hover:text-red-900">
