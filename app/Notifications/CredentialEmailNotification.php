@@ -39,7 +39,12 @@
 		 * @return \Illuminate\Notifications\Messages\MailMessage
 		 */
 		public function toMail($notifiable) {
-			return (new MailMessage)->greeting('Benvenuto, ' . $this->user->name)->line('Le tue credenziali di accesso sono:')->line('Email: ' . $this->user->email)->line('Password: ' . $this->password)->action('Accedi', url('https://creditiprime.it/'));
+			return (new MailMessage)
+				->greeting('Benvenuto, ' . $this->user->name)
+				->line('Le tue credenziali di accesso sono:')
+				->line('Email: ' . $this->user->email)
+				->line('Password: ' . $this->password)
+				->action('Accedi', url(env('APP_URL')));
 		}
 
 		/**
