@@ -43,7 +43,7 @@
 		public function save() {
 			$validated = $this->validate();
 			$validated['practice_id'] = $this->sub_folder->practice->id;
-			$extension = $this->allega->extension();
+			$extension = pathinfo($this->allega->getClientOriginalName(), PATHINFO_EXTENSION);
 			$filename = pathinfo($this->allega->getClientOriginalName(), PATHINFO_FILENAME);
 			$path = $this->allega->storeAs('practices/' . $this->sub_folder->practice->id . '/business_folders/' . $this->sub_folder->folder_type . '_document_request', $filename . '.' . $extension);
 			$validated['allega'] = $path;

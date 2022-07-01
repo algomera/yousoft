@@ -32,7 +32,7 @@
 		public function save() {
 			$this->authorize('upload_folder_files');
 			$validated = $this->validate();
-			$extension = $this->file->extension();
+			$extension = pathinfo($this->file->getClientOriginalName(), PATHINFO_EXTENSION);
 			$path = $this->file->storeAs('folder/' . auth()->user()->id . '/' . $this->folder->uuid, Str::slug($this->title) . '.' . $extension);
 			$validated['file'] = $path;
 			$this->folder->files()->create($validated);
