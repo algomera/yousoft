@@ -29,6 +29,11 @@
 				'email'    => 'info@edrasis.it',
 				'password' => bcrypt('5Bcontent'),
 			]);
+			// Utenti Collaboratore
+			$collaboratore = User::create([
+				'email'    => 'collab@example.test',
+				'password' => bcrypt('password'),
+			]);
 			// Utenti Banca
 			$novello = User::create([
 				'email'    => 'p.novello@integrabusiness.net',
@@ -70,6 +75,13 @@
 				'name'       => "Edrasis Group",
 				'referent'   => $faker->name(),
 			]);
+			// Creo UserData per Collaboratore
+			UserData::create([
+				'user_id'    => $collaboratore->id,
+				'created_by' => $admin->id,
+				'name'       => "Collaboratore",
+				'referent'   => $faker->name(),
+			]);
 			// Creo UserData per Banche
 			UserData::create([
 				'user_id'    => $novello->id,
@@ -105,6 +117,8 @@
 			// Assegno ruolo "business" all'utente "Edrasis" e creo Documenti Contrattuali
 			$edrasis->assignRole(Role::findByName('business'));
 			ContractualDocuments::createInitialContractualDocuments($edrasis->id);
+			// Assegno ruolo "collaborator" all'utente "Collaboratore"
+			$collaboratore->assignRole(Role::findByName('collaborator'));
 			// Assegno ruolo "*_asseverator" agli utenti "Assev. Tecnico" e "Assev. Fiscale"
 			$asst->assignRole(Role::findByName('technical_asseverator'));
 			$assf->assignRole(Role::findByName('fiscal_asseverator'));
@@ -118,9 +132,15 @@
 			$tasrl->assignRole(Role::findByName('technical_asseverator'));
 			// Assegno ruolo "fiscal_asseverator" all'utente "Assev. Fiscale"
 			$tasrl->assignRole(Role::findByName('fiscal_asseverator'));
-
-			// Associo gli Asseveratori Tecnico e Fiscale all'impresa "Primehub"
+			/*
+			 * Associo:
+			 * - "Asseveratori Tecnico/Fiscale"
+			 * - "Collaboratore"
+			 *
+			 * all'impresa "Primehub"
+			 */
 			$primehub->childs()->attach($asst);
 			$primehub->childs()->attach($assf);
+			$primehub->childs()->attach($collaboratore);
 		}
 	}

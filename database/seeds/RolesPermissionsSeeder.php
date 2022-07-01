@@ -171,6 +171,50 @@
 				'upload_price_lists',
 				'delete_price_lists',
 			]);
+			// Collaborator base permissions
+			$collaborator->givePermissionTo([
+				// Anagrafiche
+				'access_anagrafiche',
+				// Practices
+				'access_practices',
+				'create_practices',
+				'read_practices',
+				'update_practices',
+				'delete_practices',
+				// Computo
+				'create_computo',
+				'download_computo',
+				// Contracts
+				'upload_contracts',
+				'download_contracts',
+				'delete_contracts',
+				// Policies
+				'upload_policies',
+				'download_policies',
+				'delete_policies',
+				// Files/Folders Management (FOLDERS)
+				'access_folders',
+				'create_folders',
+				'read_folders',
+				'update_folders',
+				'delete_folders',
+				// Files/Folders Management (FILES)
+				'upload_folder_files',
+				'download_folder_files',
+				'read_folder_files',
+				'update_folder_files',
+				'delete_folder_files',
+				// Contractual Documents
+				'access_contractual_documents',
+				'upload_contractual_documents',
+				'download_contractual_documents',
+				'delete_contractual_documents',
+				// Price Lists
+				'access_price_lists',
+				'create_price_lists',
+				'upload_price_lists',
+				'delete_price_lists',
+			]);
 			// Bank base permissions
 			$bank->givePermissionTo([
 				// Anagrafiche

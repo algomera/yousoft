@@ -77,6 +77,7 @@
 					break;
 				case 'technical_asseverator':
 				case 'fiscal_asseverator':
+				case 'collaborator':
 				case 'bank':
 					$data = [
 						'total_practices'    => Practice::withParents()->count(),
