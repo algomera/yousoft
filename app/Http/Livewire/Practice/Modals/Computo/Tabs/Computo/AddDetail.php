@@ -58,6 +58,16 @@
 			];
 		}
 
+		protected $validationAttributes = [
+			'note'       => 'Commento',
+			'expression' => 'Espressione',
+			'nps'        => 'NPS',
+			'length'     => 'Lunghezza',
+			'width'      => 'Larghezza',
+			'hps'        => 'H-P-S',
+			'total'      => 'Totale'
+		];
+
 		public static function closeModalOnEscapeIsForceful(): bool {
 			return false;
 		}

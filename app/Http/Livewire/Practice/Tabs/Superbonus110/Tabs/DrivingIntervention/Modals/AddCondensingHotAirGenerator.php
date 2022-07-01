@@ -23,6 +23,14 @@
 			'tipo_di_alimentazione' => 'nullable|string',
 		];
 
+		protected $validationAttributes = [
+			'tipo_sostituito'       => 'Tipo sostituito',
+			'p_nom_sostituito'      => 'P. nom. sostituito',
+			'potenza_nominale'      => 'Potenza nominale',
+			'rend_utile_nom'        => 'Rend. utile nom.',
+			'tipo_di_alimentazione' => 'Tipo di alimentazione',
+		];
+
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;
 			$this->condomino_id = $condomino_id;

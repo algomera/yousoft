@@ -36,6 +36,21 @@
 			'comproprietari'   => 'boolean',
 		];
 
+		protected $validationAttributes = [
+			'name'             => 'Nome/Ragione Sociale',
+			'surname'          => 'Cognome',
+			'cf'               => 'Codice Fiscale',
+			'phone'            => 'Telefono',
+			'email'            => 'Email',
+			'millesimi_inv'    => 'Millesimi',
+			'foglio'           => 'Foglio',
+			'part'             => 'Part.',
+			'sub'              => 'Sub.',
+			'categ_catastale'  => 'Cat. Catastale',
+			'sup_catastale'    => 'Sup. Catastale',
+			'comproprietari'   => 'Comproprietari',
+		];
+
 		public function mount(PracticeModel $practice) {
 			$this->practice = $practice;
 		}

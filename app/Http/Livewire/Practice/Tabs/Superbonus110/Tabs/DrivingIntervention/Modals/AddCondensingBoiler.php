@@ -31,6 +31,18 @@
 			'classe_termo_evoluto'  => 'nullable|string',
 		];
 
+		protected $validationAttributes = [
+			'tipo_sostituito'       => 'Tipo sostituito',
+			'p_nom_sostituito'      => 'P. nom. sostituito',
+			'potenza_nominale'      => 'Potenza nominale',
+			'rend_utile_nom'        => 'Rend. utile nom.',
+			'use_destination'       => 'Destinazione d\'uso',
+			'efficienza_ns'         => 'Efficienza ns',
+			'efficienza_acs_nwh'    => 'Efficienza ACS nwh',
+			'tipo_di_alimentazione' => 'Tipo di alimentazione',
+			'classe_termo_evoluto'  => 'Classe disp. termoregolazione evoluto',
+		];
+
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;
 			$this->condomino_id = $condomino_id;

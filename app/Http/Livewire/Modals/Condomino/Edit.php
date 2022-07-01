@@ -39,6 +39,32 @@
 			];
 		}
 
+		protected $validationAttributes = [
+			'condomino.millesimi_inv'    => 'Millesimi',
+			'condomino.foglio'           => 'Foglio',
+			'condomino.part'             => 'Part.',
+			'condomino.sub'              => 'Sub.',
+			'condomino.categ_catastale'  => 'Cat. Catastale',
+			'condomino.sup_catastale'    => 'Sup. Catastale',
+			'condomino.comproprietari'   => 'Comproprietari',
+			'condomino.type_beneficiary' => 'Tipo di beneficiario',
+			'condomino.possession_title' => 'Titolo di possesso',
+			'condomino.name'             => 'Nome/Ragione Sociale',
+			'condomino.surname'          => 'Cognome',
+			'condomino.sex'              => 'Sesso',
+			'condomino.date_of_birth'    => 'Data di nascita',
+			'condomino.nation_of_birth'  => 'Nazione di nascita',
+			'condomino.common_of_birth'  => 'Comune di nascita',
+			'condomino.cf'               => 'Codice Fiscale',
+			'condomino.phone'            => 'Telefono',
+			'condomino.email'            => 'Email',
+			'condomino.country'          => 'Nazione',
+			'condomino.common'           => 'Comune',
+			'condomino.prov'             => 'Provincia',
+			'condomino.address'          => 'Indirizzo',
+			'condomino.cap'              => 'CAP',
+		];
+
 		public function mount(CondominiModel $condomino) {
 			$this->condomino = $condomino;
 			$this->countries = Country::all();

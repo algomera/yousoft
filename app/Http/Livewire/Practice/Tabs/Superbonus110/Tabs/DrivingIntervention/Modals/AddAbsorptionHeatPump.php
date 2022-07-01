@@ -31,6 +31,18 @@
 			'sup_riscaldata_dalla_pdc' => 'nullable|numeric',
 		];
 
+		protected $validationAttributes = [
+			'tipo_sostituito'          => 'Tipo sostituito',
+			'p_nom_sostituito'         => 'P. nom. sostituito',
+			'tipo_di_pdc'              => 'Tipo di PDC',
+			'tipo_roof_top'            => 'Tipo Roof Top',
+			'potenza_nominale'         => 'Potenza nominale',
+			'gueh'                     => 'GUEh',
+			'guec'                     => 'GUEc',
+			'reversibile'              => 'Reversibile',
+			'sup_riscaldata_dalla_pdc' => 'Sup. riscaldata dalla PDC',
+		];
+
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;
 			$this->condomino_id = $condomino_id;

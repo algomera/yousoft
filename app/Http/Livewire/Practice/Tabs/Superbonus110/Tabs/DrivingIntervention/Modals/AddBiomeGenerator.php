@@ -33,6 +33,19 @@
 			'sup_riscaldata'          => 'nullable|numeric',
 		];
 
+		protected $validationAttributes = [
+			'tipo_sostituito'         => 'Tipo sostituito',
+			'p_nom_sostituito'        => 'P. nom. sostituito',
+			'classe_generatore'       => 'Classe generatore',
+			'tipo_generatore'         => 'Tipo generatore',
+			'use_destination'         => 'Impianto destinato a',
+			'tipo_di_alimentazione'   => 'Tipo di alimentazione',
+			'p_utile_nom'             => 'Pot. utile nom.',
+			'p_al_focolare'           => 'Pot. al focolare',
+			'rend_utile_alla_pot_nom' => 'Rend. utile alla pot. nom.',
+			'sup_riscaldata'          => 'Sup. riscaldata',
+		];
+
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;
 			$this->condomino_id = $condomino_id;

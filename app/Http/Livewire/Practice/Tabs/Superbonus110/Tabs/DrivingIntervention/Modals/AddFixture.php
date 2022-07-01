@@ -31,6 +31,18 @@
 			'oscurante'    => 'nullable|string',
 		];
 
+		protected $validationAttributes = [
+			'description'  => 'Descrizione',
+			'superficie'   => 'Superficie',
+			'trasm_ante'   => 'Trasm. Ante',
+			'trasm_post'   => 'Trasm. Post',
+			'telaio_prima' => 'Telaio Prima',
+			'vetro_prima'  => 'Vetro Prima',
+			'telaio_dopo'  => 'Telaio Dopo',
+			'vetro_dopo'   => 'Vetro Dopo',
+			'oscurante'    => 'Oscurante',
+		];
+
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;
 			$this->condomino_id = $condomino_id;

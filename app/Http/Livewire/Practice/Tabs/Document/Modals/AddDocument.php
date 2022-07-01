@@ -27,6 +27,12 @@
 			'type'   => 'nullable',
 		];
 
+		protected $validationAttributes = [
+			'allega' => 'Documento',
+			'note'   => 'Note',
+			'type'   => 'Tipologia di Documento',
+		];
+
 		public function mount(Sub_folderModel $sub_folder) {
 			$this->sub_folder = $sub_folder;
 		}
