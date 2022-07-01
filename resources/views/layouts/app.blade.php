@@ -192,7 +192,7 @@
 										<x-slot name="content">
 											{{-- Notifications list --}}
 											<div class="block px-4 py-2 text-xs text-gray-400">
-												{{ __('Notifications') }}
+												{{ __('Notifiche') }}
 											</div>
 											<ul
 													role="list"
@@ -225,9 +225,9 @@
 														name="bell"
 														class="w-12 h-12 mx-auto text-gray-300 transform rotate-12"
 												></x-icon>
-												<h3 class="mt-2 text-sm font-medium text-gray-900">No notification</h3>
+												<h3 class="mt-2 text-sm font-medium text-gray-900">{{ __('Nessuna notifica') }}</h3>
 												<p class="mt-1 text-sm text-gray-500">
-													There are no notification for you at the moment.
+													{{ __('Al momento non ci sono notifiche.') }}
 												</p>
 											</div>
 										</x-slot>
@@ -270,11 +270,11 @@
 												@role('business')
 												<!-- Account Management -->
 												<div class="block px-4 py-2 text-xs text-gray-400">
-													{{ __('Manage Account') }}
+													{{ __('Impostazioni Account') }}
 												</div>
 
 												<x-dropdown-link href="{{ route('profile') }}" class="!border-t-0">
-													{{ __('Profile') }}
+													{{ __('Profilo') }}
 												</x-dropdown-link>
 												@endrole
 
@@ -290,7 +290,7 @@
 															onclick="event.preventDefault();
 																																																																																																																				this.closest('form').submit();"
 													>
-														{{ __('Log Out') }}
+														{{ __('Esci') }}
 													</x-dropdown-link>
 												</form>
 											</div>

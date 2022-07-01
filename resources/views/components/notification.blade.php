@@ -5,7 +5,7 @@ $this->dispatchBrowserEvent('open-notification', [
 	'type' => 'success',
 	'actions'  => [
 		'primary' => [
-			'label' => __('View'),
+			'label' => __('Vedi'),
 			'url'   => '#'
 		]
 	]
@@ -60,7 +60,7 @@ $this->dispatchBrowserEvent('open-notification', [
 								<a :href="data.actions.primary.url" class="text-sm font-medium text-indigo-600 bg-white rounded-md hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" x-text="data.actions.primary.label"></a>
 							</template>
 							<button x-on:click="open = false" class="ml-6 text-sm font-medium text-gray-700 bg-white rounded-md hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-								{{ __('Dismiss') }}
+								{{ __('Chiudi') }}
 							</button>
 						</div>
 					</template>
