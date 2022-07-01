@@ -17,23 +17,23 @@
 		<div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
 			<div class="col-span-12">
 				<x-input wire:model.defer="company_name" id="company_name" type="text" name="company_name"
-				         label="Dati impresa"></x-input>
+				         label="Nome impresa" required></x-input>
 			</div>
 			<div class="col-span-12">
 				<x-input x-mask="aaaaaa99a99a999a" wire:model.defer="c_f" id="c_f" type="text" name="c_f"
-				         label="Codice Fiscale" class="uppercase"></x-input>
+				         label="Codice Fiscale o Partita IVA" class="uppercase" required></x-input>
 			</div>
 			<div class="col-span-12 md:col-span-6">
 				<x-input x-mask="9999999999" wire:model.defer="phone" id="phone" type="text" name="phone"
-				         label="Telefono"></x-input>
+				         label="Telefono" required></x-input>
 			</div>
 			<div class="col-span-12 md:col-span-6">
 				<x-input x-mask="9999999999" wire:model.defer="mobile_phone" id="mobile_phone" type="text"
 				         name="mobile_phone"
-				         label="Cellulare"></x-input>
+				         label="Cellulare" required></x-input>
 			</div>
 			<div class="col-span-12">
-				<x-input wire:model.defer="email" id="email" type="email" name="email" label="Email"></x-input>
+				<x-input wire:model.defer="email" id="email" type="email" name="email" label="Email" required></x-input>
 			</div>
 		</div>
 

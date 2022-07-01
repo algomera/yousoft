@@ -62,6 +62,13 @@
 				'update_practices',
 				'delete_practices',
 				'read_child_practices',
+				// Required Documents
+				'access_required_documents',
+				'upload_required_documents_file',
+				'download_required_documents_file',
+				'delete_required_documents_file',
+				'approve_required_documents_folder',
+				'disapprove_required_documents_folder',
 				// Computo
 				'create_computo',
 				'download_computo',
@@ -137,6 +144,11 @@
 				'read_practices',
 				'update_practices',
 				'delete_practices',
+				// Required Documents
+				'access_required_documents',
+				'upload_required_documents_file',
+				'download_required_documents_file',
+				'delete_required_documents_file',
 				// Computo
 				'create_computo',
 				'download_computo',
@@ -181,6 +193,11 @@
 				'read_practices',
 				'update_practices',
 				'delete_practices',
+				// Required Documents
+				'access_required_documents',
+				'upload_required_documents_file',
+				'download_required_documents_file',
+				'delete_required_documents_file',
 				// Computo
 				'create_computo',
 				'download_computo',
@@ -232,11 +249,14 @@
 			$technical_asseverator->givePermissionTo([
 				// Anagrafiche
 				'access_anagrafiche',
-				// Users
-				'access_users',
 				// Practices
 				'access_practices',
 				'read_practices',
+				// Required Documents
+				'access_required_documents',
+				'download_required_documents_file',
+				'approve_required_documents_folder',
+				'disapprove_required_documents_folder',
 				// Folders
 				'access_folders',
 				// Contractual Documents
@@ -247,11 +267,14 @@
 			$fiscal_asseverator->givePermissionTo([
 				// Anagrafiche
 				'access_anagrafiche',
-				// Users
-				'access_users',
 				// Practices
 				'access_practices',
 				'read_practices',
+				// Required Documents
+				'access_required_documents',
+				'download_required_documents_file',
+				'approve_required_documents_folder',
+				'disapprove_required_documents_folder',
 				// Folders
 				'access_folders',
 				// Contractual Documents

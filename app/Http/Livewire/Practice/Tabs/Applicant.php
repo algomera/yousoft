@@ -15,13 +15,13 @@
 		public $email;
 		public $role;
 		protected $rules = [
-			'applicant_type' => 'nullable|string',
-			'company_name'   => 'nullable|string',
-			'c_f'            => 'nullable|string|size:16',
-			'phone'          => 'nullable|string|size:10',
-			'mobile_phone'   => 'nullable|string|size:10',
-			'email'          => 'nullable|email:rfc,dns',
-			'role'           => 'nullable|string',
+			'applicant_type' => 'required|string',
+			'company_name'   => 'required|string',
+			'c_f'            => 'required|string|size:16',
+			'phone'          => 'required|string|size:10',
+			'mobile_phone'   => 'required|string|size:10',
+			'email'          => 'required|email:rfc,dns',
+			'role'           => 'required|string',
 		];
 
 		public function mount() {

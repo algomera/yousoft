@@ -15,8 +15,6 @@ class Applicant extends Model
      */
     protected $guarded = [];
 
-    protected $primaryKey = 'id';
-
 	public function setCFAttribute($value) {
 		$this->attributes['c_f'] = strtoupper($value);
 	}
