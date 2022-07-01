@@ -8,8 +8,8 @@
 					Nuovo
 				</x-button>
 			</x-slot>
+		@endcan
 	</x-page-header>
-	@endcan
 </x-slot>
 <x-card>
 	<p class="text-blue-400 italic text-sm">Per ogni prezzario, carica TUTTI documenti in una sola volta</p>
@@ -59,7 +59,6 @@
 									@endcan
 								@else
 									@can('delete_price_lists')
-
 										<x-modal type="warning">
 											<x-slot name="trigger">
 												<x-danger-button type="button" size="xs">
@@ -71,7 +70,8 @@
 											</x-slot>
 											<div>
 												<p>Sei sicuro di voler eliminare il prezzario?</p>
-												<strong>Il prezzario e le voci collegate presenti nelle pratiche saranno eliminate definitivamente!</strong>
+												<strong>Il prezzario e le voci collegate presenti nelle pratiche saranno
+													eliminate definitivamente!</strong>
 											</div>
 											<x-slot name="footer">
 												<x-link-button x-on:click="open = false">Annulla</x-link-button>
@@ -84,8 +84,7 @@
 										</x-modal>
 									@endcan
 								@endif
-						</div>
-						@endcan
+							@endcan
 						</div>
 					</x-table.td>
 				</tr>

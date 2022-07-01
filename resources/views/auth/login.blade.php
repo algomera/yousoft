@@ -13,7 +13,7 @@
 					<div>
 						<label for="email" class="block text-sm font-medium text-gray-700">Email</label>
 						<div class="mt-1">
-							<x-input id="email" name="email" type="email" autocomplete="email" required></x-input>
+							<x-input id="email" name="email" type="email" autocomplete="email" autofocus required></x-input>
 						</div>
 					</div>
 
