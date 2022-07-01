@@ -21,6 +21,11 @@
 			'folder.type' => 'required|string'
 		];
 
+		protected $validationAttributes = [
+			'name' => 'Nome',
+			'type' => 'Tipologia',
+		];
+
 		public function save() {
 			$this->authorize('update_folders');
 			$this->validate();

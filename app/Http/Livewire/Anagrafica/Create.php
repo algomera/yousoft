@@ -57,6 +57,31 @@
 			'order_or_college_province' => 'nullable|string|size:2',
 			'order_or_college_number'   => 'nullable|string|regex: /[0-9]/',
 		];
+		protected $validationAttributes = [
+			'subject_type'              => 'Tipologia soggetto',
+			'consultant_type'           => 'Tipologia consulente',
+			'company_name'              => 'Ragione Sociale',
+			'first_name'                => 'Nome',
+			'last_name'                 => 'Cognome',
+			'address'                   => 'Indirizzo',
+			'zip'                       => 'CAP',
+			'city'                      => 'Città',
+			'province'                  => 'Provincia',
+			'iban'                      => 'IBAN',
+			'vat'                       => 'Partita IVA',
+			'fiscal_code'               => 'Codice Fiscale',
+			'phone'                     => 'Telefono',
+			'fax'                       => 'Fax',
+			'email'                     => 'Email',
+			'email_pec'                 => 'Email PEC',
+			'ticket_code'               => 'Codice Ticket',
+			'date_of_birth'             => 'Data di nascita',
+			'common_of_birth'           => 'Comune di nascita',
+			'province_of_birth'         => 'Provincia di nascita',
+			'order_or_college'          => 'Ordine o Collegio',
+			'order_or_college_province' => 'Provincia',
+			'order_or_college_number'   => 'N. di Iscrizione',
+		];
 
 		public static function modalMaxWidth(): string {
 			return '7xl';
@@ -75,7 +100,6 @@
 			$validated = $this->validate();
 			$anagrafica = auth()->user()->anagrafiche()->create($validated);
 			$anagrafica->roles()->sync($this->roles);
-
 			$this->closeModal();
 			$this->emitTo('anagrafica.index', 'anagrafica-added');
 			$this->emitTo('practice.tabs.subject', 'anagrafica-created', $anagrafica->id, $this->roles);

@@ -6,7 +6,7 @@
 		<x-input wire:model.defer="legal_form" id="legal_form" type="text" name="legal_form" required label="Forma legale"></x-input>
 		<x-input wire:model.defer="rea" id="rea" type="text" name="rea" required label="CCIAA + REA"></x-input>
 		<x-input wire:model.defer="c_ateco" id="c_ateco" type="text" name="c_ateco" required label="Codice Ateco"></x-input>
-		<x-input wire:model.defer="reg_date" id="reg_date" type="date" name="reg_date" required label="Dati registrazione"></x-input>
+		<x-input wire:model.defer="reg_date" id="reg_date" type="date" name="reg_date" required label="Data registrazione"></x-input>
 	</div>
 
 	<x-button>Salva</x-button>

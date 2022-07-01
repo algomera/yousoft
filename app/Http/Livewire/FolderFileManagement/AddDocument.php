@@ -25,6 +25,11 @@
 			'file'  => 'required',
 		];
 
+		protected $validationAttributes = [
+			'title' => 'Titolo',
+			'file'  => 'File',
+		];
+
 		public function mount(FolderModel $folder) {
 			$this->folder = $folder;
 		}

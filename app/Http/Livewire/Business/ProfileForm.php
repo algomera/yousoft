@@ -23,6 +23,15 @@
 			'c_ateco'    => 'nullable|string',
 			'reg_date'   => 'nullable|string',
 		];
+		protected $validationAttributes = [
+			'type'       => 'Ragione Sociale',
+			'p_iva'      => 'Partita IVA',
+			'c_f'        => 'Codice Fiscale',
+			'legal_form' => 'Forma legale',
+			'rea'        => 'CCIAA + REA',
+			'c_ateco'    => 'Codice Ateco',
+			'reg_date'   => 'Data registrazione',
+		];
 
 		public function mount() {
 			$this->type = auth()->user()->user_data->type;
@@ -39,7 +48,6 @@
 			$business = UserData::where('user_id', auth()->user()->id)->first();
 			$validated['c_f'] = strtoupper($validated['c_f']);
 			$business->update($validated);
-
 			return redirect()->route('dashboard');
 		}
 

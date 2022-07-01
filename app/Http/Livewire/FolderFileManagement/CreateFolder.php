@@ -18,6 +18,11 @@
 			'type' => 'required|string',
 		];
 
+		protected $validationAttributes = [
+			'name' => 'Nome',
+			'type' => 'Tipologia',
+		];
+
 		public function save() {
 			$this->authorize('create_folders');
 			$validated = $this->validate();
