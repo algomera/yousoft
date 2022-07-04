@@ -43,7 +43,7 @@
 		}
 
 		public function save() {
-			$validated = $this->validate();
+			$this->validate();
 
 			$this->driving_intervention->update();
 

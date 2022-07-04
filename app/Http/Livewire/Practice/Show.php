@@ -19,7 +19,7 @@
 			'contracts'  => 'Contratti',
 			'policies'   => 'Polizze'
 		];
-		public $selectedTab = 'applicant';
+		public $selectedTab = 'superbonus';
 
 		protected $listeners = [
 			'change-tab' => 'changeTab'
