@@ -24,6 +24,16 @@
 			'role'           => 'required|string',
 		];
 
+		protected $validationAttributes = [
+			'applicant_type' => 'Richiedente',
+			'company_name'   => 'Nome impresa',
+			'c_f'            => 'Codice Fiscale o Partita IVA',
+			'phone'          => 'Telefono',
+			'mobile_phone'   => 'Cellulare',
+			'email'          => 'Email',
+			'role'           => 'Ruolo nella Pratica',
+		];
+
 		public function mount() {
 			$this->applicant_type = $this->applicant->applicant_type ?: 'impresa';
 			$this->company_name = $this->applicant->company_name;

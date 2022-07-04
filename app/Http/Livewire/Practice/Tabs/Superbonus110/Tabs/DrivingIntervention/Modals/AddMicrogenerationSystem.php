@@ -38,6 +38,21 @@
 			'a_celle_a_combustibile' => 'nullable|boolean',
 			'riscaldatore_suppl'     => 'nullable|boolean',
 		];
+		protected $validationAttributes = [
+			'tipo_sostituito'        => 'Tipo sostituito',
+			'p_nom_sostituito'       => 'P. nom. sostituito',
+			'p_elettrica'            => 'Potenza elettrica',
+			'p_immessa'              => 'Potenza immessa',
+			'p_term_recuperata'      => 'Potenza term. recuperata',
+			'pes'                    => 'PES',
+			'tipo_di_alimentazione'  => 'Tipo di alimentazione',
+			'tipo_intervento'        => 'Tipo intervento',
+			'potenza_risc_suppl'     => 'Potenza risc. suppl.',
+			'efficienza_ns'          => 'Efficienza ns',
+			'classe_energ'           => 'Classe energetica',
+			'a_celle_a_combustibile' => 'A celle a combustibile',
+			'riscaldatore_suppl'     => 'Riscaldatore suppl.',
+		];
 
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;

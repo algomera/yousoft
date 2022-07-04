@@ -34,6 +34,21 @@
 			'data_project.np_not_validated'           => 'nullable|numeric',
 		];
 
+		protected $validationAttributes = [
+			'data_project.filed_common'               => 'Comune',
+			'data_project.filed_province'             => 'Provincia',
+			'data_project.filed_date'                 => 'In data',
+			'data_project.filed_protocol'             => 'Protocollo n.',
+			'data_project.work_start'                 => 'Lavori iniziati in data',
+			'data_project.end_of_works'               => 'Lavori conclusi in data',
+			'data_project.building_unit'              => 'N. unità',
+			'data_project.relevance'                  => 'N. pertinenze',
+			'data_project.gross_surface_area'         => 'Superficie lorda ante lavori',
+			'data_project.np'                         => 'N. voci NP utilizzate',
+			'data_project.np_validated'               => 'Di cui da validare',
+			'data_project.np_not_validated'           => 'Di cui ancora da validare',
+		];
+
 		public function save() {
 			$validated = $this->validate();
 			$this->data_project->update($validated);

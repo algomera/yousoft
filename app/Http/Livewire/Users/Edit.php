@@ -33,6 +33,14 @@
 			];
 		}
 
+		protected $validationAttributes = [
+			'role' => 'Tipologia Profilo',
+			'nome' => 'Nome',
+			'email' => 'Email',
+			'password' => 'Password',
+			'password_confirmation' => 'Conferma Password'
+		];
+
 		public function mount(User $user) {
 			$this->user_id = $user->id;
 			$this->role = $user->role->name;

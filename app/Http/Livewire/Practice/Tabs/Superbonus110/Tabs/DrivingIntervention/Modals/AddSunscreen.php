@@ -34,6 +34,19 @@
 			'materiale_scherm'      => 'nullable|string',
 			'meccanismo_reg'        => 'nullable|string',
 		];
+		protected $validationAttributes = [
+			'tipo_schermatura'      => 'Tipo schermatura/chiusura oscurante',
+			'installazione'         => 'Installazione',
+			'sup_schermatura'       => 'Sup. schermatura/chiusura oscurante',
+			'sup_finestra_protetta' => 'Sup. finestra protetta',
+			'resist_termica_suppl'  => 'Resist. termica suppl.',
+			'orientamento'          => 'Orientamento',
+			'tipo_di_calcolo'       => 'Tipo di calcolo',
+			'gtot'                  => 'gTot',
+			'classe_scherm'         => 'Classe Scherm.',
+			'materiale_scherm'      => 'Materiale Scherm.',
+			'meccanismo_reg'        => 'Meccanismo reg.',
+		];
 
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;

@@ -57,6 +57,41 @@
 			'final_state.possible_improvements'       => 'nullable|string',
 		];
 
+		protected $validationAttributes = [
+			'plant_type'                  => 'Tipo di impianto',
+			'heat_terminals'              => 'Tipo di erogazione del calore',
+			'distribution_type'           => 'Tipo di distribuzione',
+			'adjustment_type'             => 'Tipo di regolazione',
+			'overall_power'               => 'Potenza nominale complessiva',
+			'energetic_vector'            => 'Vettore energetico prevalente',
+			'summer_acs_renovation'       => 'Eventuali interventi di manutenzione straordinaria',
+			'construction_tipology'       => 'Tipologia costruttiva',
+			'heated_volume'               => 'Volume lordo riscaldato V',
+			'dispersing_surface'          => 'Superficie disperdente S',
+			'SV_report'                   => 'Rapposto S/V',
+			'useful_heated_surface'       => 'Superficie utile riscaldata',
+			'useful_cooled_surface'       => 'Superficie utile raffrescata',
+			'generator_inst_date'         => 'Anno di installazione del generatore',
+			'extra_maintenance'           => 'Eventuali interventi di manutenzione straordinaria o ristrutturazione',
+			'project_temperature'         => 'Temperatura di progetto',
+			'fotovoltaic_max_power'       => 'Fotovoltaico potenza di picco',
+			'eolic_nominal_power'         => 'Eolico potenza nominale',
+			'collector_surface'           => 'Solare termico superficie dei collettori',
+			'technical_standard'          => 'Riferimento alle norme tecniche utilizzate',
+			'energetic_evaluation_method' => 'Metodo di valutazione della prestazione energetica utilizzato',
+			'building_description'        => 'Descrizione dell\'edificio',
+			'nr_energy_perf_index'        => 'Indice di prestazione energetica non rinnovabile',
+			'r_energy_perf_index'         => 'Indice di prestazione energetica rinnovabile',
+			'EPH'                         => 'EPH,nd',
+			'Asup'                        => 'Asol, est/Asup utile',
+			'YIE'                         => 'YIE',
+			'EPgl_nren'                   => 'Indice di prestazione energetica globale',
+			'invernal_case_quality'       => 'Qualità invernale involucro',
+			'summer_case_quality'         => 'Qualità estiva involucro',
+			'energetic_class'             => 'Classe energetica',
+			'possible_improvements'       => 'Possibili interventi di miglioramento',
+		];
+
 		public function save() {
 			$validated = $this->validate();
 			$this->final_state->update($validated['final_state']);

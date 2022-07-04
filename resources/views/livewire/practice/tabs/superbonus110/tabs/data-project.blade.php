@@ -121,7 +121,7 @@
 			@endif
 		</div>
 		<div>
-			<x-label for="gross_surface_area">La superficie lorta ante lavori complessiva disperdente è pari a:
+			<x-label for="gross_surface_area">La superficie lorda ante lavori complessiva disperdente è pari a:
 			</x-label>
 			<div class="w-36">
 				<x-input wire:model.defer="data_project.gross_surface_area" type="number" name="gross_surface_area"

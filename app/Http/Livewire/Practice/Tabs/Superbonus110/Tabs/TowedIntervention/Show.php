@@ -82,7 +82,6 @@
 		public function save() {
 			$validated = $this->validate();
 			$this->towed_intervention->update();
-
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Aggiornamento'),
 				'subtitle' => __('Dati aggiornati con successo!')

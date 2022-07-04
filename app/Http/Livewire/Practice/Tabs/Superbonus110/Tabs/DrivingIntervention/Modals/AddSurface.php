@@ -30,6 +30,15 @@
 			'confine'             => 'nullable|string',
 			'insulation'          => 'nullable|string',
 		];
+		protected $validationAttributes = [
+			'description_surface' => 'Descrizione',
+			'surface'             => 'Superficie',
+			'trasm_ante'          => 'Trasm. ante',
+			'trasm_post'          => 'Trasm. post',
+			'trasm_term'          => 'Trasm. Term. Period. YIE',
+			'confine'             => 'Confine',
+			'insulation'          => 'Coibentazione',
+		];
 
 		public function mount(PracticeModel $practice, $intervention, $condomino_id, $is_common, $type) {
 			$this->practice = $practice;

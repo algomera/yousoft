@@ -22,6 +22,13 @@
 			'cop_nuovo_scaldacqua'       => 'nullable|numeric',
 			'capacita_accumulo'          => 'nullable|numeric',
 		];
+		protected $validationAttributes = [
+			'tipo_scaldacqua_sostituito' => 'Tipo scaldacqua sostituito',
+			'pu_scaldacqua_sostituito'   => 'Pu scaldacqua sostituito',
+			'pu_scaldacqua_a_pdc'        => 'Pu scaldacqua a PDC',
+			'cop_nuovo_scaldacqua'       => 'COP nuovo scaldacqua',
+			'capacita_accumulo'          => 'Capacità accumulo',
+		];
 
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;

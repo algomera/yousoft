@@ -14,6 +14,11 @@
 			'code' => 'required|string'
 		];
 
+		protected $validationAttributes = [
+			'name' => 'Nome',
+			'code' => 'Codice'
+		];
+
 		public function save() {
 			ComputoPriceList::create([
 				'user_id' => auth()->user()->isAdmin() ? null : auth()->user()->id,

@@ -41,7 +41,7 @@
 			'building.building_authorization'   => 'nullable|string',
 			'building.license_number'           => 'nullable|string',
 			'building.license_date'             => 'nullable|date',
-			'building.construction_date'        => 'nullable|string',
+			'building.construction_date'        => 'nullable|numeric|digits:4',
 			'building.administrator_fullname'   => 'nullable|string',
 			'building.administrator_surname'    => 'nullable|string',
 			'building.administrator_name'       => 'nullable|string',
@@ -54,6 +54,38 @@
 			'building.administrator_cellphone'  => 'nullable|string|size:10',
 			'building.administrator_email'      => 'nullable|email:rfc,dns',
 			//			'building.imported_excel_file'      => 'nullable|file|mimes:xls,xlsx,csv|max:512'
+		];
+
+		protected $validationAttributes = [
+			'intervention_name'        => 'Nome Intervento',
+			'company_role'             => 'Ruolo dell\'impresa',
+			'intervention_tipology'    => 'Tipologia intervento',
+			'fiscal_code'              => 'Codice Fiscale',
+			'condominio'               => 'Nome Condominio',
+			'build_type'               => 'Tipo di condominio',
+			'zone'                     => 'Zona',
+			'section'                  => 'Sezione',
+			'foil'                     => 'Foglio',
+			'particle'                 => 'Particella',
+			'subaltern'                => 'Subalterno',
+			'unit_building_number'     => 'N. unità imm.',
+			'pertinence_number'        => 'N. pertinenze',
+			'resolution_stairs'        => 'Scale delibere',
+			'note'                     => 'Note',
+			'license_number'           => 'N. licenza/titolo',
+			'license_date'             => 'Data licenza/titolo',
+			'construction_date'        => 'Anno costruzione',
+			'administrator_fullname'   => 'Nominativo',
+			'administrator_name'       => 'Nome',
+			'administrator_surname'    => 'Cognome',
+			'administrator_fiscalcode' => 'Codice Fiscale',
+			'administrator_address'    => 'Indirizzo',
+			'administrator_city'       => 'Città',
+			'administrator_province'   => 'Provincia',
+			'administrator_cap'        => 'CAP',
+			'administrator_telephone'  => 'Telefono',
+			'administrator_cellphone'  => 'Cellulare',
+			'administrator_email'      => 'Email',
 		];
 		protected $listeners = [
 			'condomino-created' => '$refresh'

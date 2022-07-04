@@ -64,6 +64,34 @@
 			'note'             => 'nullable|string',
 			'practice_ok'      => 'boolean',
 		];
+		protected $validationAttributes = [
+			'import'           => 'Importo stimato',
+			'practical_phase'  => 'Fase pratica',
+			'real_estate_type' => 'Tipo Immobile',
+			'policy_name'      => 'Denominazione',
+			'address'          => 'Indirizzo',
+			'civic'            => 'N.',
+			'common'           => 'Comune',
+			'province'         => 'Provincia',
+			'region'           => 'Regione',
+			'cap'              => 'CAP',
+			'work_start'       => 'Inizio lavori',
+			'c_m'              => 'Importo C.M',
+			'assev_tecnica'    => 'Assev. Tecnica (no IVA)',
+			'description'      => 'Descrizione',
+			'referent_email'   => 'Email di riferimento',
+			'referent_mobile'  => 'Cellulare di riferimento',
+			'request_policy'   => 'Richiedente',
+			'superbonus'       => 'Tipologia intervento',
+			'sal_1_work_start' => 'Data lavorazione',
+			'sal_1_import'     => 'Importo SAL/Lavori',
+			'sal_2_work_start' => 'Data lavorazione',
+			'sal_2_import'     => 'Importo SAL/Lavori',
+			'sal_f_work_start' => 'Data lavorazione',
+			'sal_f_import'     => 'Importo SAL/Lavori',
+			'note'             => 'Note',
+			'practice_ok'      => 'Pratica in regola',
+		];
 
 		public function mount() {
 			$this->import = $this->practice->import;

@@ -18,6 +18,12 @@
 			'performance_percentage' => 'nullable|numeric',
 			'useful_power'           => 'nullable|numeric',
 		];
+		protected $validationAttributes = [
+			'generator_type'         => 'Tipo',
+			'generator_number'       => 'N° di generatori',
+			'performance_percentage' => 'Rendimento al 100% della potenza',
+			'useful_power'           => 'Potenza utile complessiva',
+		];
 
 		public function mount(PracticeModel $practice) {
 			$this->practice = $practice;

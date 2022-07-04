@@ -36,6 +36,14 @@
 			];
 		}
 
+		protected $validationAttributes = [
+			'role' => 'Tipologia Profilo',
+			'nome' => 'Nome',
+			'email' => 'Email',
+			'password' => 'Password',
+			'password_confirmation' => 'Conferma Password'
+		];
+
 		public function updatingRole($value) {
 			$this->parents = [];
 			if (config('users_matrioska.' . $value)) {

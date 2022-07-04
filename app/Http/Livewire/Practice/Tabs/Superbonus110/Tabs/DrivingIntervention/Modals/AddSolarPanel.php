@@ -40,6 +40,22 @@
 			'certificazione_solar_keymark'         => 'nullable|boolean',
 			'impianto_factory_made'                => 'nullable|string',
 		];
+		protected $validationAttributes = [
+			'sup_lorda_singolo_modulo'             => 'Sup. lorda singolo modulo',
+			'num_moduli'                           => 'N° di moduli',
+			'sup_totale'                           => 'Sup. totale',
+			'tipo_di_collettori'                   => 'Tipo di collettori',
+			'tipo_di_installazione'                => 'Tipo di installazione',
+			'inclinazione'                         => 'Inclinazione',
+			'orientamento'                         => 'Orientamento',
+			'q_col_q_sol'                          => 'Q col/Q sol',
+			'ql'                                   => 'QL',
+			'accumulo_in_litri'                    => 'Accumulo',
+			'destinazione_calore'                  => 'Destinazione del calore',
+			'tipo_impianto_integrato_o_sostituito' => 'Tipo impianto integrato o sostituito',
+			'certificazione_solar_keymark'         => 'Certificazione Solar Keymark',
+			'impianto_factory_made'                => 'Impianto Factory Made',
+		];
 
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;
