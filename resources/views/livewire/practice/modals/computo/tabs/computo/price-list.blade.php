@@ -35,7 +35,7 @@
 						<tr wire:key="{{ $k }}-{{ $row->id }}" wire:click="selectLeaf({{ $row }})"
 						    class="cursor-pointer hover:bg-gray-50">
 							<x-table.td>
-								<div class="w-40">
+								<div class="w-40 uppercase">
 									{{ $row->code }}
 								</div>
 							</x-table.td>
