@@ -9,9 +9,9 @@
 					@endforeach
 				</x-select>
 			</div>
-			<x-button class="h-[38px]">
-				<x-icon name="search" class="w-4 h-4"></x-icon>
-			</x-button>
+{{--			<x-button class="h-[38px]">--}}
+{{--				<x-icon name="search" class="w-4 h-4"></x-icon>--}}
+{{--			</x-button>--}}
 		</div>
 		<nav class="space-y-0 space-x-2 lg:space-x-0 lg:space-y-1.5 flex flex-row h-[450px] overflow-y-auto mt-3 lg:flex-col"
 		     aria-label="Sidebar">
@@ -48,7 +48,12 @@
 				</x-table.tbody>
 			</x-table.table>
 		@else
-			Seleziona una voce
+			<div class="w-full h-full flex items-center justify-center">
+				<div class="text-center">
+					<x-icon name="folder" class="mx-auto h-12 w-12 text-gray-300"></x-icon>
+					<h3 class="mt-2 text-sm font-medium text-gray-400">Seleziona una voce</h3>
+				</div>
+			</div>
 		@endif
 	</div>
 </div>
