@@ -952,6 +952,12 @@ select {
 .-mr-3 {
   margin-right: -0.75rem;
 }
+.mt-0 {
+  margin-top: 0px;
+}
+.\!mt-0 {
+  margin-top: 0px !important;
+}
 .block {
   display: block;
 }
@@ -1023,6 +1029,9 @@ select {
 }
 .h-2 {
   height: 0.5rem;
+}
+.h-\[38px\] {
+  height: 38px;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -1274,6 +1283,9 @@ select {
 }
 .items-center {
   align-items: center;
+}
+.items-stretch {
+  align-items: stretch;
 }
 .justify-start {
   justify-content: flex-start;
@@ -1785,6 +1797,9 @@ select {
 }
 .\!pr-14 {
   padding-right: 3.5rem !important;
+}
+.pt-1 {
+  padding-top: 0.25rem;
 }
 .text-left {
   text-align: left;
