@@ -17,9 +17,11 @@
 		public $intervention_row;
 		public $copyIsDisabled = true;
 		public $pasteIsDisabled = true;
+		public $deleteIsDisabled = true;
 		public $selected = [];
+		public $selectAll = false;
 		protected $listeners = [
-			'detail-row-added' => '$refresh',
+			'detail-row-added'   => '$refresh',
 			'detail-row-deleted' => '$refresh',
 			'detail-row-updated' => '$refresh',
 		];
@@ -57,11 +59,23 @@
 			]);
 		}
 
+		public function updatedSelectAll($value) {
+			if ($value && $this->details->count()) {
+				$this->selected = $this->details->pluck('id');
+				$this->updatedSelected();
+			} else {
+				$this->selected = [];
+				$this->updatedSelected();
+			}
+		}
+
 		public function updatedSelected() {
 			if (count($this->selected) > 0) {
 				$this->copyIsDisabled = false;
+				$this->deleteIsDisabled = false;
 			} else {
 				$this->copyIsDisabled = true;
+				$this->deleteIsDisabled = true;
 			}
 		}
 
@@ -73,17 +87,37 @@
 				'subtitle' => __('I dettagli selezionati sono stato copiati!')
 			]);
 		}
+
 		public function paste() {
 			$copiedDetails = ComputoInterventionRowDetail::findMany(Session::get('copiedDetails'));
-			foreach ($copiedDetails as $copiedDetail) {
-				$new = $copiedDetail->replicate();
-				$new->parent_id = $this->intervention_row->id;
-				$new->save();
+			if (!$copiedDetails->count()) {
+				$this->dispatchBrowserEvent('open-notification', [
+					'type'     => 'error',
+					'title'    => __('Errore'),
+					'subtitle' => __('I dettagli da incollare non esistono più!')
+				]);
+			} else {
+				foreach ($copiedDetails as $copiedDetail) {
+					$new = $copiedDetail->replicate();
+					$new->parent_id = $this->intervention_row->id;
+					$new->save();
+				}
+				$this->emit('detail-row-added');
+				$this->dispatchBrowserEvent('open-notification', [
+					'title'    => __('Dettagli incollati'),
+					'subtitle' => __('I dettagli sono stato incollati!')
+				]);
 			}
-			$this->emit('detail-row-added');
+		}
+
+		public function deleteSelected() {
+			ComputoInterventionRowDetail::destroy($this->selected);
+			$this->selected = [];
+			$this->selectAll = false;
+			$this->emit('detail-row-deleted');
 			$this->dispatchBrowserEvent('open-notification', [
-				'title'    => __('Dettagli incollati'),
-				'subtitle' => __('I dettagli sono stato incollati!')
+				'title'    => __('Dettagli eliminati'),
+				'subtitle' => __('I dettagli sono stato eliminati!')
 			]);
 		}
 

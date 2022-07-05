@@ -54,14 +54,24 @@
 							type="button"
 							prepend="paste" iconColor="text-white">Incolla
 					</x-button>
+					<x-danger-button
+							wire:click="deleteSelected"
+							:disabled="$deleteIsDisabled"
+							class="disabled:opacity-50"
+							type="button"
+							prepend="trash" iconColor="text-white">Elimina
+					</x-danger-button>
 				</div>
 				<x-table.table>
 					<x-table.thead>
 						<tr class="divide-x divide-gray-200">
+							<x-table.th class="w-10 text-center whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+								<input wire:model="selectAll" type="checkbox" value="true"
+								       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+							</x-table.th>
 							<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">N.</x-table.th>
 							<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Commento</x-table.th>
-							<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Espressione
-							</x-table.th>
+							<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Espressione</x-table.th>
 							<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">NPS</x-table.th>
 							<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Lunghezza</x-table.th>
 							<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Larghezza</x-table.th>
@@ -73,6 +83,10 @@
 					<x-table.tbody>
 						@foreach($details as $k => $detail)
 							<tr class="divide-x divide-gray-200">
+								<x-table.td class="w-10 text-center whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+									<input wire:model="selected" type="checkbox" value="{{ $detail->id }}"
+									       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+								</x-table.td>
 								<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
 									{{ $loop->index + 1 }}
 								</x-table.td>
