@@ -84,7 +84,7 @@
 								<x-table.td class="w-0 whitespace-nowrap px-2 py-2 text-sm text-gray-900">
 									<div class="flex items-center space-x-3">
 										<x-icon wire:click="$emit('openModal', 'practice.modals.computo.tabs.computo.edit-detail', {{ json_encode(['detail_id' => $detail->id]) }})" name="pencil-alt"
-										        class="w-5 h-5 text-indigo-600 hover:text-indigo-900"></x-icon>
+										        class="w-5 h-5 text-indigo-600 hover:text-indigo-900 cursor-pointer"></x-icon>
 										<x-modal>
 											<x-slot name="trigger">
 												<div class="text-red-600 hover:text-red-900">
