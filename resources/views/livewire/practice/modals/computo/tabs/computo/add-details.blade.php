@@ -39,6 +39,22 @@
 		<hr class="my-3">
 		<div class="grid grid-cols-10 gap-4">
 			<div class="col-span-10 lg:col-span-10">
+				<div class="mb-3 space-x-2">
+					<x-button
+							wire:click="copy"
+							:disabled="$copyIsDisabled"
+							class="disabled:opacity-50"
+							type="button"
+							prepend="copy" iconColor="text-white">Copia
+					</x-button>
+					<x-button
+							wire:click="paste"
+							:disabled="$pasteIsDisabled"
+							class="disabled:opacity-50"
+							type="button"
+							prepend="paste" iconColor="text-white">Incolla
+					</x-button>
+				</div>
 				<x-table.table>
 					<x-table.thead>
 						<tr class="divide-x divide-gray-200">

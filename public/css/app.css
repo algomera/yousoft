@@ -1108,6 +1108,9 @@ select {
 .w-2 {
   width: 0.5rem;
 }
+.w-\[30px\] {
+  width: 30px;
+}
 .min-w-\[200px\] {
   min-width: 200px;
 }
@@ -1152,6 +1155,9 @@ select {
 }
 .max-w-xs {
   max-width: 20rem;
+}
+.max-w-\[30px\] {
+  max-width: 30px;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -2520,6 +2526,10 @@ input[type=number] {
 
 .disabled\:opacity-25:disabled {
   opacity: 0.25;
+}
+
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
 }
 
 .group:hover .group-hover\:bg-black\/80 {

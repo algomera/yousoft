@@ -5,6 +5,7 @@
 	use App\ComputoInterventionRow;
 	use App\ComputoInterventionRowDetail;
 	use App\ComputoPriceListRow;
+	use Illuminate\Support\Facades\Session;
 	use LivewireUI\Modal\ModalComponent;
 
 	class AddDetails extends ModalComponent
@@ -14,6 +15,9 @@
 		public $practice_id;
 		public $details = [];
 		public $intervention_row;
+		public $copyIsDisabled = true;
+		public $pasteIsDisabled = true;
+		public $selected = [];
 		protected $listeners = [
 			'detail-row-added' => '$refresh',
 			'detail-row-deleted' => '$refresh',
@@ -53,6 +57,36 @@
 			]);
 		}
 
+		public function updatedSelected() {
+			if (count($this->selected) > 0) {
+				$this->copyIsDisabled = false;
+			} else {
+				$this->copyIsDisabled = true;
+			}
+		}
+
+		public function copy() {
+			Session::forget('copiedDetails');
+			Session::put('copiedDetails', $this->selected);
+			$this->dispatchBrowserEvent('open-notification', [
+				'title'    => __('Dettagli copiati'),
+				'subtitle' => __('I dettagli selezionati sono stato copiati!')
+			]);
+		}
+		public function paste() {
+			$copiedDetails = ComputoInterventionRowDetail::findMany(Session::get('copiedDetails'));
+			foreach ($copiedDetails as $copiedDetail) {
+				$new = $copiedDetail->replicate();
+				$new->parent_id = $this->intervention_row->id;
+				$new->save();
+			}
+			$this->emit('detail-row-added');
+			$this->dispatchBrowserEvent('open-notification', [
+				'title'    => __('Dettagli incollati'),
+				'subtitle' => __('I dettagli sono stato incollati!')
+			]);
+		}
+
 		public function save() {
 			if ($this->intervention_row->details->count()) {
 				$this->intervention_row->update([
@@ -79,6 +113,7 @@
 
 		public function render() {
 			$this->details = $this->intervention_row->details;
+			$this->pasteIsDisabled = !Session::exists('copiedDetails');
 			return view('livewire.practice.modals.computo.tabs.computo.add-details');
 		}
 	}
