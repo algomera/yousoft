@@ -124,7 +124,7 @@
 				'title'    => __('Aggiornamento'),
 				'subtitle' => __('Dettaglio aggiornato con successo!')
 			]);
-			$this->emit('detail-row-added');
+			$this->emit('detail-row-updated');
 		}
 
 		public function render() {

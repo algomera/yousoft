@@ -15,7 +15,8 @@
 		public $intervention_row;
 		protected $listeners = [
 			'detail-row-added' => '$refresh',
-			'detail-row-deleted' => '$refresh'
+			'detail-row-deleted' => '$refresh',
+			'detail-row-updated' => '$refresh',
 		];
 
 		public static function modalMaxWidth(): string {
