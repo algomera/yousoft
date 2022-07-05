@@ -55,6 +55,10 @@ class Practice extends Model
         return $this->hasOne(Variant::class);
     }
 
+	public function fees_declarations() {
+		return $this->hasOne(FeesDeclaration::class);
+	}
+
     public function condomini() {
         return $this->hasMany(Condomini::class);
     }

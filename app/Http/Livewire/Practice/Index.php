@@ -55,6 +55,7 @@
 			]);
 			$practice->final_state()->create();
 			$practice->variant()->create();
+			$practice->fees_declarations()->create();
 			// Create Folder Document
 			folder_documents::addFolders($practice->id);
 			// Create Contracts
