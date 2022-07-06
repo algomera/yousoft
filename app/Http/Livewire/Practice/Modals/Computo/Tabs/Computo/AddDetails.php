@@ -86,6 +86,7 @@
 				'title'    => __('Dettagli copiati'),
 				'subtitle' => __('I dettagli selezionati sono stato copiati!')
 			]);
+			$this->updatedSelected();
 		}
 
 		public function paste() {
@@ -109,6 +110,9 @@
 					'subtitle' => __('I dettagli sono stato incollati!')
 				]);
 			}
+			$this->selected = [];
+			$this->selectAll = false;
+			$this->updatedSelected();
 		}
 
 		public function deleteSelected() {
@@ -120,6 +124,7 @@
 				'title'    => __('Dettagli eliminati'),
 				'subtitle' => __('I dettagli sono stato eliminati!')
 			]);
+			$this->updatedSelected();
 		}
 
 		public function save() {
