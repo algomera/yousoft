@@ -96,6 +96,7 @@
 					'title'    => __('Errore'),
 					'subtitle' => __('I dettagli da incollare non esistono più!')
 				]);
+				Session::forget('copiedDetails');
 			} else {
 				foreach ($copiedDetails as $copiedDetail) {
 					$new = $copiedDetail->replicate();

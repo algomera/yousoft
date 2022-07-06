@@ -9,8 +9,8 @@
 		public $practice_id;
 		public $tabs = [
 			'computo'  => 'Computo Metrico',
-//			'fees'   => 'IVA e spese professionali',
-//			'recap'   => 'Riepilogo massimali',
+			'fees'   => 'IVA e spese professionali',
+			'recap'   => 'Riepilogo massimali',
 		];
 		public $selectedTab = 'computo';
 
