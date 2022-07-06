@@ -22,7 +22,7 @@
 			</div>
 		</div>
 	</div>
-	<x-card class="h-[745px]">
+	<x-card class="!mt-0 h-[745px]">
 		@switch($selectedTab)
 			@case('computo')
 				<livewire:practice.modals.computo.tabs.computo :practice_id="$practice_id"/>
