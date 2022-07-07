@@ -1,10 +1,10 @@
 <?php
 
-	namespace App\Http\Livewire\Practice\Modals\Computo\Tabs;
+	namespace App\Http\Livewire\Practice\Modals\Computo\Tabs\Fees;
 
 	use Livewire\Component;
 
-	class Fees extends Component
+	class Index extends Component
 	{
 		public $practice_id;
 		public $tabs = [
@@ -23,6 +23,6 @@
 		}
 
 		public function render() {
-			return view('livewire.practice.modals.computo.tabs.fees');
+			return view('livewire.practice.modals.computo.tabs.fees.index');
 		}
 	}

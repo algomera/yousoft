@@ -7,7 +7,7 @@
 			</nav>
 		</div>
 		<div class="col-span-10 lg:col-span-8 overflow-y-auto relative">
-			@if($selected)
+			@if($rows->count())
 				<x-table.table class="h-[250px]">
 					<x-table.thead>
 						<tr class="divide-x divide-gray-200">
@@ -62,6 +62,13 @@
 						@endforeach
 					</x-table.tbody>
 				</x-table.table>
+			@else
+				<div class="w-full h-full flex items-center justify-center">
+					<div class="text-center">
+						<x-icon name="folder" class="mx-auto h-12 w-12 text-gray-300"></x-icon>
+						<h3 class="mt-2 text-sm font-medium text-gray-400">Nessuna lavorazione inserita</h3>
+					</div>
+				</div>
 			@endif
 		</div>
 	</div>

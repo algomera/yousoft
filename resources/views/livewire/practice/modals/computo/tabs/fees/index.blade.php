@@ -25,10 +25,10 @@
     <x-card class="">
         @switch($selectedTab)
             @case('amount')
-                IMPORTO LAVORI
+                <livewire:practice.modals.computo.tabs.fees.amount :practice_id="$practice_id"/>
                 @break
             @case('other')
-                ALTRE SPESE
+                <livewire:practice.modals.computo.tabs.fees.other />
                 @break
         @endswitch
     </x-card>
