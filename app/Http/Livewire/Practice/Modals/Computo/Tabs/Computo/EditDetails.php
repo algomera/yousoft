@@ -2,9 +2,9 @@
 
 	namespace App\Http\Livewire\Practice\Modals\Computo\Tabs\Computo;
 
+	use App\ComputoFeesAmount;
 	use App\ComputoInterventionRow;
 	use App\ComputoInterventionRowDetail;
-	use Illuminate\Support\Arr;
 	use Illuminate\Support\Facades\Session;
 	use LivewireUI\Modal\ModalComponent;
 
@@ -14,7 +14,7 @@
 		public $selectedIntervention = null;
 		public $practice_id;
 		public $details = [];
-		public $intervention_row;
+		public $fees_amount;
 		public $copyIsDisabled = true;
 		public $pasteIsDisabled = true;
 		public $deleteIsDisabled = true;
@@ -51,6 +51,7 @@
 			$this->selectedIntervention = $selectedIntervention;
 			$this->practice_id = $practice_id;
 			$this->progressive_number = ComputoInterventionRow::where('practice_id', $this->practice_id)->where('intervention_folder_id', $this->selectedIntervention)->count() + 1;
+			$this->fees_amount = ComputoFeesAmount::where('practice_id', $this->practice_id)->where('intervention_folder_id', $this->selectedIntervention)->first();
 		}
 
 		public function updatedSelectAll($value) {
@@ -87,7 +88,7 @@
 			$copiedDetails = ComputoInterventionRowDetail::findMany(Session::get('copiedDetails'));
 			if (!$copiedDetails->count()) {
 				$this->dispatchBrowserEvent('open-notification', [
-					'type' => 'error',
+					'type'     => 'error',
 					'title'    => __('Errore'),
 					'subtitle' => __('I dettagli da incollare non esistono più!')
 				]);
@@ -126,10 +127,14 @@
 				$this->row->update([
 					'total' => $this->row->price_row->price * $this->row->details->sum('total')
 				]);
+				$this->fees_amount->update([
+					'importo_lavori' => $this->row->total,
+				]);
 				$this->emit('detail-row-added');
 				$this->closeModal();
 			} else {
 				$this->row->delete();
+				$this->fees_amount->delete();
 				$this->emitTo('practice.modals.computo.tabs.computo.intervention', 'detail-row-deleted');
 				$this->closeModal();
 			}

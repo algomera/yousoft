@@ -2,6 +2,7 @@
 
 	namespace App\Http\Livewire\Practice\Modals\Computo\Tabs\Computo;
 
+	use App\ComputoFeesAmount;
 	use App\ComputoInterventionRow;
 	use App\ComputoInterventionRowDetail;
 	use App\ComputoPriceListRow;
@@ -15,6 +16,7 @@
 		public $practice_id;
 		public $details = [];
 		public $intervention_row;
+		public $fees_amount;
 		public $copyIsDisabled = true;
 		public $pasteIsDisabled = true;
 		public $deleteIsDisabled = true;
@@ -56,6 +58,11 @@
 				'intervention_folder_id' => $this->selectedIntervention,
 				'price_row_id'           => $this->row->id,
 				'total'                  => 0
+			]);
+			$this->fees_amount = ComputoFeesAmount::create([
+				'practice_id'            => $this->practice_id,
+				'intervention_folder_id' => $this->selectedIntervention,
+				'importo_lavori'         => 0,
 			]);
 		}
 
@@ -132,10 +139,14 @@
 				$this->intervention_row->update([
 					'total' => $this->intervention_row->price_row->price * $this->intervention_row->details->sum('total')
 				]);
+				$this->fees_amount->update([
+					'importo_lavori' => $this->intervention_row->total
+				]);
 				$this->emit('detail-row-added');
 				$this->closeModal();
 			} else {
 				$this->intervention_row->delete();
+				$this->fees_amount->delete();
 				$this->emit('detail-row-deleted');
 				$this->closeModal();
 			}
