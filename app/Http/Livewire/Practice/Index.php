@@ -6,17 +6,21 @@
 	use App\Helpers\folder_documents;
 	use App\Helpers\Policies;
 	use App\Practice;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Illuminate\Http\Request;
 	use Livewire\Component;
 
 	class Index extends Component
 	{
+		use AuthorizesRequests;
+
 		public $practices;
 		protected $listeners = [
 			'practice-deleted' => '$refresh',
 		];
 
 		public function mount(Request $request) {
+			$this->authorize('viewAny', Practice::class);
 			if (auth()->user()->isAdmin()) {
 				$q = Practice::query();
 			} else {
@@ -38,6 +42,7 @@
 		}
 
 		public function createPractice() {
+			$this->authorize('create', Practice::class);
 			// Create new Applicant related by User
 			$applicant = auth()->user()->applicant()->create();
 			// Create new Practice
@@ -66,7 +71,9 @@
 		}
 
 		public function deletePractice($id) {
-			Practice::destroy($id);
+			$practice = Practice::find($id);
+			$this->authorize('delete', $practice);
+			$practice->delete();
 			$this->dispatchBrowserEvent('close-modal');
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Pratica Eliminata'),

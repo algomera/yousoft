@@ -61,7 +61,6 @@
 				'read_practices',
 				'update_practices',
 				'delete_practices',
-				'read_child_practices',
 				// Required Documents
 				'access_required_documents',
 				'upload_required_documents_file',

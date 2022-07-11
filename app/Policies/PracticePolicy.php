@@ -18,7 +18,10 @@
 		 * @return mixed
 		 */
 		public function viewAny(User $user) {
-			//
+			if ($user->can('access_practices')) {
+				return true;
+			}
+			return Response::deny('Non sei autorizzato a visualizzare le pratiche');
 		}
 
 		/**
@@ -29,13 +32,15 @@
 		 * @return mixed
 		 */
 		public function view(User $user, Practice $practice) {
-			// Se Practice appartiene a User
-			if ($practice->user_id === $user->id) {
-				return true;
-			}
-			// Se User è collegato ad un altro User
-			if (in_array($practice->user_id, $user->parents->pluck('id')->toArray())) {
-				return true;
+			if ($user->can('read_practices')) {
+				// Se Practice appartiene a User
+				if ($practice->user_id === $user->id) {
+					return true;
+				}
+				// Se User è collegato ad un altro User
+				if (in_array($practice->user_id, $user->parents->pluck('id')->toArray())) {
+					return true;
+				}
 			}
 			return Response::deny('Non puoi accedere a questa pratica');
 		}
@@ -47,7 +52,10 @@
 		 * @return mixed
 		 */
 		public function create(User $user) {
-			//
+			if ($user->can('create_practices')) {
+				return true;
+			}
+			return Response::deny('Non sei autorizzato a creare le pratiche');
 		}
 
 		/**
@@ -58,7 +66,17 @@
 		 * @return mixed
 		 */
 		public function update(User $user, Practice $practice) {
-			//
+			if ($user->can('update_practices')) {
+				// Se Practice appartiene a User
+				if ($practice->user_id === $user->id) {
+					return true;
+				}
+				// Se User è collegato ad un altro User
+				if (in_array($practice->user_id, $user->parents->pluck('id')->toArray())) {
+					return true;
+				}
+			}
+			return Response::deny('Non sei autorizzato ad aggiornare la pratica');
 		}
 
 		/**
@@ -69,7 +87,17 @@
 		 * @return mixed
 		 */
 		public function delete(User $user, Practice $practice) {
-			//
+			if ($user->can('delete_practices')) {
+				// Se Practice appartiene a User
+				if ($practice->user_id === $user->id) {
+					return true;
+				}
+				// Se User è collegato ad un altro User
+				if (in_array($practice->user_id, $user->parents->pluck('id')->toArray())) {
+					return true;
+				}
+			}
+			return Response::deny('Non sei autorizzato ad eliminare la pratica');
 		}
 
 		/**

@@ -33,8 +33,6 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isAdmin() ? true : null;
         });
 
-		Gate::define('view', [PracticePolicy::class, 'view']);
-
 		Passport::routes();
     }
 }

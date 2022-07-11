@@ -9,6 +9,7 @@
 	class Show extends Component
 	{
 		use AuthorizesRequests;
+
 		public $practice;
 		public $tabs = [
 			'applicant'  => 'Richiedente',
@@ -22,13 +23,12 @@
 			'policies'   => 'Polizze'
 		];
 		public $selectedTab = 'applicant';
-
 		protected $listeners = [
 			'change-tab' => 'changeTab'
 		];
 
 		public function mount(Practice $practice) {
-			$this->authorize('view', $this->practice);
+			$this->authorize('view', $practice);
 			$this->practice = $practice;
 		}
 
@@ -37,7 +37,6 @@
 		}
 
 		public function render() {
-
 			return view('livewire.practice.show');
 		}
 	}

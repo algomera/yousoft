@@ -121,7 +121,7 @@
 			</form>
 		</div>
 
-		@can('create_practices')
+		@can('create', App\Practice::class)
 			<x-button wire:click="createPractice" wire:loading.attr="disabled" prepend="plus" iconColor="text-white">
 				Nuova
 			</x-button>
@@ -159,14 +159,14 @@
 					<x-table.td>{{Money::format($practice->import) ?? '-'}}</x-table.td>
 					<x-table.td>
 						<div class="flex items-center space-x-3">
-							@can('read_practices')
+							@can('update', $practice)
 								<a href="{{route('practice.edit', $practice) }}"
 								   class="text-indigo-600 hover:text-indigo-900">
 									<x-icon name="pencil-alt" class="w-5 h-5"></x-icon>
 								</a>
 							@endcan
 
-							@can('delete_practices')
+							@can('delete', $practice)
 								<x-modal>
 									<x-slot name="trigger">
 										<div class="text-red-600 hover:text-red-900">
