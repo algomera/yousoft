@@ -3,10 +3,12 @@
 	namespace App\Http\Livewire\Users;
 
 	use App\User;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Livewire\Component;
 
 	class Index extends Component
 	{
+		use AuthorizesRequests;
 		public $users;
 		public $business;
 		public $search = '';
@@ -16,8 +18,14 @@
 			'user-deleted' => '$refresh',
 		];
 
+		public function mount() {
+			$this->authorize('viewAny', User::class);
+		}
+
 		public function deleteUser($id) {
-			User::destroy($id);
+			$user = User::find($id);
+			$this->authorize('delete', $user);
+			$user->delete();
 			$this->dispatchBrowserEvent('close-modal');
 			$this->emitSelf('user-deleted');
 			$this->dispatchBrowserEvent('open-notification', [
@@ -32,7 +40,6 @@
 			} else {
 				$this->users = User::withAssociated()->get();
 			}
-			$this->business = User::role('business')->get();
 			return view('livewire.users.index');
 		}
 	}

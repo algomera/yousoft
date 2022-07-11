@@ -55,13 +55,24 @@
 			//        $condomimium = Role::create(['name' => 'condomimium']);
 			// PERMISSIONS
 			$permissions = [
+				// Anagrafiche
+				'access_anagrafiche',
+				'create_anagrafiche',
+				'read_anagrafiche',
+				'update_anagrafiche',
+				'delete_anagrafiche',
+				// Users
+				'access_users',
+				'create_users',
+				'update_users',
+				'delete_users',
 				// Practice
 				'access_practices',
 				'create_practices',
 				'read_practices',
 				'update_practices',
 				'delete_practices',
-				// Required Documents
+				//// Required Documents
 				'access_required_documents',
 				'upload_required_documents_file',
 				'download_required_documents_file',
@@ -79,22 +90,6 @@
 				'upload_policies',
 				'download_policies',
 				'delete_policies',
-				// Anagrafiche
-				'access_anagrafiche',
-				'create_anagrafiche',
-				'read_anagrafiche',
-				'update_anagrafiche',
-				'delete_anagrafiche',
-				// Users
-				'access_users',
-				'create_admin_users',
-				'create_financial_users',
-				'create_bank_users',
-				'create_collaborator_users',
-				'create_consultant_users',
-				'create_technical_asseverator_users',
-				'create_fiscal_asseverator_users',
-				'create_manager_users',
 				// Files
 				'access_files',
 				'create_files',
@@ -141,6 +136,9 @@
 				'delete_anagrafiche',
 				// Users
 				'access_users',
+				'create_users',
+				'update_users',
+				'delete_users',
 				// Practices
 				'access_practices',
 				'create_practices',

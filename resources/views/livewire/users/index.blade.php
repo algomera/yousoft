@@ -1,12 +1,14 @@
 <x-slot name="header">
 	<x-page-header>
 		Elenco utenti
-		<x-slot name="actions">
-			<x-button prepend="plus" iconColor="text-white"
-			          x-on:click="Livewire.emit('openModal', 'users.create')">
-				Aggiungi
-			</x-button>
-		</x-slot>
+		@can('create', App\User::class)
+			<x-slot name="actions">
+				<x-button prepend="plus" iconColor="text-white"
+				          x-on:click="Livewire.emit('openModal', 'users.create')">
+					Aggiungi
+				</x-button>
+			</x-slot>
+		@endcan
 	</x-page-header>
 </x-slot>
 <x-card>
@@ -56,43 +58,42 @@
 					@endif
 					<x-table.td>{{$user->created_by->name ?? '-'}}</x-table.td>
 					<x-table.td>
-						@if(auth()->user()->isAdmin() || $user->created_by->id === auth()->user()->id)
-							<div class="flex items-center space-x-3">
+						<div class="flex items-center space-x-3">
+							@can('update', $user)
 								<x-icon wire:click="$emit('openModal', 'users.edit', {{ json_encode([$user->id]) }})"
 								        name="pencil-alt"
 								        class="w-5 h-5 cursor-pointer text-indigo-500 hover:text-indigo-800"></x-icon>
-
-								@if($user->id !== auth()->user()->id)
-									<x-modal>
-										<x-slot name="trigger">
-											<div class="text-red-600 hover:text-red-900">
-												<x-icon name="trash" class="w-5 h-5"></x-icon>
-											</div>
-										</x-slot>
-										<x-slot name="title">
-											Conferma eliminazione
-										</x-slot>
-										Sei sicuro di voler eliminare l'utente <span
-												class="font-bold">{{ $user->name }}</span>?
-										<x-slot name="footer">
-											<x-link-button x-on:click="open = false">Annulla</x-link-button>
-											<x-danger-button class="ml-2" wire:click="deleteUser({{ $user->id }})"
-											                 wire:loading.attr="disabled">
-												Elimina
-											</x-danger-button>
-										</x-slot>
-									</x-modal>
-									@can('impersonate_users')
-										@canImpersonate($guard = null)
-										<a href="{{ route('impersonate', $user->id) }}">
-											<x-icon name="sparkles"
-											        class="w-5 h-5 cursor-pointer text-yellow-500 hover:text-yellow-800"></x-icon>
-										</a>
-										@endCanImpersonate
-									@endcan
-								@endif
-							</div>
-						@endif
+							@endcan
+							@can('delete', $user)
+								<x-modal>
+									<x-slot name="trigger">
+										<div class="text-red-600 hover:text-red-900">
+											<x-icon name="trash" class="w-5 h-5"></x-icon>
+										</div>
+									</x-slot>
+									<x-slot name="title">
+										Conferma eliminazione
+									</x-slot>
+									Sei sicuro di voler eliminare l'utente <span
+											class="font-bold">{{ $user->name }}</span>?
+									<x-slot name="footer">
+										<x-link-button x-on:click="open = false">Annulla</x-link-button>
+										<x-danger-button class="ml-2" wire:click="deleteUser({{ $user->id }})"
+										                 wire:loading.attr="disabled">
+											Elimina
+										</x-danger-button>
+									</x-slot>
+								</x-modal>
+							@endcan
+							@can('impersonate_users')
+								@canImpersonate($guard = null)
+								<a href="{{ route('impersonate', $user->id) }}">
+									<x-icon name="sparkles"
+									        class="w-5 h-5 cursor-pointer text-yellow-500 hover:text-yellow-800"></x-icon>
+								</a>
+								@endCanImpersonate
+							@endcan
+						</div>
 					</x-table.td>
 				</tr>
 			@empty

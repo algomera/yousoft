@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Policies\PracticePolicy;
-use App\Practice;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
@@ -14,9 +12,6 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $policies = [
-        Practice::class => PracticePolicy::class,
-    ];
 
 
     /**

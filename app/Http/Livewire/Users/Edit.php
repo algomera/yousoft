@@ -3,10 +3,12 @@
 	namespace App\Http\Livewire\Users;
 
 	use App\User;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use LivewireUI\Modal\ModalComponent;
 
 	class Edit extends ModalComponent
 	{
+		use AuthorizesRequests;
 		public $user_id;
 		public $role;
 		public $name;
@@ -42,6 +44,7 @@
 		];
 
 		public function mount(User $user) {
+			$this->authorize('update', $user);
 			$this->user_id = $user->id;
 			$this->role = $user->role->name;
 			$this->name = $user->name;
@@ -84,8 +87,9 @@
 		}
 
 		public function save() {
-			$validated = $this->validate();
 			$user = User::find($this->user_id);
+			$this->authorize('update', $user);
+			$validated = $this->validate();
 			$user->update([
 				'email'    => $validated['email'],
 				'password' => $validated['password'] ? bcrypt($validated['password']) : $user->getAuthPassword()
