@@ -144,4 +144,8 @@
 		public function generators() {
 			return $this->hasMany(Generator::class);
 		}
+
+		public function fees_amount() {
+			return $this->hasMany(ComputoFeesAmount::class);
+		}
 	}

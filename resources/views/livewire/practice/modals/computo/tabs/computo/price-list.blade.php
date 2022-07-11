@@ -51,7 +51,7 @@
 			<div class="w-full h-full flex items-center justify-center">
 				<div class="text-center">
 					<x-icon name="folder" class="mx-auto h-12 w-12 text-gray-300"></x-icon>
-					<h3 class="mt-2 text-sm font-medium text-gray-400">Seleziona una voce</h3>
+					<h3 class="mt-2 text-sm font-medium text-gray-400">Seleziona una lavorazione</h3>
 				</div>
 			</div>
 		@endif

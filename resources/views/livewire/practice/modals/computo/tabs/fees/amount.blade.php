@@ -27,61 +27,61 @@
 			</tr>
 		</x-table.thead>
 		<x-table.tbody>
-			@foreach($interventions as $k => $intervention)
+			@foreach($fees_amount as $k => $fees_amount)
 				<tr wire:key="{{ $k }}" class="divide-x divide-gray-200">
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-                        {{ $intervention->folder->code }}
+                        {{ $fees_amount->folder->code }}
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-                        {{ $intervention->folder->name }}
+                        {{ $fees_amount->folder->name }}
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						{{ $intervention->total }}
+						<x-input name="importo_lavori" value="{{ $fees_amount->importo_lavori }}" type="number" class="py-1 text-right !border-0 !shadow-none !ring-0" disabled readonly></x-input>
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						<x-input x-on:blur="$wire.updateImpon22({{ $k }})" wire:model="interventions.{{$k}}.impon_iva_10" name="impon_iva_10" type="number" class="py-1 text-right !border-0 !shadow-none !ring-0"></x-input>
+						<x-input x-on:blur="$wire.calculate({{ $k }})" wire:model="fees_amount.{{$k}}.impon_iva_10" name="impon_iva_10" type="number" class="py-1 text-right !border-0 !shadow-none !ring-0"></x-input>
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						<x-input x-on:blur="$wire.updateImpon10({{ $k }})" wire:model="interventions.{{$k}}.impon_iva_22" name="impon_iva_22" type="number" class="py-1 text-right !border-0 !shadow-none !ring-0"></x-input>
+						<x-input x-on:blur="$wire.calculate({{ $k }})" wire:model="fees_amount.{{$k}}.impon_iva_22" name="impon_iva_22" type="number" class="py-1 text-right !border-0 !shadow-none !ring-0"></x-input>
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						<x-input x-on:blur="$wire.updateImportoSpeseProg({{ $k }})" wire:model="interventions.{{$k}}.spese_prog" name="spese_prog" type="number" class="py-1 text-right !border-0 !shadow-none !ring-0"></x-input>
+						<x-input x-on:blur="$wire.calculate({{ $k }})" wire:model="fees_amount.{{$k}}.spese_prog" name="spese_prog" type="number" class="py-1 text-right !border-0 !shadow-none !ring-0"></x-input>
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						{{ $intervention->importo_spese_prog }}
+						{{ $fees_amount->importo_spese_prog }}
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						6
+						<x-input x-on:blur="$wire.calculate({{ $k }})" wire:model="fees_amount.{{$k}}.supp_prog" name="supp_prog" type="number" class="py-1 text-right !border-0 !shadow-none !ring-0"></x-input>
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						7
+						{{ $fees_amount->importo_supp_prog }}
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						8
+						<x-input x-on:blur="$wire.calculate({{ $k }})" wire:model="fees_amount.{{$k}}.prog_reg_forf" name="prog_reg_forf" type="number" class="py-1 text-right !border-0 !shadow-none !ring-0"></x-input>
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						9
+						{{ $fees_amount->importo_prog_reg_forf }}
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						10
+						<x-input x-on:blur="$wire.calculate({{ $k }})" wire:model="fees_amount.{{$k}}.ass_tecnica" name="ass_tecnica" type="number" class="py-1 text-right !border-0 !shadow-none !ring-0"></x-input>
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						11
+						{{ $fees_amount->importo_ass_tecnica }}
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						12
+						<x-input x-on:blur="$wire.calculate({{ $k }})" wire:model="fees_amount.{{$k}}.ass_fiscale" name="ass_fiscale" type="number" class="py-1 text-right !border-0 !shadow-none !ring-0"></x-input>
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						13
+						{{ $fees_amount->importo_ass_fiscale }}
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						14
+						{{ $fees_amount->tot_iva_10 }}
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						15
+						{{ $fees_amount->tot_iva_22 }} ???
 					</x-table.td>
 					<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-right">
-						16
+						<strong>{{ $fees_amount->tot_spese_e_iva }}</strong>
 					</x-table.td>
 				</tr>
 			@endforeach

@@ -128,13 +128,19 @@
 					'total' => $this->row->price_row->price * $this->row->details->sum('total')
 				]);
 				$this->fees_amount->update([
-					'importo_lavori' => $this->row->total,
+					'importo_lavori' => ComputoInterventionRow::where('practice_id', $this->practice_id)->where('intervention_folder_id', $this->selectedIntervention)->sum('total')
 				]);
 				$this->emit('detail-row-added');
 				$this->closeModal();
 			} else {
 				$this->row->delete();
-				$this->fees_amount->delete();
+				$total = ComputoInterventionRow::where('practice_id', $this->practice_id)->where('intervention_folder_id', $this->selectedIntervention)->sum('total');
+				$this->fees_amount->update([
+					'importo_lavori' => $total
+				]);
+				if($total === 0) {
+					$this->fees_amount->delete();
+				}
 				$this->emitTo('practice.modals.computo.tabs.computo.intervention', 'detail-row-deleted');
 				$this->closeModal();
 			}

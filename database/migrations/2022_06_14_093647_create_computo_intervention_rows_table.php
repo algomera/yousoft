@@ -25,7 +25,7 @@ class CreateComputoInterventionRowsTable extends Migration
 	        $table->bigInteger('price_row_id')->unsigned();
 	        $table->foreign('price_row_id')->references('id')->on('computo_price_list_rows')->onDelete('cascade');
 	        $table->text('note')->nullable();
-	        $table->float('total')->nullable();
+	        $table->float('total')->nullable()->default(0);
             $table->timestamps();
         });
     }
