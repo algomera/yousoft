@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Policies\PracticePolicy;
+use App\Practice;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
@@ -13,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        //Practice::class => PracticePolicy::class,
+        Practice::class => PracticePolicy::class,
     ];
 
 
@@ -27,16 +29,12 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         // Grant "admin" role all permissions
-        Gate::before(function($user, $ability) {
-            return $user->hasRole('admin') ? true : null;
+        Gate::before(function($user) {
+            return $user->isAdmin() ? true : null;
         });
 
-/*         Gate::define('edit-applicant', 'App\Policies\ApplicantPolicy@update');
-        Gate::define('edit-practice', 'App\Policies\PracticePolicy@update');
-        Gate::define('edit-subject', 'App\Policies\SubjectPolicy@update');
-        Gate::define('edit-building', 'App\Policies\BuildingPolicy@update');
-        Gate::define('edit-superbonus', 'App\Policies\SuperbonusPolicy@view');
+		Gate::define('view', [PracticePolicy::class, 'view']);
 
- */        Passport::routes();
+		Passport::routes();
     }
 }

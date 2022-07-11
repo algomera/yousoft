@@ -63,7 +63,7 @@
 		}
 
 		public function isAdmin() {
-			return $this->role->name === 'admin';
+			return $this->hasRole('admin');
 		}
 
 		public function getRoleAttribute() {

@@ -3,10 +3,12 @@
 	namespace App\Http\Livewire\Practice;
 
 	use App\Practice;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Livewire\Component;
 
 	class Show extends Component
 	{
+		use AuthorizesRequests;
 		public $practice;
 		public $tabs = [
 			'applicant'  => 'Richiedente',
@@ -26,6 +28,7 @@
 		];
 
 		public function mount(Practice $practice) {
+			$this->authorize('view', $this->practice);
 			$this->practice = $practice;
 		}
 
@@ -34,6 +37,7 @@
 		}
 
 		public function render() {
+
 			return view('livewire.practice.show');
 		}
 	}
