@@ -159,7 +159,7 @@
 					<x-table.td>{{Money::format($practice->import) ?? '-'}}</x-table.td>
 					<x-table.td>
 						<div class="flex items-center space-x-3">
-							@can('update', $practice)
+							@can('view', $practice)
 								<a href="{{route('practice.edit', $practice) }}"
 								   class="text-indigo-600 hover:text-indigo-900">
 									<x-icon name="pencil-alt" class="w-5 h-5"></x-icon>

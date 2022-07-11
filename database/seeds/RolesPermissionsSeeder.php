@@ -135,6 +135,10 @@
 			$business->givePermissionTo([
 				// Anagrafiche
 				'access_anagrafiche',
+				'create_anagrafiche',
+				'read_anagrafiche',
+				'update_anagrafiche',
+				'delete_anagrafiche',
 				// Users
 				'access_users',
 				// Practices

@@ -1,12 +1,14 @@
 <x-slot name="header">
 	<x-page-header>
 		Anagrafiche
-		<x-slot name="actions">
-			<x-button prepend="plus" iconColor="text-white"
-			          x-on:click="Livewire.emit('openModal', 'anagrafica.create')">
-				Aggiungi
-			</x-button>
-		</x-slot>
+		@can('create', App\Anagrafica::class)
+			<x-slot name="actions">
+				<x-button prepend="plus" iconColor="text-white"
+				          x-on:click="Livewire.emit('openModal', 'anagrafica.create')">
+					Aggiungi
+				</x-button>
+			</x-slot>
+		@endcan
 	</x-page-header>
 </x-slot>
 <x-card>
@@ -38,10 +40,14 @@
 					</x-table.td>
 					<x-table.td>
 						<div class="flex items-center space-x-3">
-							<x-icon name="eye" class="w-5 h-5 text-indigo-500 flex-shrink-0"
-							        wire:click="$emit('openModal', 'anagrafica.show', {{ json_encode([$anagrafica->id]) }})"></x-icon>
-							<x-icon name="pencil-alt" class="w-5 h-5 text-indigo-500 flex-shrink-0"
-							        wire:click="$emit('openModal', 'anagrafica.edit', {{ json_encode([$anagrafica->id]) }})"></x-icon>
+							@can('view', $anagrafica)
+								<x-icon name="eye" class="w-5 h-5 text-indigo-500 flex-shrink-0"
+								        wire:click="$emit('openModal', 'anagrafica.show', {{ json_encode([$anagrafica->id]) }})"></x-icon>
+							@endcan
+							@can('update', $anagrafica)
+								<x-icon name="pencil-alt" class="w-5 h-5 text-indigo-500 flex-shrink-0"
+								        wire:click="$emit('openModal', 'anagrafica.edit', {{ json_encode([$anagrafica->id]) }})"></x-icon>
+							@endcan
 						</div>
 					</x-table.td>
 				</tr>

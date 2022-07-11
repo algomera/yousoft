@@ -143,6 +143,8 @@
 				</x-card>
 			</div>
 		</div>
-		<x-button>Aggiorna</x-button>
+		@can('update', $anagrafica)
+			<x-button>Aggiorna</x-button>
+		@endcan
 	</form>
 </x-card>

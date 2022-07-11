@@ -2,11 +2,14 @@
 
 	namespace App\Http\Livewire\Anagrafica;
 
+	use App\Anagrafica;
 	use App\SubjectRole;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use LivewireUI\Modal\ModalComponent;
 
 	class Create extends ModalComponent
 	{
+		use AuthorizesRequests;
 		public $subject_roles;
 		public $subject_type;
 		public $consultant_type;
@@ -88,6 +91,7 @@
 		}
 
 		public function mount($role = null) {
+			$this->authorize('create', Anagrafica::class);
 			if ($role) {
 				foreach ($role as $r) {
 					$this->roles[] = $r;
@@ -97,6 +101,7 @@
 		}
 
 		public function save() {
+			$this->authorize('create', Anagrafica::class);
 			$validated = $this->validate();
 			$anagrafica = auth()->user()->anagrafiche()->create($validated);
 			$anagrafica->roles()->sync($this->roles);

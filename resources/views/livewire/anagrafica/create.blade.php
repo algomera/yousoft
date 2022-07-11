@@ -49,7 +49,8 @@
 					         label="Provincia"></x-input>
 				</div>
 				<div class="col-span-12">
-					<x-input x-mask="aa 99 a 99999 99999 999999999999" wire:model.defer="iban" type="text" name="iban" id="iban" class="uppercase"
+					<x-input x-mask="aa 99 a 99999 99999 999999999999" wire:model.defer="iban" type="text" name="iban"
+					         id="iban" class="uppercase"
 					         label="IBAN"></x-input>
 				</div>
 				<div class="col-span-12 sm:col-span-6">
@@ -57,7 +58,8 @@
 					         label="Partita IVA"></x-input>
 				</div>
 				<div class="col-span-12 sm:col-span-6">
-					<x-input x-mask="aaaaaa99a99a999a" wire:model.defer="fiscal_code" type="text" name="fiscal_code" id="fiscal_code" class="uppercase"
+					<x-input x-mask="aaaaaa99a99a999a" wire:model.defer="fiscal_code" type="text" name="fiscal_code"
+					         id="fiscal_code" class="uppercase"
 					         label="Codice Fiscale"></x-input>
 				</div>
 				<div class="col-span-12 sm:col-span-6">
@@ -89,16 +91,19 @@
 					         label="Comune di nascita"></x-input>
 				</div>
 				<div class="col-span-5 sm:col-span-2">
-					<x-input x-mask="aa" wire:model.defer="province_of_birth" type="text" name="province_of_birth" id="province_of_birth"
+					<x-input x-mask="aa" wire:model.defer="province_of_birth" type="text" name="province_of_birth"
+					         id="province_of_birth"
 					         label="Provincia"></x-input>
 				</div>
 				<x-label class="col-span-12">Estremi iscrizione albo professionisti</x-label>
 				<div class="col-span-12 sm:col-span-6">
-					<x-input wire:model.defer="order_or_college" type="text" name="order_or_college" id="order_or_college"
+					<x-input wire:model.defer="order_or_college" type="text" name="order_or_college"
+					         id="order_or_college"
 					         label="Ordine o Collegio"></x-input>
 				</div>
 				<div class="col-span-6 sm:col-span-2">
-					<x-input x-mask="aa" wire:model.defer="order_or_college_province" type="text" name="order_or_college_province"
+					<x-input x-mask="aa" wire:model.defer="order_or_college_province" type="text"
+					         name="order_or_college_province"
 					         id="order_or_college_province"
 					         label="Provincia"></x-input>
 				</div>
@@ -125,6 +130,8 @@
 				</x-card>
 			</div>
 		</div>
-		<x-button>Salva</x-button>
+		@can('create', App\Anagrafica::class)
+			<x-button>Salva</x-button>
+		@endcan
 	</form>
 </x-card>

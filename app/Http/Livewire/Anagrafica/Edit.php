@@ -4,10 +4,12 @@
 
 	use App\Anagrafica as AnagraficaModel;
 	use App\SubjectRole;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use LivewireUI\Modal\ModalComponent;
 
 	class Edit extends ModalComponent
 	{
+		use AuthorizesRequests;
 		public AnagraficaModel $anagrafica;
 		public $roles = [];
 
@@ -70,6 +72,7 @@
 		}
 
 		public function mount(AnagraficaModel $anagrafica) {
+			$this->authorize('update', $anagrafica);
 			$this->anagrafica = $anagrafica;
 			foreach ($this->anagrafica->roles->pluck('id') as $role) {
 				$this->roles[] = $role;
@@ -78,6 +81,7 @@
 		}
 
 		public function save() {
+			$this->authorize('update', $this->anagrafica);
 			$this->validate();
 			$this->anagrafica->update();
 			$this->anagrafica->roles()->sync($this->roles);

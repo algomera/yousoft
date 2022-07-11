@@ -5,7 +5,9 @@
 			<p class="mt-1 max-w-2xl text-sm text-gray-500">{{ $anagrafica->company_name }}
 				• {{ $anagrafica->subject_type }}</p>
 		</div>
+		@can('update', $anagrafica)
 		<x-button wire:click="$emit('openModal', 'anagrafica.edit', {{ json_encode([$anagrafica->id]) }})">Modifica</x-button>
+		@endcan
 	</div>
 	<div class="border-t border-gray-200 px-4 py-5 sm:px-6">
 		<dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
