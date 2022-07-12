@@ -27,7 +27,7 @@
 		];
 
 		public function save() {
-			$this->authorize('update_folders');
+			$this->authorize('update', $this->folder);
 			$this->validate();
 			$this->folder->update();
 			$this->closeModal();

@@ -26,12 +26,12 @@
 		}
 
 		public function download(FileModel $file) {
-			$this->authorize('download_folder_files');
+			$this->authorize('download-files', $this->folder);
 			return Storage::download($file->file);
 		}
 
 		public function delete(FileModel $file) {
-			$this->authorize('delete_folder_files');
+			$this->authorize('delete-files', $this->folder);
 			$file->delete();
 			Storage::delete($file->file);
 

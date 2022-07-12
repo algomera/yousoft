@@ -17,7 +17,9 @@
 		<div class="flex justify-between space-x-3">
 			<div>
 				<x-link-button wire:click="$emit('closeModal')">Annulla</x-link-button>
-				<x-button type="submit">Salva</x-button>
+				@can('update', $folder)
+					<x-button type="submit">Salva</x-button>
+				@endcan
 			</div>
 		</div>
 	</form>
