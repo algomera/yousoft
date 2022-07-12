@@ -186,7 +186,7 @@
 									</x-slot>
 								</x-modal>
 							@endcan
-							@can('download_computo')
+							@can('download-computo', $practice)
 								{{-- TODO: Visualizza solo se c'è il computo metrico --}}
 {{--								<a href="#"--}}
 {{--								   class="text-indigo-600 hover:text-indigo-900">--}}

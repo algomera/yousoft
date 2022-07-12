@@ -100,6 +100,34 @@
 			return Response::deny('Non sei autorizzato ad eliminare la pratica');
 		}
 
+		public function createComputo(User $user, Practice $practice) {
+			if ($user->can('create_computo')) {
+				// Se Practice appartiene a User
+				if ($practice->user_id === $user->id) {
+					return true;
+				}
+				// Se User è collegato ad un altro User
+				if (in_array($practice->user_id, $user->parents->pluck('id')->toArray())) {
+					return true;
+				}
+			}
+			return Response::deny('Non sei autorizzato a creare il computo metrico');
+		}
+
+		public function downloadComputo(User $user, Practice $practice) {
+			if ($user->can('download_computo')) {
+				// Se Practice appartiene a User
+				if ($practice->user_id === $user->id) {
+					return true;
+				}
+				// Se User è collegato ad un altro User
+				if (in_array($practice->user_id, $user->parents->pluck('id')->toArray())) {
+					return true;
+				}
+			}
+			return Response::deny('Non sei autorizzato a scaricare il computo metrico');
+		}
+
 		/**
 		 * Determine whether the user can restore the model.
 		 *

@@ -15,7 +15,7 @@
 			</div>
 		</x-slot>
 		<x-slot name="actions">
-			@can('create_computo')
+			@can('create-computo', $practice)
 				<x-button type="button" x-on:click="Livewire.emit('openModal', 'practice.modals.computo.show', {{ json_encode(['practice_id' => $practice->id]) }})">
 					Computo metrico
 				</x-button>
@@ -50,7 +50,7 @@
 	<x-card>
 		@switch($selectedTab)
 			@case('applicant')
-				<livewire:practice.tabs.applicant :applicant="$practice->applicant"/>
+				<livewire:practice.tabs.applicant :practice="$practice"/>
 				@break
 			@case('practice')
 				<livewire:practice.tabs.practice :practice="$practice"/>

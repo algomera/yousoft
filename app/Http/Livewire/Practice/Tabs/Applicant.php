@@ -2,28 +2,24 @@
 
 	namespace App\Http\Livewire\Practice\Tabs;
 
+	use App\Practice as PracticeModel;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Livewire\Component;
 
 	class Applicant extends Component
 	{
+		use AuthorizesRequests;
+		public PracticeModel $practice;
 		public $applicant;
-		public $applicant_type;
-		public $company_name;
-		public $c_f;
-		public $phone;
-		public $mobile_phone;
-		public $email;
-		public $role;
 		protected $rules = [
-			'applicant_type' => 'required|string',
-			'company_name'   => 'required|string',
-			'c_f'            => 'required|string|size:16',
-			'phone'          => 'required|string|size:10',
-			'mobile_phone'   => 'required|string|size:10',
-			'email'          => 'required|email:rfc,dns',
-			'role'           => 'required|string',
+			'applicant.applicant_type' => 'required|string',
+			'applicant.company_name'   => 'required|string',
+			'applicant.c_f'            => 'required|string|size:16',
+			'applicant.phone'          => 'required|string|size:10',
+			'applicant.mobile_phone'   => 'required|string|size:10',
+			'applicant.email'          => 'required|email:rfc,dns',
+			'applicant.role'           => 'required|string',
 		];
-
 		protected $validationAttributes = [
 			'applicant_type' => 'Richiedente',
 			'company_name'   => 'Nome impresa',
@@ -34,19 +30,16 @@
 			'role'           => 'Ruolo nella Pratica',
 		];
 
-		public function mount() {
-			$this->applicant_type = $this->applicant->applicant_type ?: 'impresa';
-			$this->company_name = $this->applicant->company_name;
-			$this->c_f = $this->applicant->c_f;
-			$this->phone = $this->applicant->phone;
-			$this->mobile_phone = $this->applicant->mobile_phone;
-			$this->email = $this->applicant->email;
-			$this->role = $this->applicant->role;
+		public function mount(PracticeModel $practice) {
+			$this->practice = $practice;
+			$this->applicant = $this->practice->applicant;
+			$this->applicant->applicant_type = $this->applicant->applicant_type ?: 'impresa';
 		}
 
 		public function save() {
+			$this->authorize('update', $this->practice);
 			$validated = $this->validate();
-			$this->applicant->update($validated);
+			$this->practice->applicant->update($validated['applicant']);
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Aggiornamento'),
 				'subtitle' => __('Il richiedente è stato aggiornato con successo!')

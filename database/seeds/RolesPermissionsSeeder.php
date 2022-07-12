@@ -72,6 +72,9 @@
 				'read_practices',
 				'update_practices',
 				'delete_practices',
+				//// Computo
+				'create_computo',
+				'download_computo',
 				//// Required Documents
 				'access_required_documents',
 				'upload_required_documents_file',
@@ -79,9 +82,6 @@
 				'delete_required_documents_file',
 				'approve_required_documents_folder',
 				'disapprove_required_documents_folder',
-				//// Computo
-				'create_computo',
-				'download_computo',
 				//// Contracts
 				'upload_contracts',
 				'download_contracts',
