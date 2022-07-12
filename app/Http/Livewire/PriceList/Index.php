@@ -25,8 +25,13 @@
 			'price_lists.*' => 'file'
 		];
 
+		public function mount() {
+			$this->authorize('viewAny', ComputoPriceList::class);
+		}
+
 		public function upload($id) {
-			$this->authorize('upload_price_lists');
+			$price_list = ComputoPriceList::find($id);
+			$this->authorize('upload', $price_list);
 			$reader = new Xlsx();
 			foreach ($this->uploaded_price_lists as $p) {
 				foreach ($p as $k => $item) {
@@ -124,8 +129,8 @@
 		}
 
 		public function delete($id) {
-			$this->authorize('delete_price_lists');
 			$price_list = ComputoPriceList::find($id);
+			$this->authorize('delete', $price_list);
 			if(auth()->user()->isAdmin() || $price_list->user_id === auth()->user()->id) {
 				$price_list->delete();
 			}

@@ -1,7 +1,7 @@
 <x-slot name="header">
 	<x-page-header>
 		Prezzari DEI
-		@can('create_price_lists')
+		@can('create', \App\ComputoPriceList::class)
 			<x-slot name="actions">
 				<x-button prepend="plus" iconColor="text-white"
 				          x-on:click="Livewire.emit('openModal', 'price-list.create')">
@@ -30,7 +30,7 @@
 						<div class="flex items-center space-x-5">
 							@can(['upload_price_lists', 'delete_price_lists'])
 								@if($price_list->price_row->count() === 0)
-									@can('upload_price_lists')
+									@can('upload', $price_list)
 										@isset($uploaded_price_lists[$price_lists[$loop->index]->id])
 											@if($uploaded_price_lists[$price_lists[$loop->index]->id])
 												<x-button type="button"
@@ -58,7 +58,7 @@
 										@endisset
 									@endcan
 								@else
-									@can('delete_price_lists')
+									@can('delete', $price_list)
 										<x-modal type="warning">
 											<x-slot name="trigger">
 												<x-danger-button type="button" size="xs">

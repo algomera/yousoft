@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\ComputoPriceList;
 use App\Folder;
 use App\Policies\FolderManagementPolicy;
+use App\Policies\PriceListPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
@@ -16,6 +18,7 @@ class AuthServiceProvider extends ServiceProvider
      */
 	protected $policies = [
 		Folder::class => FolderManagementPolicy::class,
+		ComputoPriceList::class => PriceListPolicy::class,
 	];
 
 
