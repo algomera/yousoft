@@ -1,7 +1,7 @@
 <x-slot name="header">
 	<x-page-header>
 		Gestione File e Cartelle
-		@can('create_folders')
+		@can('create', App\Folder::class)
 			<x-slot name="actions">
 				<x-button prepend="plus" iconColor="text-white"
 				          x-on:click="Livewire.emit('openModal', 'folder-file-management.create-folder')">
@@ -31,15 +31,15 @@
 					<x-table.td>{{$folder->user->user_data->name}}</x-table.td>
 					<x-table.td>
 						<div class="flex items-center space-x-3">
-							@can('read_folders')
+							@can('view', $folder)
 								<x-icon name="eye" class="w-5 h-5 text-indigo-600 hover:text-indigo-900 cursor-pointer flex-shrink-0"
 								        wire:click="$emit('openModal', 'folder-file-management.show', {{ json_encode([$folder->id]) }})"></x-icon>
 							@endcan
-							@can('update_folders')
+							@can('update', $folder)
 								<x-icon name="pencil-alt" class="w-5 h-5 text-indigo-600 hover:text-indigo-900 cursor-pointer flex-shrink-0"
 								        wire:click="$emit('openModal', 'folder-file-management.edit-folder', {{ json_encode([$folder->id]) }})"></x-icon>
 							@endcan
-							@can('delete_folders')
+							@can('delete', $folder)
 								<x-modal>
 									<x-slot name="trigger">
 										<div class="text-red-600 hover:text-red-900">

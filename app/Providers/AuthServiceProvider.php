@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Folder;
+use App\Policies\FolderManagementPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
@@ -12,6 +14,9 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @var array
      */
+	protected $policies = [
+		Folder::class => FolderManagementPolicy::class,
+	];
 
 
     /**

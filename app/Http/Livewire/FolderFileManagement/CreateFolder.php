@@ -2,6 +2,7 @@
 
 	namespace App\Http\Livewire\FolderFileManagement;
 
+	use App\Folder;
 	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Illuminate\Support\Facades\Storage;
 	use Illuminate\Support\Str;
@@ -24,7 +25,7 @@
 		];
 
 		public function save() {
-			$this->authorize('create_folders');
+			$this->authorize('create', Folder::class);
 			$validated = $this->validate();
 			$validated['uuid'] = Str::random(10);
 			auth()->user()->folders()->create($validated);

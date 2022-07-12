@@ -21,6 +21,7 @@
 		];
 
 		public function mount(FolderModel $folder) {
+			$this->authorize('view', $folder);
 			$this->folder = $folder;
 		}
 
