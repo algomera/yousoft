@@ -7,7 +7,8 @@
 			                  :items="$construction_company_list"></x-subject_select>
 			<x-subject_select label="Azienda imp. idrotermosanitari" name="hydrothermal_sanitary_company"
 			                  :subject="$subject" :items="$hydrothermal_sanitary_company_list"></x-subject_select>
-			<x-subject_select label="Azienda imp. elettrici/fotovoltaici" name="photovoltaic_company" :subject="$subject"
+			<x-subject_select label="Azienda imp. elettrici/fotovoltaici" name="photovoltaic_company"
+			                  :subject="$subject"
 			                  :items="$photovoltaic_company_list"></x-subject_select>
 			<x-subject_select label="Termotecnico APE Ante" name="technician_APE_Ante" :subject="$subject"
 			                  :items="$technician_APE_Ante_list"></x-subject_select>
@@ -52,13 +53,17 @@
 		<hr>
 		<div class="space-y-5">
 			<x-label>Contatti dei responsabili</x-label>
-			<x-input wire:model.defer="project_manager" type="text" name="project_manager" id="project_manager" label="Project Manager"></x-input>
-			<x-input wire:model.defer="responsible_technician" type="text" name="responsible_technician" id="responsible_technician"
+			<x-input wire:model.defer="project_manager" type="text" name="project_manager" id="project_manager"
+			         label="Project Manager"></x-input>
+			<x-input wire:model.defer="responsible_technician" type="text" name="responsible_technician"
+			         id="responsible_technician"
 			         label="Responsabile Tecnico"></x-input>
 		</div>
-		<div class="flex justify-end space-x-3">
-			<x-link-button href="{{route('dashboard')}}">Annulla</x-link-button>
-			<x-button>Salva</x-button>
-		</div>
+		@can('update', $practice)
+			<div class="flex justify-end space-x-3">
+				<x-link-button href="{{route('dashboard')}}">Annulla</x-link-button>
+				<x-button>Salva</x-button>
+			</div>
+		@endcan
 	</form>
 </x-card>

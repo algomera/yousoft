@@ -4,11 +4,13 @@
 
 	use App\Anagrafica;
 	use App\SubjectRole;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Illuminate\Validation\Rule;
 	use Livewire\Component;
 
 	class Subject extends Component
 	{
+		use AuthorizesRequests;
 		public $practice;
 		public $subject;
 		public $consultant;
@@ -248,12 +250,14 @@
 		}
 
 		public function updated($name, $value) {
+			$this->authorize('update', $this->practice);
 			$this->subject[$name] = empty($value) ? null : (int)$value;
 			$this->subject->save();
 			$this->emitSelf('subject-selected');
 		}
 
 		public function save() {
+			$this->authorize('update', $this->practice);
 			$this->validate();
 			$this->subject->update([
 				'project_manager' => $this->project_manager,
