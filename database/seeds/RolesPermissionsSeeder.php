@@ -90,6 +90,14 @@
 				'upload_policies',
 				'download_policies',
 				'delete_policies',
+				//?? Files ??
+				'access_files',
+				'create_files',
+				'read_files',
+				'update_files',
+				'delete_files',
+				'download_files',
+				'upload_files',
 				// Files/Folders Management (FOLDERS)
 				'access_folders',
 				'create_folders',
@@ -100,14 +108,6 @@
 				'upload_folder_files',
 				'download_folder_files',
 				'delete_folder_files',
-				// Files
-				'access_files',
-				'create_files',
-				'read_files',
-				'update_files',
-				'delete_files',
-				'download_files',
-				'upload_files',
 				// Contractual Documents
 				'access_contractual_documents',
 				'upload_contractual_documents',

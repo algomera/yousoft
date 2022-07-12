@@ -27,6 +27,7 @@
 		];
 
 		public function mount() {
+			$this->authorize('viewAny', ContractualDocument::class);
 			if (auth()->user()->role->name === 'business') {
 				$this->selected = auth()->user()->id;
 			} else if (auth()->user()->childs->count()) {
@@ -39,7 +40,8 @@
 		}
 
 		public function upload($id) {
-			$this->authorize('upload_contractual_documents');
+			$document = ContractualDocument::find($id);
+			$this->authorize('upload', $document);
 			$file = $this->uploaded_contractual_document[$id];
 			$extension = $file->extension();
 			$filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
@@ -56,13 +58,13 @@
 		}
 
 		public function download($doc) {
-			$this->authorize('download_contractual_documents');
+			$this->authorize('download', $doc);
 			return Storage::disk('public')->download($doc['uploaded_path'], $doc['name']);
 		}
 
 		public function delete($id) {
-			$this->authorize('delete_contractual_documents');
 			$file = ContractualDocument::find($id);
+			$this->authorize('delete', $file);
 			Storage::delete($file->uploaded_path);
 			$file->uploaded_path = null;
 			$file->save();

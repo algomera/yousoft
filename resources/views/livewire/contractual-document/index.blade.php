@@ -53,14 +53,16 @@
 					</x-table.td>
 					<x-table.td>
 						<div class="flex items-center space-x-5">
-							<x-button wire:click="download({{ $document }})" size="xs"
-							          :disabled="!$document->uploaded_path">
-								<x-icon name="download" class="w-4 h-4 text-white"></x-icon>
-							</x-button>
+							@can('download', $document)
+								<x-button wire:click="download({{ $document }})" size="xs"
+								          :disabled="!$document->uploaded_path">
+									<x-icon name="download" class="w-4 h-4 text-white"></x-icon>
+								</x-button>
+							@endcan
 							@can(['upload_contractual_documents', 'delete_contractual_documents'])
 								<div class="flex items-center space-x-5">
 									@if(!$document->uploaded_path)
-										@can('upload_contractual_documents')
+										@can('upload', $document)
 											@isset($uploaded_contractual_document[$contractual_document[$loop->index]->id])
 												@if($uploaded_contractual_document[$contractual_document[$loop->index]->id])
 													<x-button type="button"
@@ -87,7 +89,7 @@
 											@endisset
 										@endcan
 									@else
-										@can('delete_contractual_documents')
+										@can('delete', $document)
 											<x-danger-button type="button"
 											                 wire:click="delete({{ $contractual_document[$loop->index]->id }})"
 											                 size="xs">
