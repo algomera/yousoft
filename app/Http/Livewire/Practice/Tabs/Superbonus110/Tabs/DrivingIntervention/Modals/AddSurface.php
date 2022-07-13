@@ -4,10 +4,12 @@
 
 	use App\Practice as PracticeModel;
 	use App\Surface;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use LivewireUI\Modal\ModalComponent;
 
 	class AddSurface extends ModalComponent
 	{
+		use AuthorizesRequests;
 		public $practice;
 		public $intervention;
 		public $condomino_id;
@@ -49,6 +51,7 @@
 		}
 
 		public function save() {
+			$this->authorize('update', $this->practice);
 			$validated = $this->validate();
 			$validated['intervention'] = $this->intervention;
 			$validated['condomino_id'] = $this->condomino_id;

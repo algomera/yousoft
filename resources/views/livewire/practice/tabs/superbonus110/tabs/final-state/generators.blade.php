@@ -3,11 +3,13 @@
 		<label for="condensing_boiler"
 		       class="flex items-center space-x-3 block text-sm font-medium text-gray-700">
 			<span class="font-bold">Tipo e numero di generatori presenti prima dell'intervento</span>
-			<x-button
-					wire:click="$emit('openModal', 'practice.tabs.superbonus110.tabs.final-state.modals.add-generator', {{ json_encode(['practice' => $practice->id]) }})"
-					type="button" size="sm">
-				<x-icon name="plus" class="w-3 h-3 text-white"></x-icon>
-			</x-button>
+			@can('update', $practice)
+				<x-button
+						wire:click="$emit('openModal', 'practice.tabs.superbonus110.tabs.final-state.modals.add-generator', {{ json_encode(['practice' => $practice->id]) }})"
+						type="button" size="sm">
+					<x-icon name="plus" class="w-3 h-3 text-white"></x-icon>
+				</x-button>
+			@endcan
 		</label>
 	</div>
 	<div class="mt-3 px-4 bg-gray-50 rounded-md">
@@ -30,7 +32,8 @@
 							Sei sicuro di voler eliminare il generatore?
 							<x-slot name="footer">
 								<x-link-button x-on:click="open = false">Annulla</x-link-button>
-								<x-danger-button type="button" class="ml-2" wire:click="deleteGenerator({{ $generator->id }})"
+								<x-danger-button type="button" class="ml-2"
+								                 wire:click="deleteGenerator({{ $generator->id }})"
 								                 wire:loading.attr="disabled">
 									Elimina
 								</x-danger-button>

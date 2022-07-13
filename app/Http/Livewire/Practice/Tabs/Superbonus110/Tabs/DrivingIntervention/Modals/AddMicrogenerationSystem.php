@@ -3,10 +3,12 @@
 	namespace App\Http\Livewire\Practice\Tabs\Superbonus110\Tabs\DrivingIntervention\Modals;
 
 	use App\Practice as PracticeModel;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use LivewireUI\Modal\ModalComponent;
 
 	class AddMicrogenerationSystem extends ModalComponent
 	{
+		use AuthorizesRequests;
 		public $practice;
 		public $condomino_id;
 		public $is_common;
@@ -61,6 +63,7 @@
 		}
 
 		public function save() {
+			$this->authorize('update', $this->practice);
 			$this->practice->microgeneration_systems()->create([
 				'condomino_id'           => $this->condomino_id,
 				'is_common'              => $this->is_common,
