@@ -11,7 +11,7 @@
 	@endforeach
 	<x-slot name="action">
 		<div class="flex divide-x divide-indigo-200">
-			@can('view', $subject)
+			@can('view', \App\Anagrafica::find($subject[$name]))
 				@isset($subject[$name])
 					<span class="text-xs text-indigo-500 px-1 {{ !isset($subject[$name]) ? 'user-select-none cursor-not-allowed text-gray-300' : 'cursor-pointer hover:underline' }}"
 					      wire:click="$emit('openModal', 'anagrafica.show', {{ json_encode([$subject[$name]]) }})">Vedi</span>
