@@ -99,11 +99,11 @@
 
 		/** Practices - Tabs */
 		/** Applicant */
-		//
+		// No permissions
 		/** Practice */
-		//
+		// No permissions
 		/** Subject */
-		//
+		// No permissions
 		/** Building */
 		public function createCondomini(User $user, Practice $practice) {
 			if ($user->can('create_condomini')) {
@@ -175,7 +175,7 @@
 			return Response::deny('Non sei autorizzato a cancellare la lista dei condomini');
 		}
 		/** Media */
-		//
+		// No permissions
 		/** Documents */
 		public function viewRequiredDocumentsFolder(User $user, Practice $practice) {
 			if ($user->can('view_required_documents_folder')) {
@@ -261,7 +261,8 @@
 			return Response::deny('Non sei autorizzato ad disapprovare la cartella');
 		}
 		/** Superbonus */
-		//
+		// Superfici/Interventi possono essere aggiunti/eliminati da chi
+		// ha il permesso di aggiornare la pratica
 		/** Contracts */
 		public function downloadContract(User $user, Practice $practice) {
 			if ($user->can('download_contracts')) {
@@ -304,6 +305,7 @@
 			}
 			return Response::deny('Non sei autorizzato a cancellare il documento');
 		}
+
 		/** Policies */
 		public function downloadPolicy(User $user, Practice $practice) {
 			if ($user->can('download_policies')) {

@@ -5,10 +5,12 @@
 	use App\Condomini;
 	use App\Helpers\Money;
 	use App\Practice as PracticeModel;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Livewire\Component;
 
 	class Show extends Component
 	{
+		use AuthorizesRequests;
 		public PracticeModel $practice;
 		public $towed_intervention;
 		public $condomino_id = null;
@@ -80,6 +82,7 @@
 		}
 
 		public function save() {
+			$this->authorize('update', $this->practice);
 			$validated = $this->validate();
 			$this->towed_intervention->update();
 			$this->dispatchBrowserEvent('open-notification', [

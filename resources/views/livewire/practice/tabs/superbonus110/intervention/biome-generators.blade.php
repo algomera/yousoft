@@ -3,11 +3,13 @@
 		<label for="condensing_boiler"
 		       class="flex items-center space-x-3 block text-sm font-medium text-gray-700">
 			<span>IB. Generatori a biomassa</span>
-			<x-button
-					wire:click="$emit('openModal', 'practice.tabs.superbonus110.tabs.driving-intervention.modals.add-biome-generator', {{ json_encode(['practice' => $practice->id, 'condomino_id' => $condomino_id, 'is_common' => $is_common]) }})"
-					type="button" size="sm">
-				<x-icon name="plus" class="w-3 h-3 text-white"></x-icon>
-			</x-button>
+			@can('update', $practice)
+				<x-button
+						wire:click="$emit('openModal', 'practice.tabs.superbonus110.tabs.driving-intervention.modals.add-biome-generator', {{ json_encode(['practice' => $practice->id, 'condomino_id' => $condomino_id, 'is_common' => $is_common]) }})"
+						type="button" size="sm">
+					<x-icon name="plus" class="w-3 h-3 text-white"></x-icon>
+				</x-button>
+			@endcan
 		</label>
 		<p class="text-xs text-gray-500 mt-1">Installazione di impianti di climatizzazione invernale dotati di
 			generatori di calore alimentati da biomasse combustibili</p>
@@ -32,7 +34,8 @@
 							Sei sicuro di voler eliminare l'intervento?
 							<x-slot name="footer">
 								<x-link-button x-on:click="open = false">Annulla</x-link-button>
-								<x-danger-button type="button" class="ml-2" wire:click="deleteBiomeGenerator({{ $biome_generator->id }})"
+								<x-danger-button type="button" class="ml-2"
+								                 wire:click="deleteBiomeGenerator({{ $biome_generator->id }})"
 								                 wire:loading.attr="disabled">
 									Elimina
 								</x-danger-button>

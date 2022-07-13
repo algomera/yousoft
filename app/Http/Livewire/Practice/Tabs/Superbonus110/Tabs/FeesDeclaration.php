@@ -3,10 +3,12 @@
 	namespace App\Http\Livewire\Practice\Tabs\Superbonus110\Tabs;
 
 	use App\Practice;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Livewire\Component;
 
 	class FeesDeclaration extends Component
 	{
+		use AuthorizesRequests;
 		public $practice;
 		public $fees_declarations;
 		protected $rules = [
@@ -43,6 +45,7 @@
 		}
 
 		public function save() {
+			$this->authorize('update', $this->practice);
 			$this->validate();
 			$this->fees_declarations->update();
 			$this->dispatchBrowserEvent('open-notification', [

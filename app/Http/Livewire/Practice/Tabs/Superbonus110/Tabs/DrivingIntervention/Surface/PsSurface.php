@@ -4,10 +4,13 @@
 
 	use App\Surface;
 	use App\SurfaceSal;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Livewire\Component;
 
 	class PsSurface extends Component
 	{
+		use AuthorizesRequests;
+		public $practice;
 		public $currentSurface;
 		public $intervention;
 		public $condomino_id = null;
@@ -22,6 +25,7 @@
 		];
 
 		public function mount($practice, $currentSurface, $is_common = 0) {
+			$this->practice = $practice;
 			$this->currentSurface = $currentSurface;
 			$this->sals = SurfaceSal::firstOrCreate([
 				'practice_id' => $practice->id,
@@ -36,6 +40,7 @@
 		}
 
 		public function deleteSurface($id) {
+			$this->authorize('update', $this->practice);
 			Surface::destroy($id);
 
 			$this->dispatchBrowserEvent('open-notification', [
@@ -45,6 +50,7 @@
 		}
 
 		public function saveSurfaceSal() {
+			$this->authorize('update', $this->practice);
 			$this->sals->update([
 				'sal_1' => round($this->sal_1, 3),
 				'sal_2' => round($this->sal_2, 3),

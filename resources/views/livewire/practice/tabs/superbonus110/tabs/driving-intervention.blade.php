@@ -35,11 +35,13 @@
 							<span>(POND) Cop. non disperdenti</span>
 						</div>
 					</nav>
-					<x-button type="button"
-					          wire:click="$emit('openModal', 'practice.tabs.superbonus110.tabs.driving-intervention.modals.add-surface', {{ json_encode(['practice' => $practice->id, 'intervention' => 'driving', 'condomino_id' => null, 'is_common' => 0, 'type' => $currentSurface]) }})"
-					          prepend="plus" iconColor="text-white">
-						Aggiungi {{ strtoupper($currentSurface) }}
-					</x-button>
+					@can('update', $practice)
+						<x-button type="button"
+						          wire:click="$emit('openModal', 'practice.tabs.superbonus110.tabs.driving-intervention.modals.add-surface', {{ json_encode(['practice' => $practice->id, 'intervention' => 'driving', 'condomino_id' => null, 'is_common' => 0, 'type' => $currentSurface]) }})"
+						          prepend="plus" iconColor="text-white">
+							Aggiungi {{ strtoupper($currentSurface) }}
+						</x-button>
+					@endcan
 				</div>
 				@switch($currentSurface)
 					@case('PV')

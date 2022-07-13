@@ -4,10 +4,12 @@
 
 	use App\Practice as PracticeModel;
 	use App\Data_project as Data_projectModel;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Livewire\Component;
 
 	class DataProject extends Component
 	{
+		use AuthorizesRequests;
 		public PracticeModel $practice;
 		public $data_project;
 
@@ -50,6 +52,7 @@
 		];
 
 		public function save() {
+			$this->authorize('update', $this->practice);
 			$validated = $this->validate();
 			$this->data_project->update($validated);
 			$this->dispatchBrowserEvent('open-notification', [

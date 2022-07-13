@@ -3,10 +3,12 @@
 	namespace App\Http\Livewire\Practice\Tabs\Superbonus110\Tabs;
 
 	use App\Practice as PracticeModel;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Livewire\Component;
 
 	class FinalState extends Component
 	{
+		use AuthorizesRequests;
 		public PracticeModel $practice;
 		public $final_state;
 
@@ -93,6 +95,7 @@
 		];
 
 		public function save() {
+			$this->authorize('update', $this->practice);
 			$validated = $this->validate();
 			$this->final_state->update($validated['final_state']);
 			$this->dispatchBrowserEvent('open-notification', [

@@ -3,10 +3,12 @@
 	namespace App\Http\Livewire\Practice\Tabs\Superbonus110\Tabs;
 
 	use App\Practice as PracticeModel;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Livewire\Component;
 
 	class DrivingIntervention extends Component
 	{
+		use AuthorizesRequests;
 		public PracticeModel $practice;
 		public $driving_intervention;
 		public $currentSurface = 'PV';
@@ -43,6 +45,7 @@
 		}
 
 		public function save() {
+			$this->authorize('update', $this->practice);
 			$this->validate();
 
 			$this->driving_intervention->update();

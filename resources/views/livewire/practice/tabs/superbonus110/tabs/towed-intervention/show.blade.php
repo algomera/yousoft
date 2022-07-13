@@ -32,11 +32,13 @@
 						<span>(PS) Pavimenti</span>
 					</div>
 				</nav>
-				<x-button type="button"
-				          wire:click="$emit('openModal', 'practice.tabs.superbonus110.tabs.driving-intervention.modals.add-surface', {{ json_encode(['practice' => $practice->id, 'intervention' => 'towed', 'condomino_id' => $condomino_id, 'is_common' => $is_common, 'type' => $currentSurface]) }})"
-				          prepend="plus" iconColor="text-white">
-					Aggiungi {{ strtoupper($currentSurface) }}
-				</x-button>
+				@can('update', $practice)
+					<x-button type="button"
+					          wire:click="$emit('openModal', 'practice.tabs.superbonus110.tabs.driving-intervention.modals.add-surface', {{ json_encode(['practice' => $practice->id, 'intervention' => 'towed', 'condomino_id' => $condomino_id, 'is_common' => $is_common, 'type' => $currentSurface]) }})"
+					          prepend="plus" iconColor="text-white">
+						Aggiungi {{ strtoupper($currentSurface) }}
+					</x-button>
+				@endcan
 			</div>
 			<div>
 				@switch($currentSurface)

@@ -3,11 +3,13 @@
 		<label for="condensing_boiler"
 		       class="flex items-center space-x-3 block text-sm font-medium text-gray-700">
 			<span>GA. Generatori di aria calda a condensazione</span>
-			<x-button
-					wire:click="$emit('openModal', 'practice.tabs.superbonus110.tabs.driving-intervention.modals.add-condensing-hot-air-generator', {{ json_encode(['practice' => $practice->id, 'condomino_id' => $condomino_id, 'is_common' => $is_common]) }})"
-					type="button" size="sm">
-				<x-icon name="plus" class="w-3 h-3 text-white"></x-icon>
-			</x-button>
+			@can('update', $practice)
+				<x-button
+						wire:click="$emit('openModal', 'practice.tabs.superbonus110.tabs.driving-intervention.modals.add-condensing-hot-air-generator', {{ json_encode(['practice' => $practice->id, 'condomino_id' => $condomino_id, 'is_common' => $is_common]) }})"
+						type="button" size="sm">
+					<x-icon name="plus" class="w-3 h-3 text-white"></x-icon>
+				</x-button>
+			@endcan
 		</label>
 	</div>
 	<div class="mt-3 px-4 bg-gray-50 rounded-md">
