@@ -296,15 +296,20 @@
 				Anagrafica e lista dei condomini
 				<x-slot name="actions">
 					<div class="flex items-center justify-between w-full">
-						<x-button type="button" prepend="plus" iconColor="text-white"
-						          wire:click="$emit('openModal', 'modals.condomino.create', {{ json_encode([$practice->id]) }})">
-							Aggiungi
-						</x-button>
-						@if($condomini->count())
-							<x-button wire:click="exportExcel" type="button" prepend="download" iconColor="text-white">
-								Esporta
+						@can('create-condomini', $practice)
+							<x-button type="button" prepend="plus" iconColor="text-white"
+							          wire:click="$emit('openModal', 'modals.condomino.create', {{ json_encode([$practice->id]) }})">
+								Aggiungi
 							</x-button>
-						@endif
+						@endcan
+						@can('export-condomini-excel', $practice)
+							@if($condomini->count())
+								<x-button wire:click="exportExcel" type="button" prepend="download"
+								          iconColor="text-white">
+									Esporta
+								</x-button>
+							@endif
+						@endcan
 					</div>
 				</x-slot>
 			</x-section-heading>
@@ -364,26 +369,28 @@
 				@endforelse
 			</ul>
 			<div class="sm:flex mt-5 sm:items-center sm:justify-between sm:space-y-2">
-				<div class="space-y-2 sm:flex md:flex-row md:items-center sm:items-center sm:space-x-5 sm:space-y-0">
-					<label class="block">
-						<span class="sr-only">Scegli..</span>
-						<input wire:model="tmp_excel_file" type="file" class="block w-full text-sm text-slate-500
+				@can('import-condomini-excel', $practice)
+					<div class="space-y-2 sm:flex md:flex-row md:items-center sm:items-center sm:space-x-5 sm:space-y-0">
+						<label class="block">
+							<span class="sr-only">Scegli..</span>
+							<input wire:model="tmp_excel_file" type="file" class="block w-full text-sm text-slate-500
 			      file:mr-4 file:py-2 file:px-4
 			      file:rounded-full file:border-0
 			      file:text-sm file:font-semibold
 			      file:bg-indigo-50 file:text-indigo-700
 			      hover:file:bg-indigo-100
 			    "/>
-					</label>
-					@if($tmp_excel_file)
-						<x-button wire:click="importExcel" type="button" prepend="upload" iconColor="text-white">
-							Carica file
-						</x-button>
-					@endif
-					<div wire:loading wire:target="tmp_excel_file" class="ml-2">
-						<span class="text-sm text-gray-400">Caricamento..</span>
+						</label>
+						@if($tmp_excel_file)
+							<x-button wire:click="importExcel" type="button" prepend="upload" iconColor="text-white">
+								Carica file
+							</x-button>
+						@endif
+						<div wire:loading wire:target="tmp_excel_file" class="ml-2">
+							<span class="text-sm text-gray-400">Caricamento..</span>
+						</div>
 					</div>
-				</div>
+				@endcan
 				@if($building->imported_excel_file)
 					<div class="flex flex-col items-end space-y-2" id="imported_excel_file_box">
 						<div class="flex flex-col items-end">
@@ -391,13 +398,17 @@
 							<span class="text-sm text-indigo-400 font-italic font-bold">{{ basename($building->imported_excel_file) }}</span>
 						</div>
 						<div class="flex items-center space-x-3">
-							<x-danger-button wire:click="deleteExcel" size="xs" type="button" prepend="trash"
-							                 iconColor="text-white">Elimina
-							</x-danger-button>
-							<x-button wire:click="downloadExcel" size="xs" type="button" prepend="download"
-							          iconColor="text-white">
-								Scarica
-							</x-button>
+							@can('delete-condomini-excel', $practice)
+								<x-danger-button wire:click="deleteExcel" size="xs" type="button" prepend="trash"
+								                 iconColor="text-white">Elimina
+								</x-danger-button>
+							@endcan
+							@can('download-condomini-excel', $practice)
+								<x-button wire:click="downloadExcel" size="xs" type="button" prepend="download"
+								          iconColor="text-white">
+									Scarica
+								</x-button>
+							@endcan
 						</div>
 					</div>
 				@endif
@@ -462,9 +473,11 @@
 			</div>
 		</div>
 
-		<div class="flex justify-end space-x-3">
-			<x-link-button href="{{route('dashboard')}}">Annulla</x-link-button>
-			<x-button>Salva</x-button>
-		</div>
+		@can('update', $practice)
+			<div class="flex justify-end space-x-3">
+				<x-link-button href="{{route('dashboard')}}">Annulla</x-link-button>
+				<x-button>Salva</x-button>
+			</div>
+		@endcan
 	</form>
 </x-card>

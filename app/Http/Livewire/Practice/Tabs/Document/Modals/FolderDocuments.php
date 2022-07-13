@@ -4,11 +4,13 @@
 
 	use App\Document;
 	use App\Sub_folder as Sub_folderModel;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Illuminate\Support\Facades\Storage;
 	use LivewireUI\Modal\ModalComponent;
 
 	class FolderDocuments extends ModalComponent
 	{
+		use AuthorizesRequests;
 		public Sub_folderModel $sub_folder;
 		public $current_sub_folder;
 		protected $listeners = [
@@ -18,10 +20,12 @@
 		];
 
 		public function mount(Sub_folderModel $sub_folder) {
+			$this->authorize('view-required-documents-folder', $sub_folder->practice);
 			$this->sub_folder = $sub_folder;
 		}
 
 		public function approve() {
+			$this->authorize('approve_required_documents_folder', $this->sub_folder->practice);
 			if ($this->sub_folder->assev_t_status == 1 && auth()->user()->role->name === 'technical_asseverator') {
 				$this->sub_folder->assev_t_status = 2;
 				$this->sub_folder->save();
@@ -40,6 +44,7 @@
 		}
 
 		public function disapprove() {
+			$this->authorize('disapprove_required_documents_folder', $this->sub_folder->practice);
 			if ($this->sub_folder->assev_t_status == 2 && auth()->user()->role->name === 'technical_asseverator') {
 				$this->sub_folder->assev_t_status = 1;
 				$this->sub_folder->save();
@@ -58,10 +63,12 @@
 		}
 
 		public function download(Document $document) {
+			$this->authorize('download_required_documents_file', $this->sub_folder->practice);
 			return Storage::download($document->allega);
 		}
 
 		public function delete(Document $document) {
+			$this->authorize('delete_required_documents_file', $document->sub_folder->practice);
 			$document->delete();
 			Storage::delete($document->allega);
 			$this->emit('document-deleted');

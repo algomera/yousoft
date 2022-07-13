@@ -31,7 +31,7 @@
 			</div>
 		</div>
 		<div class="sm:flex sm:items-center sm:justify-between space-y-2 sm:space-y-0">
-			@can('upload-files', $folder)
+			@can('upload-required-documents-file', $folder->practice)
 				<x-button wire:loading.attr="disabled" wire:target="file" class="w-full justify-center sm:w-auto">Carica
 				</x-button>
 			@endcan

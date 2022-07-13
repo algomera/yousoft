@@ -3,10 +3,12 @@
 	namespace App\Http\Livewire\Modals\Condomino;
 
 	use App\Practice as PracticeModel;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use LivewireUI\Modal\ModalComponent;
 
 	class Create extends ModalComponent
 	{
+		use AuthorizesRequests;
 		public PracticeModel $practice;
 		public $name;
 		public $surname;
@@ -56,6 +58,7 @@
 		}
 
 		public function save() {
+			$this->authorize('create-condomini', $this->practice);
 			$validated = $this->validate();
 			$condomino = $this->practice->condomini()->create($validated);
 			$this->practice->towed_intervention()->create([

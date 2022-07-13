@@ -31,12 +31,12 @@
 		];
 
 		public function mount(FolderModel $folder) {
-			$this->authorize('upload-files', $folder);
+			$this->authorize('upload-required-documents-file', $folder->practice);
 			$this->folder = $folder;
 		}
 
 		public function save() {
-			$this->authorize('upload-files', $this->folder);
+			$this->authorize('upload-required-documents-file', $this->folder->practice);
 			$validated = $this->validate();
 			$extension = pathinfo($this->file->getClientOriginalName(), PATHINFO_EXTENSION);
 			$path = $this->file->storeAs('folder/' . auth()->user()->id . '/' . $this->folder->uuid, Str::slug($this->title) . '.' . $extension);

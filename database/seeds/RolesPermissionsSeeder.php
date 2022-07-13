@@ -55,65 +55,69 @@
 			//        $condomimium = Role::create(['name' => 'condomimium']);
 			// PERMISSIONS
 			$permissions = [
-				// Anagrafiche
+				/* Anagrafiche */
 				'access_anagrafiche',
 				'create_anagrafiche',
 				'read_anagrafiche',
 				'update_anagrafiche',
 				'delete_anagrafiche',
-				// Users
+				/* Users */
 				'access_users',
 				'create_users',
 				'update_users',
 				'delete_users',
-				// Practice
+				/* Practices */
 				'access_practices',
 				'create_practices',
 				'read_practices',
 				'update_practices',
 				'delete_practices',
-				//// Computo
+				/* Practices - Computo */
 				'create_computo',
 				'download_computo',
-				//// Required Documents
-				'access_required_documents',
+				/* Practices - Tabs */
+				// Applicant
+				// Practice
+				// Subject
+				// Building
+				'create_condomini',
+				'import_condomini_excel',
+				'export_condomini_excel',
+				'download_condomini_excel',
+				'delete_condomini_excel',
+				// Media
+				// Documents
+				'view_required_documents_folder',
 				'upload_required_documents_file',
 				'download_required_documents_file',
 				'delete_required_documents_file',
 				'approve_required_documents_folder',
 				'disapprove_required_documents_folder',
-				//// Contracts
+				// Superbonus
+				// Contracts
 				'upload_contracts',
 				'download_contracts',
 				'delete_contracts',
-				//// Policies
+				// Policies
 				'upload_policies',
 				'download_policies',
 				'delete_policies',
-				//?? Files ??
-				'access_files',
-				'create_files',
-				'read_files',
-				'update_files',
-				'delete_files',
-				'download_files',
-				'upload_files',
-				// Files/Folders Management (FOLDERS)
+				/* Files/Folders Management (FOLDERS) */
 				'access_folders',
 				'create_folders',
 				'read_folders',
 				'update_folders',
 				'delete_folders',
-				// Files/Folders Management (FILES)
+				/* Files/Folders Management (FILES) */
 				'upload_folder_files',
 				'download_folder_files',
 				'delete_folder_files',
-				// Contractual Documents
+				/* Contractual Documents */
 				'access_contractual_documents',
 				'upload_contractual_documents',
 				'download_contractual_documents',
 				'delete_contractual_documents',
-				// Price Lists
+				/* Price Lists */
 				'access_price_lists',
 				'create_price_lists',
 				'upload_price_lists',
@@ -143,8 +147,15 @@
 				'read_practices',
 				'update_practices',
 				'delete_practices',
+				// Condomini
+				'create_condomini',
+				//// Excel
+				'import_condomini_excel',
+				'export_condomini_excel',
+				'download_condomini_excel',
+				'delete_condomini_excel',
 				// Required Documents
-				'access_required_documents',
+				'view_required_documents_folder',
 				'upload_required_documents_file',
 				'download_required_documents_file',
 				'delete_required_documents_file',
@@ -191,7 +202,7 @@
 				'update_practices',
 				'delete_practices',
 				// Required Documents
-				'access_required_documents',
+				'view_required_documents_folder',
 				'upload_required_documents_file',
 				'download_required_documents_file',
 				'delete_required_documents_file',
@@ -248,7 +259,7 @@
 				'access_practices',
 				'read_practices',
 				// Required Documents
-				'access_required_documents',
+				'view_required_documents_folder',
 				'download_required_documents_file',
 				'approve_required_documents_folder',
 				'disapprove_required_documents_folder',
@@ -266,7 +277,7 @@
 				'access_practices',
 				'read_practices',
 				// Required Documents
-				'access_required_documents',
+				'view_required_documents_folder',
 				'download_required_documents_file',
 				'approve_required_documents_folder',
 				'disapprove_required_documents_folder',

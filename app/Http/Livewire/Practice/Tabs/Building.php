@@ -3,6 +3,7 @@
 	namespace App\Http\Livewire\Practice\Tabs;
 
 	use App\Practice as PracticeModel;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Illuminate\Support\Facades\Storage;
 	use Livewire\Component;
 	use Livewire\WithFileUploads;
@@ -10,6 +11,7 @@
 	class Building extends Component
 	{
 		use WithFileUploads;
+		use AuthorizesRequests;
 
 		public PracticeModel $practice;
 		public $condomini;
@@ -55,7 +57,6 @@
 			'building.administrator_email'      => 'nullable|email:rfc,dns',
 			//			'building.imported_excel_file'      => 'nullable|file|mimes:xls,xlsx,csv|max:512'
 		];
-
 		protected $validationAttributes = [
 			'intervention_name'        => 'Nome Intervento',
 			'company_role'             => 'Ruolo dell\'impresa',
@@ -96,10 +97,12 @@
 		}
 
 		public function exportExcel() {
+			$this->authorize('export-condomini-excel', $this->practice);
 			return redirect()->route('practice.condomini.export', $this->practice->id);
 		}
 
 		public function importExcel() {
+			$this->authorize('import-condomini-excel', $this->practice);
 			$extension = pathinfo($this->tmp_excel_file->getClientOriginalName(), PATHINFO_EXTENSION);
 			$filename = pathinfo($this->tmp_excel_file->getClientOriginalName(), PATHINFO_FILENAME);
 			// Dovendo avere un solo file caricato, cancello gli altri (se presenti) nella cartella
@@ -120,11 +123,13 @@
 		}
 
 		public function downloadExcel() {
+			$this->authorize('download-condomini-excel', $this->practice);
 			$file = $this->building->imported_excel_file;
 			return Storage::download($file);
 		}
 
 		public function deleteExcel() {
+			$this->authorize('delete-condomini-excel', $this->practice);
 			$this->building->update([
 				'imported_excel_file' => null
 			]);
@@ -137,6 +142,7 @@
 		}
 
 		public function save() {
+			$this->authorize('update', $this->practice);
 			$validated = $this->validate();
 			if (!$this->condomini->count()) {
 				$this->addError('condomini', 'Inserisci almeno un condomino.');
