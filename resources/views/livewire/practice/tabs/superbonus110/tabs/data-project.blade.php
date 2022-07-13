@@ -143,15 +143,18 @@
 				</div>
 				<div class="col-span-12 sm:col-span-4">
 					<x-label for="np_validated" class="text-red-500">Di cui ancora da validare</x-label>
-					<x-input wire:model.defer="data_project.np_not_validated" type="number" step="1" name="np_not_validated"
+					<x-input wire:model.defer="data_project.np_not_validated" type="number" step="1"
+					         name="np_not_validated"
 					         id="np_not_validated"></x-input>
 				</div>
 			</div>
 		</div>
 
-		<div class="flex justify-end space-x-3">
-			<x-link-button href="{{route('dashboard')}}">Annulla</x-link-button>
-			<x-button>Salva</x-button>
-		</div>
+		@can('update', $practice)
+			<div class="flex justify-end space-x-3">
+				<x-link-button href="{{route('dashboard')}}">Annulla</x-link-button>
+				<x-button>Salva</x-button>
+			</div>
+		@endcan
 	</form>
 </x-card>

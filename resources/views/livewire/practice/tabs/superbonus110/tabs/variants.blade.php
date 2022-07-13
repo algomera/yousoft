@@ -150,9 +150,11 @@
 			</div>
 		</div>
 
-		<div class="flex justify-end space-x-3">
-			<x-link-button href="{{route('dashboard')}}">Annulla</x-link-button>
-			<x-button>Salva</x-button>
-		</div>
+		@can('update', $practice)
+			<div class="flex justify-end space-x-3">
+				<x-link-button href="{{route('dashboard')}}">Annulla</x-link-button>
+				<x-button>Salva</x-button>
+			</div>
+		@endcan
 	</form>
 </x-card>
