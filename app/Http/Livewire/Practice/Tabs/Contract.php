@@ -31,7 +31,7 @@
 		}
 
 		public function upload($id) {
-			$this->authorize('upload_contracts');
+			$this->authorize('upload-contract', $this->practice);
 			$file = $this->uploaded_contract[$id];
 			$extension = $file->extension();
 			$filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
@@ -48,12 +48,12 @@
 		}
 
 		public function download($doc) {
-			$this->authorize('download_contracts');
+			$this->authorize('download-contract', $this->practice);
 			return Storage::disk('public')->download($doc['path'], $doc['name']);
 		}
 
 		public function delete($id) {
-			$this->authorize('delete_contracts');
+			$this->authorize('delete-contract', $this->practice);
 			$file = ContractModel::find($id);
 			Storage::delete($file->uploaded_path);
 			$file->uploaded_path = null;

@@ -190,6 +190,7 @@
 			}
 			return Response::deny('Non sei autorizzato ad visualizzare il contenuto della cartella');
 		}
+
 		public function uploadRequiredDocumentsFile(User $user, Practice $practice) {
 			if ($user->can('upload_required_documents_file')) {
 				// Se Practice appartiene a User
@@ -203,6 +204,7 @@
 			}
 			return Response::deny('Non sei autorizzato ad aggiungere files alla cartella');
 		}
+
 		public function downloadRequiredDocumentsFile(User $user, Practice $practice) {
 			if ($user->can('download_required_documents_file')) {
 				// Se Practice appartiene a User
@@ -216,6 +218,7 @@
 			}
 			return Response::deny('Non sei autorizzato a scaricare il file');
 		}
+
 		public function deleteRequiredDocumentsFile(User $user, Practice $practice) {
 			if ($user->can('delete_required_documents_file')) {
 				// Se Practice appartiene a User
@@ -229,6 +232,7 @@
 			}
 			return Response::deny('Non sei autorizzato ad eliminare il file');
 		}
+
 		public function approveRequiredDocumentsFolder(User $user, Practice $practice) {
 			if ($user->can('approve_required_documents_folder')) {
 				// Se Practice appartiene a User
@@ -242,6 +246,7 @@
 			}
 			return Response::deny('Non sei autorizzato ad approvare la cartella');
 		}
+
 		public function disapproveRequiredDocumentsFolder(User $user, Practice $practice) {
 			if ($user->can('disapprove_required_documents_folder')) {
 				// Se Practice appartiene a User
@@ -258,7 +263,87 @@
 		/** Superbonus */
 		//
 		/** Contracts */
-		//
+		public function downloadContract(User $user, Practice $practice) {
+			if ($user->can('download_contracts')) {
+				// Se Practice appartiene a User
+				if ($practice->user_id === $user->id) {
+					return true;
+				}
+				// Se User è collegato ad un altro User
+				if (in_array($practice->user_id, $user->parents->pluck('id')->toArray())) {
+					return true;
+				}
+			}
+			return Response::deny('Non sei autorizzato a scaricare il documento');
+		}
+
+		public function uploadContract(User $user, Practice $practice) {
+			if ($user->can('upload_contracts')) {
+				// Se Practice appartiene a User
+				if ($practice->user_id === $user->id) {
+					return true;
+				}
+				// Se User è collegato ad un altro User
+				if (in_array($practice->user_id, $user->parents->pluck('id')->toArray())) {
+					return true;
+				}
+			}
+			return Response::deny('Non sei autorizzato a caricare il documento');
+		}
+
+		public function deleteContract(User $user, Practice $practice) {
+			if ($user->can('delete_contracts')) {
+				// Se Practice appartiene a User
+				if ($practice->user_id === $user->id) {
+					return true;
+				}
+				// Se User è collegato ad un altro User
+				if (in_array($practice->user_id, $user->parents->pluck('id')->toArray())) {
+					return true;
+				}
+			}
+			return Response::deny('Non sei autorizzato a cancellare il documento');
+		}
 		/** Policies */
-		//
+		public function downloadPolicy(User $user, Practice $practice) {
+			if ($user->can('download_policies')) {
+				// Se Practice appartiene a User
+				if ($practice->user_id === $user->id) {
+					return true;
+				}
+				// Se User è collegato ad un altro User
+				if (in_array($practice->user_id, $user->parents->pluck('id')->toArray())) {
+					return true;
+				}
+			}
+			return Response::deny('Non sei autorizzato a scaricare il documento');
+		}
+
+		public function uploadPolicy(User $user, Practice $practice) {
+			if ($user->can('upload_policies')) {
+				// Se Practice appartiene a User
+				if ($practice->user_id === $user->id) {
+					return true;
+				}
+				// Se User è collegato ad un altro User
+				if (in_array($practice->user_id, $user->parents->pluck('id')->toArray())) {
+					return true;
+				}
+			}
+			return Response::deny('Non sei autorizzato a caricare il documento');
+		}
+
+		public function deletePolicy(User $user, Practice $practice) {
+			if ($user->can('delete_policies')) {
+				// Se Practice appartiene a User
+				if ($practice->user_id === $user->id) {
+					return true;
+				}
+				// Se User è collegato ad un altro User
+				if (in_array($practice->user_id, $user->parents->pluck('id')->toArray())) {
+					return true;
+				}
+			}
+			return Response::deny('Non sei autorizzato a cancellare il documento');
+		}
 	}

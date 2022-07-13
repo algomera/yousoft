@@ -31,7 +31,7 @@
 		}
 
 		public function upload($id) {
-			$this->authorize('upload_policies');
+			$this->authorize('upload-policy', $this->practice);
 			$file = $this->uploaded_policy[$id];
 			$extension = $file->extension();
 			$filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
@@ -48,12 +48,12 @@
 		}
 
 		public function download($doc) {
-			$this->authorize('download_policies');
+			$this->authorize('download-policy', $this->practice);
 			return Storage::disk('public')->download($doc['path'], $doc['name']);
 		}
 
 		public function delete($id) {
-			$this->authorize('delete_policies');
+			$this->authorize('delete-policy', $this->practice);
 			$file = PolicyModel::find($id);
 			Storage::delete($file->uploaded_path);
 			$file->uploaded_path = null;

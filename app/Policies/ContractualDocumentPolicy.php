@@ -79,7 +79,7 @@ class ContractualDocumentPolicy
 			    return true;
 		    }
 	    }
-	    return Response::deny('Non sei autorizzato a caricare documenti contrattuali');
+	    return Response::deny('Non sei autorizzato a cancellare il documento');
     }
 
 	public function upload(User $user, ContractualDocument $contractualDocument) {
@@ -93,7 +93,7 @@ class ContractualDocumentPolicy
 				return true;
 			}
 		}
-		return Response::deny('Non sei autorizzato a caricare documenti contrattuali');
+		return Response::deny('Non sei autorizzato a caricare il documento');
 	}
 
 	public function download(User $user, ContractualDocument $contractualDocument) {
@@ -107,7 +107,7 @@ class ContractualDocumentPolicy
 				return true;
 			}
 		}
-		return Response::deny('Non sei autorizzato a caricare documenti contrattuali');
+		return Response::deny('Non sei autorizzato a scaricare il documento');
 	}
 
     /**

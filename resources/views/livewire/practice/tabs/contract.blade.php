@@ -27,42 +27,48 @@
 					</x-table.td>
 					<x-table.td>
 						<div class="flex items-center space-x-5">
-							<x-button wire:click="download({{ $contract }})" size="xs"
-							          :disabled="!$contract->path">
-								<x-icon name="download" class="w-4 h-4 text-white"></x-icon>
-							</x-button>
+							@can('download-contract', $practice)
+								<x-button wire:click="download({{ $contract }})" size="xs"
+								          :disabled="!$contract->path">
+									<x-icon name="download" class="w-4 h-4 text-white"></x-icon>
+								</x-button>
+							@endcan
 							<div class="flex items-center space-x-5">
 								@if(!$contract->uploaded_path)
-									@isset($uploaded_contract[$file_contract[$loop->index]->id])
-										@if($uploaded_contract[$file_contract[$loop->index]->id])
-											<x-button type="button"
-											          wire:click="upload({{ $file_contract[$loop->index]->id }})"
-											          size="xs"
-											          class="!bg-green-600 hover:!bg-green-700 focus:ring-green-500">
-												<x-icon name="upload" class="w-4 h-4 text-white"></x-icon>
-											</x-button>
-										@endif
-									@else
-										<label class="inline-flex items-center border border-transparent font-medium shadow-sm text-white @if($file_contract[$loop->index]->uploaded_path) bg-green-600 hover:bg-green-700 focus:ring-green-500 @else bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 @endif focus:outline-none focus:ring-2 focus:ring-offset-2 px-2.5 py-1.5 text-xs rounded cursor-pointer disabled:opacity-25 transition">
-											<input wire:model="uploaded_contract.{{$file_contract[$loop->index]->id}}"
-											       type="file" name="file_contract"
-											       id="file_contract"
-											       class="sr-only"/>
-											<x-icon wire:loading.remove
-											        wire:target="uploaded_contract.{{$file_contract[$loop->index]->id}}"
-											        name="upload" class="w-4 h-4 text-white"></x-icon>
-											<x-icon wire:loading
-											        wire:target="uploaded_contract.{{$file_contract[$loop->index]->id}}"
-											        name="loading"
-											        class="w-4 h-4 text-white"></x-icon>
-										</label>
-									@endisset
+									@can('download-contract', $practice)
+										@isset($uploaded_contract[$file_contract[$loop->index]->id])
+											@if($uploaded_contract[$file_contract[$loop->index]->id])
+												<x-button type="button"
+												          wire:click="upload({{ $file_contract[$loop->index]->id }})"
+												          size="xs"
+												          class="!bg-green-600 hover:!bg-green-700 focus:ring-green-500">
+													<x-icon name="upload" class="w-4 h-4 text-white"></x-icon>
+												</x-button>
+											@endif
+										@else
+											<label class="inline-flex items-center border border-transparent font-medium shadow-sm text-white @if($file_contract[$loop->index]->uploaded_path) bg-green-600 hover:bg-green-700 focus:ring-green-500 @else bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 @endif focus:outline-none focus:ring-2 focus:ring-offset-2 px-2.5 py-1.5 text-xs rounded cursor-pointer disabled:opacity-25 transition">
+												<input wire:model="uploaded_contract.{{$file_contract[$loop->index]->id}}"
+												       type="file" name="file_contract"
+												       id="file_contract"
+												       class="sr-only"/>
+												<x-icon wire:loading.remove
+												        wire:target="uploaded_contract.{{$file_contract[$loop->index]->id}}"
+												        name="upload" class="w-4 h-4 text-white"></x-icon>
+												<x-icon wire:loading
+												        wire:target="uploaded_contract.{{$file_contract[$loop->index]->id}}"
+												        name="loading"
+												        class="w-4 h-4 text-white"></x-icon>
+											</label>
+										@endisset
+									@endcan
 								@else
-									<x-danger-button type="button"
-									                 wire:click="delete({{ $file_contract[$loop->index]->id }})"
-									                 size="xs">
-										<x-icon name="trash" class="w-4 h-4 text-white"></x-icon>
-									</x-danger-button>
+									@can('delete-contract', $practice)
+										<x-danger-button type="button"
+										                 wire:click="delete({{ $file_contract[$loop->index]->id }})"
+										                 size="xs">
+											<x-icon name="trash" class="w-4 h-4 text-white"></x-icon>
+										</x-danger-button>
+									@endcan
 								@endif
 							</div>
 						</div>
