@@ -10,9 +10,7 @@
 	class Calendar extends LivewireCalendar
 	{
 		public function events(): Collection {
-			return Practice::whereHas('building', function ($q) {
-				$q->whereNotNull('condominio')->whereNotNull('build_address');
-			})->whereNotNull('work_start')->get()->map(function (Practice $practice) {
+			return Practice::whereNotNull('work_start')->whereNotNull('address')->get()->map(function (Practice $practice) {
 				return [
 					'id'          => $practice->id,
 					'title'       => $practice->building->condominio ?: 'Pratica ID: ' . $practice->id,

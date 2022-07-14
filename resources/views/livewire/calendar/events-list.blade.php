@@ -12,7 +12,7 @@
 										<div>
 											<p class="text-sm font-medium text-indigo-600 truncate">{{ $practice->building->condominio }}</p>
 											<p class="mt-2 flex items-center text-sm text-gray-500">
-												<span class="truncate">{{ $practice->building->build_address }}</span>
+												<span class="truncate">{{ $practice->address }}, {{ $practice->civic }} - {{ $practice->cap }} {{ $practice->common }} ({{ $practice->province }})</span>
 											</p>
 										</div>
 										<div class="hidden md:block">
