@@ -10,26 +10,24 @@
 	class Calendar extends LivewireCalendar
 	{
 		public function events(): Collection {
-			return Practice::whereNotNull('work_start')
-				->get()
-				->map(function (Practice $practice) {
-				return [
-					'id'          => $practice->id,
-					'title'       => $practice->building->condominio ?: 'Pratica ID: ' . $practice->id,
-					'description' => 'Descrizione',
-					'date'        => Carbon::createFromFormat('Y-m-d', $practice->work_start)
-				];
-			});
+			return Practice::whereNotNull('work_start')->get()->map(function (Practice $practice) {
+					return [
+						'id'          => $practice->id,
+						'title'       => $practice->building->condominio ?: 'Pratica ID: ' . $practice->id,
+						'description' => 'Descrizione',
+						'date'        => Carbon::createFromFormat('Y-m-d', $practice->work_start)
+					];
+				});
 		}
 
 		public function onDayClick($year, $month, $day) {
 			// Far uscire la lista degli eventi di quel giorno
-			dd("Day clicked");
+			dd("Giorno: " . $day . '-' . $month . '-' . $year);
 		}
 
 		public function onEventClick($eventId) {
 			// Far uscire i dettagli dell'evento
 			$practice = Practice::find($eventId);
-			dd($practice);
+			dd("Pratica ID:" . $practice->id);
 		}
 	}
