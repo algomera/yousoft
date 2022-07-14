@@ -24,19 +24,26 @@
 			</div>
 
 			{{-- Events --}}
-			<ol class="mt-2 h-14 overflow-y-scroll hidden lg:block space-y-1">
-				@foreach($events as $event)
-					<div
-							@if($dragAndDropEnabled)
-								draggable="true"
-							@endif
-							ondragstart="onLivewireCalendarEventDragStart(event, '{{ $event['id'] }}')">
-						@include($eventView, [
-							'event' => $event,
-						])
-					</div>
-				@endforeach
-			</ol>
+			{{-- Soluzione "click giorno" --}}
+			<div class="hidden mt-2 lg:flex items-end h-14">
+				@if($events->count())
+					<p class="text-xs truncate font-medium text-gray-500">{{$events->count()}} {{$events->count() === 1 ? 'Pratica' : 'Pratiche'}}</p>
+				@endif
+			</div>
+			{{-- Soluzione "click evento" --}}
+			{{--			<ol class="mt-2 h-14 overflow-y-scroll hidden lg:block space-y-1">--}}
+			{{--				@foreach($events as $event)--}}
+			{{--					<div--}}
+			{{--							@if($dragAndDropEnabled)--}}
+			{{--								draggable="true"--}}
+			{{--							@endif--}}
+			{{--							ondragstart="onLivewireCalendarEventDragStart(event, '{{ $event['id'] }}')">--}}
+			{{--						@include($eventView, [--}}
+			{{--							'event' => $event,--}}
+			{{--						])--}}
+			{{--					</div>--}}
+			{{--				@endforeach--}}
+			{{--			</ol>--}}
 			<div class="lg:hidden -mx-0.5 mt-auto flex flex-wrap-reverse">
 				@foreach($events as $event)
 					<span class="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400"></span>
