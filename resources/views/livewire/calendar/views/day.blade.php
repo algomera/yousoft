@@ -24,21 +24,19 @@
 			</div>
 
 			{{-- Events --}}
-			<div class="h-14 overflow-y-scroll hidden lg:block mt-2 space-y-3">
+			<ol class="mt-2 h-14 overflow-y-scroll hidden lg:block space-y-1">
 				@foreach($events as $event)
-					<div class="group flex flex-col">
-						<div
-								@if($dragAndDropEnabled)
-									draggable="true"
-								@endif
-								ondragstart="onLivewireCalendarEventDragStart(event, '{{ $event['id'] }}')">
-							@include($eventView, [
-								'event' => $event,
-							])
-						</div>
+					<div
+							@if($dragAndDropEnabled)
+								draggable="true"
+							@endif
+							ondragstart="onLivewireCalendarEventDragStart(event, '{{ $event['id'] }}')">
+						@include($eventView, [
+							'event' => $event,
+						])
 					</div>
 				@endforeach
-			</div>
+			</ol>
 			<div class="lg:hidden -mx-0.5 mt-auto flex flex-wrap-reverse">
 				@foreach($events as $event)
 					<span class="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400"></span>

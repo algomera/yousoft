@@ -14,7 +14,7 @@
 				->map(function (Practice $practice) {
 				return [
 					'id'          => $practice->id,
-					'title'       => $practice->building->condominio ?: 'No Titolo',
+					'title'       => $practice->building->condominio ?: 'Pratica ID: ' . $practice->id,
 					'description' => 'Descrizione',
 					'date'        => Carbon::createFromFormat('Y-m-d', $practice->work_start)
 				];
