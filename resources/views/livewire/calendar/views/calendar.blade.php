@@ -1,5 +1,4 @@
 <div
-		class="border"
 		@if($pollMillis !== null && $pollAction !== null)
 			wire:poll.{{ $pollMillis }}ms="{{ $pollAction }}"
 		@elseif($pollMillis !== null)
@@ -14,7 +13,7 @@
 
 	<div class="flex">
 		<div class="overflow-x-auto w-full">
-			<div class="inline-block min-w-full overflow-hidden">
+			<div class="border-x inline-block min-w-full overflow-hidden">
 
 				<div class="w-full flex flex-row">
 					@foreach($monthGrid->first() as $day)
