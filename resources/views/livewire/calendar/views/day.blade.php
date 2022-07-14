@@ -3,7 +3,7 @@
 		ondragleave="onLivewireCalendarEventDragLeave(event, '{{ $componentId }}', '{{ $day }}', '{{ $dragAndDropClasses }}');"
 		ondragover="onLivewireCalendarEventDragOver(event);"
 		ondrop="onLivewireCalendarEventDrop(event, '{{ $componentId }}', '{{ $day }}', {{ $day->year }}, {{ $day->month }}, {{ $day->day }}, '{{ $dragAndDropClasses }}');"
-		class="flex h-14 flex-col hover:cursor-pointer lg:hover:cursor-default lg:block lg:h-auto relative py-2 px-3 {{ $dayInMonth ? 'bg-white hover:bg-gray-50 lg:hover:bg-white' : 'bg-gray-50 text-gray-500 hover:bg-gray-50' }}">
+		class="flex h-14 flex-col hover:cursor-pointer lg:block lg:h-auto relative py-2 px-3 {{ $dayInMonth ? 'bg-white hover:bg-gray-50' : 'bg-white text-gray-300 hover:bg-gray-50' }}">
 
 	{{-- Wrapper for Drag and Drop --}}
 	<div
