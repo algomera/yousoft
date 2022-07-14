@@ -10,7 +10,8 @@
 	class Calendar extends LivewireCalendar
 	{
 		public function events(): Collection {
-			return Practice::all()
+			return Practice::whereNotNull('work_start')
+				->get()
 				->map(function (Practice $practice) {
 				return [
 					'id'          => $practice->id,
