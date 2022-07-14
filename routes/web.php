@@ -1,7 +1,6 @@
 <?php
 
 	use App\{Http\Controllers\PageController,
-		Http\Livewire\Calendar\Index as CalendarIndex,
 		Http\Livewire\Practice\Index as PracticeIndex,
 		Http\Livewire\Practice\Show as PracticeShow,
 		Http\Livewire\Anagrafica\Index as AnagraficaIndex,
@@ -43,10 +42,9 @@
 		});
 		// Calendario
 		Route::name('calendar.')->middleware(['permission:access_calendar'])->group(function() {
-			Route::get('/calendar', [
-				CalendarIndex::class,
-				'__invoke'
-			])->name('index');
+			Route::get('/calendar', function () {
+				return view('calendar.index');
+			})->name('index');
 		});
 		// Anagrafiche
 		Route::name('anagrafiche.')->middleware(['permission:access_anagrafiche'])->group(function () {

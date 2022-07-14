@@ -18,7 +18,7 @@
 	<!-- Scripts -->
 	<script src="{{ mix('js/app.js') }}" defer></script>
 
-	<livewire:styles/>
+	@livewireStyles
 </head>
 <body class="h-full overflow-hidden font-sans antialiased @impersonating($guard = null) pb-8 @endImpersonating">
 @impersonating($guard = null)
@@ -373,7 +373,7 @@
 @stack('modals')
 @stack('notifications')
 @stack('scripts')
-<livewire:scripts/>
+@livewireScripts
 @livewireCalendarScripts
 @livewire('livewire-ui-modal')
 </body>

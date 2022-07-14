@@ -3,7 +3,7 @@
 		ondragleave="onLivewireCalendarEventDragLeave(event, '{{ $componentId }}', '{{ $day }}', '{{ $dragAndDropClasses }}');"
 		ondragover="onLivewireCalendarEventDragOver(event);"
 		ondrop="onLivewireCalendarEventDrop(event, '{{ $componentId }}', '{{ $day }}', {{ $day->year }}, {{ $day->month }}, {{ $day->day }}, '{{ $dragAndDropClasses }}');"
-		class="flex h-14 flex-col hover:cursor-pointer lg:hover:cursor-default lg:block lg:h-auto relative py-2 px-3 {{ $dayInMonth ? 'bg-white hover:bg-gray-50 lg:hover:bg-white' : 'bg-gray-50 text-gray-500 hover:bg-gray-100 lg:hover:bg-gray-50' }}">
+		class="flex h-14 flex-col hover:cursor-pointer lg:hover:cursor-default lg:block lg:h-auto relative py-2 px-3 {{ $dayInMonth ? 'bg-white hover:bg-gray-50 lg:hover:bg-white' : 'bg-gray-50 text-gray-500 hover:bg-gray-50' }}">
 
 	{{-- Wrapper for Drag and Drop --}}
 	<div
@@ -18,7 +18,7 @@
 
 			{{-- Number of Day --}}
 			<div class="ml-auto lg:ml-0 lg:flex lg:items-center">
-				<p class="{{ $isToday ? 'text-indigo-500 lg:flex lg:h-6 lg:w-6 lg:items-center lg:justify-center lg:rounded-full lg:bg-indigo-600 font-semibold lg:text-white' : '' }}">
+				<p class="text-xs {{ $isToday ? 'text-indigo-500 lg:flex lg:h-6 lg:w-6 lg:items-center lg:justify-center lg:rounded-full lg:bg-indigo-600 font-semibold lg:text-white' : '' }}">
 					{{ $day->format('j') }}
 				</p>
 			</div>
