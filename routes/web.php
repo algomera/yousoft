@@ -1,14 +1,14 @@
 <?php
 
 	use App\{Http\Controllers\PageController,
+		Http\Livewire\Calendar\Index as CalendarIndex,
 		Http\Livewire\Practice\Index as PracticeIndex,
 		Http\Livewire\Practice\Show as PracticeShow,
 		Http\Livewire\Anagrafica\Index as AnagraficaIndex,
 		Http\Livewire\Users\Index as UserIndex,
 		Http\Livewire\ContractualDocument\Index as ContractualDocumentIndex,
 		Http\Livewire\PriceList\Index as PriceListIndex,
-		Http\Livewire\FolderFileManagement\Index as FolderFileManagementIndex,
-	};
+		Http\Livewire\FolderFileManagement\Index as FolderFileManagementIndex};
 	use Illuminate\Support\Facades\Route;
 	use Illuminate\Support\Facades\Auth;
 
@@ -40,6 +40,13 @@
 			])->name('edit');
 			// Building
 			Route::get('/condomini_export/{practice}', 'CondominiController@export')->name('condomini.export');
+		});
+		// Calendario
+		Route::name('calendar.')->middleware(['permission:access_calendar'])->group(function() {
+			Route::get('/calendar', [
+				CalendarIndex::class,
+				'__invoke'
+			])->name('index');
 		});
 		// Anagrafiche
 		Route::name('anagrafiche.')->middleware(['permission:access_anagrafiche'])->group(function () {

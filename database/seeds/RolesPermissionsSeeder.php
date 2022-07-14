@@ -102,6 +102,8 @@
 				'upload_policies',
 				'download_policies',
 				'delete_policies',
+				/* Calendar */
+				'access_calendar',
 				/* Files/Folders Management (FOLDERS) */
 				'access_folders',
 				'create_folders',
@@ -130,38 +132,45 @@
 			}
 			// Business base permissions
 			$business->givePermissionTo([
-				// Anagrafiche
+				/* Anagrafiche */
 				'access_anagrafiche',
 				'create_anagrafiche',
 				'read_anagrafiche',
 				'update_anagrafiche',
 				'delete_anagrafiche',
-				// Users
+				/* Users */
 				'access_users',
 				'create_users',
 				'update_users',
 				'delete_users',
-				// Practices
+				/* Practices */
 				'access_practices',
 				'create_practices',
 				'read_practices',
 				'update_practices',
 				'delete_practices',
-				// Condomini
+				/* Practices - Computo */
+				'create_computo',
+				'download_computo',
+				/* Practices - Tabs */
+				// Applicant
+				// Practice
+				// Subject
+				// Building
 				'create_condomini',
-				//// Excel
 				'import_condomini_excel',
 				'export_condomini_excel',
 				'download_condomini_excel',
 				'delete_condomini_excel',
-				// Required Documents
+				// Media
+				// Documents
 				'view_required_documents_folder',
 				'upload_required_documents_file',
 				'download_required_documents_file',
 				'delete_required_documents_file',
-				// Computo
-				'create_computo',
-				'download_computo',
+				'approve_required_documents_folder',
+				'disapprove_required_documents_folder',
+				// Superbonus
 				// Contracts
 				'upload_contracts',
 				'download_contracts',
@@ -170,22 +179,24 @@
 				'upload_policies',
 				'download_policies',
 				'delete_policies',
-				// Files/Folders Management (FOLDERS)
+				/* Calendar */
+				'access_calendar',
+				/* Files/Folders Management (FOLDERS) */
 				'access_folders',
 				'create_folders',
 				'read_folders',
 				'update_folders',
 				'delete_folders',
-				// Files/Folders Management (FILES)
+				/* Files/Folders Management (FILES) */
 				'upload_folder_files',
 				'download_folder_files',
 				'delete_folder_files',
-				// Contractual Documents
+				/* Contractual Documents */
 				'access_contractual_documents',
 				'upload_contractual_documents',
 				'download_contractual_documents',
 				'delete_contractual_documents',
-				// Price Lists
+				/* Price Lists */
 				'access_price_lists',
 				'create_price_lists',
 				'upload_price_lists',

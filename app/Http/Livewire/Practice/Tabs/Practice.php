@@ -3,10 +3,12 @@
 	namespace App\Http\Livewire\Practice\Tabs;
 
 	use App\Practice as PracticeModel;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Livewire\Component;
 
 	class Practice extends Component
 	{
+		use AuthorizesRequests;
 		public PracticeModel $practice;
 		protected $rules = [
 			'practice.import'           => 'required|numeric',

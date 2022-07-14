@@ -9,6 +9,7 @@
   "license": "MIT",
   "require": {
     "php": "^7.4",
+    "asantibanez/livewire-calendar": "^2.1",
     "fakerphp/faker": "^1.19",
     "fideloper/proxy": "^4.2",
     "fruitcake/laravel-cors": "^1.0",

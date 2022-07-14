@@ -374,6 +374,7 @@
 @stack('notifications')
 @stack('scripts')
 <livewire:scripts/>
+@livewireCalendarScripts
 @livewire('livewire-ui-modal')
 </body>
 </html>
