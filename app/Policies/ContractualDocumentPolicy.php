@@ -88,10 +88,6 @@ class ContractualDocumentPolicy
 			if ($contractualDocument->user_id === $user->id) {
 				return true;
 			}
-			// Se User è collegato ad un altro User
-			if (in_array($contractualDocument->user_id, $user->parents->pluck('id')->toArray())) {
-				return true;
-			}
 		}
 		return Response::deny('Non sei autorizzato a caricare il documento');
 	}

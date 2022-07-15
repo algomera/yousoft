@@ -56,6 +56,10 @@
 				'email'    => 'assf@example.test',
 				'password' => bcrypt('password'),
 			]);
+			$forn = User::create([
+				'email' => 'fornitore@example.test',
+				'password' => bcrypt('password'),
+			]);
 			// Creo UserData per admin
 			UserData::create([
 				'user_id'    => $admin->id,
@@ -109,6 +113,12 @@
 				'created_by' => $admin->id,
 				'name'       => "Assev. Fiscale",
 			]);
+			// Creo UserData per Fornitore
+			UserData::create([
+				'user_id'    => $forn->id,
+				'created_by' => $admin->id,
+				'name'       => "Fornitore",
+			]);
 			// Assegno ruolo "admin" all'utente "Administrator"
 			$admin->assignRole(Role::findByName('admin'));
 			// Assegno ruolo "business" all'utente "Primehub" e creo Documenti Contrattuali
@@ -128,10 +138,8 @@
 			$novello->assignRole(Role::findByName('bank'));
 			// Assegno ruolo "bank" all'utente "Ta S.r.l"
 			$tasrl->assignRole(Role::findByName('bank'));
-			// Assegno ruolo "technical_asseverator" all'utente "Assev. Tecnico"
-			$tasrl->assignRole(Role::findByName('technical_asseverator'));
-			// Assegno ruolo "fiscal_asseverator" all'utente "Assev. Fiscale"
-			$tasrl->assignRole(Role::findByName('fiscal_asseverator'));
+			// Assegno ruolo "fornitore" all'utente "Fornitore"
+			$forn->assignRole(Role::findByName('fornitore'));
 			/*
 			 * Associo:
 			 * - "Asseveratori Tecnico/Fiscale"
@@ -142,5 +150,6 @@
 			$primehub->childs()->attach($asst);
 			$primehub->childs()->attach($assf);
 			$primehub->childs()->attach($collaboratore);
+			$primehub->childs()->attach($forn);
 		}
 	}

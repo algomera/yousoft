@@ -79,6 +79,7 @@
 				case 'fiscal_asseverator':
 				case 'collaborator':
 				case 'bank':
+				case 'fornitore':
 					$data = [
 						'total_practices'    => Practice::withParents()->count(),
 						'total_business'     => auth()->user()->parents()->role('business')->count(),
