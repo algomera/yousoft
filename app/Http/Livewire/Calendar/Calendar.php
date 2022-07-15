@@ -16,8 +16,13 @@
 		];
 
 		public function events(): Collection {
-			return Practice::whereHas('building', function ($q) {
-				$q->whereNotNull('condominio');
+			if (auth()->user()->isAdmin()) {
+				$q = Practice::query();
+			} else {
+				$q = Practice::withParents();
+			}
+			return $q->whereHas('building', function ($o) {
+				$o->whereNotNull('condominio');
 			})->whereNotNull('work_start')->whereNotNull('address')->whereNotNull('civic')->whereNotNull('common')->whereNotNull('province')->whereNotNull('cap')->get()->map(function (Practice $practice) {
 				return [
 					'id'          => $practice->id,

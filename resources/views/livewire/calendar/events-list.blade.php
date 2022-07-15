@@ -5,7 +5,8 @@
 			<ul role="list" class="divide-y divide-gray-200">
 				@foreach($practices as $practice)
 					<li>
-						<div class="group block cursor-pointer">
+						<div wire:click="$emit('openModal', 'calendar.event-detail', {{ json_encode(['practice' => $practice->id]) }})"
+						     class="group block cursor-pointer">
 							<div class="flex items-center py-4">
 								<div class="min-w-0 flex-1 flex items-center">
 									<div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
