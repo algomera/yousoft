@@ -16,19 +16,7 @@
 					</x-button>
 				@endcan
 			</div>
-			@php
-				switch (auth()->user()->role->name) {
-					case 'technical_asseverator':
-						$status = 'assev_t_status';
-						break;
-					case 'fiscal_asseverator':
-						$status = 'assev_f_status';
-						break;
-					case 'bank':
-						$status = 'bank_status';
-						break;
-				}
-			@endphp
+
 			@canany(['approve-required-documents-folder', 'disapprove-required-documents-folder'], $current_sub_folder->practice)
 				@if($current_sub_folder->documents->count())
 					<div class="flex justify-end items-center space-x-3">

@@ -13,6 +13,7 @@
 		use AuthorizesRequests;
 		public Sub_folderModel $sub_folder;
 		public $current_sub_folder;
+		public $status;
 		protected $listeners = [
 			'status-changed'   => '$refresh',
 			'document-deleted' => '$refresh',
@@ -22,6 +23,17 @@
 		public function mount(Sub_folderModel $sub_folder) {
 			$this->authorize('view-required-documents-folder', $sub_folder->practice);
 			$this->sub_folder = $sub_folder;
+			switch (auth()->user()->role->name) {
+				case 'technical_asseverator':
+					$this->status = 'assev_t_status';
+					break;
+				case 'fiscal_asseverator':
+					$this->status = 'assev_f_status';
+					break;
+				case 'bank':
+					$this->status = 'bank_status';
+					break;
+			}
 		}
 
 		public function approve() {
