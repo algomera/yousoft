@@ -9,14 +9,14 @@
 
 	class Calendar extends LivewireCalendar
 	{
+		public $selected;
+		protected $listeners = [
+			'dayClicked',
+			'today'
+		];
+
 		public function events(): Collection {
-			return Practice::whereNotNull('work_start')
-				->whereNotNull('address')
-				->whereNotNull('civic')
-				->whereNotNull('common')
-				->whereNotNull('province')
-				->whereNotNull('cap')
-				->get()->map(function (Practice $practice) {
+			return Practice::whereNotNull('work_start')->whereNotNull('address')->whereNotNull('civic')->whereNotNull('common')->whereNotNull('province')->whereNotNull('cap')->get()->map(function (Practice $practice) {
 				return [
 					'id'          => $practice->id,
 					'title'       => $practice->building->condominio ?: 'Pratica ID: ' . $practice->id,
@@ -26,17 +26,25 @@
 			});
 		}
 
+		public function dayClicked($params) {
+			$this->selected = $params['year'] . '-' . $params['month'] . '-' . $params['day'];
+		}
+
+		public function today($today) {
+			$this->selected = $today;
+		}
+
 		public function goToCurrentMonth() {
-			$this->emitTo('calendar.events-list', 'today', now()->format('Y-m-d'));
+			$this->emit('today', now()->format('Y-m-d'));
 			parent::goToCurrentMonth();
 		}
 
 		public function onDayClick($year, $month, $day) {
 			// Far uscire la lista degli eventi di quel giorno
-			$this->emitTo('calendar.events-list', 'dayClicked', [
-				'day' => sprintf("%02d", $day),
+			$this->emit('dayClicked', [
+				'day'   => sprintf("%02d", $day),
 				'month' => sprintf("%02d", $month),
-				'year' => $year
+				'year'  => $year
 			]);
 		}
 
