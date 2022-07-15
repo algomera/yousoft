@@ -40,7 +40,7 @@
 				</dd>
 			</div>
 			<div class="py-4 sm:py-5 flex flex-col space-y-3 items-stretch md:flex-row md:space-y-0 md:items-start justify-between">
-				@can('downloadComputo', $practice)
+				@can('download-computo', $practice)
 					<x-button class="justify-center" prepend="download" iconColor="text-white">Scarica Computo</x-button>
 				@endcan
 				@can('view', $practice)
