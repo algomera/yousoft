@@ -8,7 +8,8 @@
 			'collaborator' => 'Collaboratore', // creato da admin, associato ad impresa/e
 			'consultant' => 'Consulente', // creato da admin, associato ad impresa/e
 			'technical_asseverator' => 'Asseveratore Tecnico', // creato da admin, associato ad impresa/e
-			'fiscal_asseverator' => 'Asseveratore Fiscale' // creato da admin, associato ad impresa/e
+			'fiscal_asseverator' => 'Asseveratore Fiscale', // creato da admin, associato ad impresa/e
+			'fornitore' => 'Fornitore', // creato da admin, associato ad impresa/e
 		],
 		'financial' => [
 			'bank' => 'Banca', // se creata da financial, viene automaticamente associata SOLO ad essa
@@ -33,6 +34,9 @@
 			//
 		],
 		'manager' => [
+			//
+		],
+		'fornitore' => [
 			//
 		],
 	];

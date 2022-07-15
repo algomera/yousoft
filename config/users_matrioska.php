@@ -23,4 +23,7 @@
 			'bank'      => 'Banche',
 			'financial' => 'Soc. Finanziarie',
 		],
+		'fornitore'             => [
+			'business' => 'Imprese',
+		],
 	];
