@@ -1,5 +1,5 @@
 <x-app-layout>
-	<div class="grid xl:grid-cols-2 gap-5">
+	<div class="grid xl:grid-cols-2 gap-3 lg:gap-5">
 		<div class="flex w-full order-2 xl:order-1">
 			<livewire:calendar.events-list></livewire:calendar.events-list>
 		</div>

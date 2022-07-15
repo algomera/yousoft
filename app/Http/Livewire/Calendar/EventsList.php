@@ -25,7 +25,9 @@
 		}
 
 		public function render() {
-			$this->practices = Practice::where('work_start', $this->date)->get();
+			$this->practices = Practice::whereHas('building', function ($q) {
+				$q->whereNotNull('condominio');
+			})->where('work_start', $this->date)->get();
 			return view('livewire.calendar.events-list');
 		}
 	}

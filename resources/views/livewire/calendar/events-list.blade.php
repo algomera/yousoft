@@ -1,16 +1,16 @@
 <div class="w-full">
-	<h3 class="block lg:hidden text-center font-bold pb-3">{{ \Carbon\Carbon::parse($date)->translatedFormat('d F Y') }}</h3>
+	<h3 class="block lg:hidden text-center font-semibold capitalize pb-3">{{ \Carbon\Carbon::parse($date)->translatedFormat('d F Y') }}</h3>
 	@if($practices !== null && $practices->count() > 0)
-		<div class="bg-white shadow overflow-hidden sm:rounded-md">
+		<div class="bg-white border overflow-hidden sm:rounded-md">
 			<ul role="list" class="divide-y divide-gray-200">
 				@foreach($practices as $practice)
 					<li>
-						<div class="block hover:bg-gray-50 cursor-pointer">
+						<div class="group block cursor-pointer">
 							<div class="flex items-center py-4">
 								<div class="min-w-0 flex-1 flex items-center">
 									<div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
 										<div>
-											<p class="text-sm font-medium text-indigo-600 truncate">{{ $practice->building->condominio }}</p>
+											<p class="text-sm font-medium group-hover:text-indigo-600 truncate">{{ $practice->building->condominio }}</p>
 											<p class="mt-2 flex items-center text-sm text-gray-500">
 												<span class="truncate">{{ $practice->address }}, {{ $practice->civic }} - {{ $practice->cap }} {{ $practice->common }} ({{ $practice->province }})</span>
 											</p>
