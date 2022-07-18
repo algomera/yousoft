@@ -69,6 +69,13 @@
 					'icon'       => 'clipboard-list',
 					'permission' => 'access_price_lists'
 				],
+				[
+					'name'       => 'Chat',
+					'url'        => route('chat'),
+					'active'     => $this->isActiveRoute('price_list*'),
+					'icon'       => 'chat',
+					'permission' => 'access_chat'
+				],
 			];
 		}
 

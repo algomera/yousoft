@@ -128,6 +128,8 @@
 				'create_price_lists',
 				'upload_price_lists',
 				'delete_price_lists',
+				/* Chat */
+				'access_chat',
 			];
 			foreach ($permissions as $permission) {
 				Permission::create([
@@ -205,6 +207,8 @@
 				'create_price_lists',
 				'upload_price_lists',
 				'delete_price_lists',
+				/* Chat */
+				'access_chat',
 			]);
 			// Collaborator base permissions
 			$collaborator->givePermissionTo([
@@ -262,6 +266,8 @@
 				// Contractual Documents
 				'access_contractual_documents',
 				'download_contractual_documents',
+				/* Chat */
+				'access_chat',
 			]);
 			// Bank base permissions
 			$bank->givePermissionTo([
@@ -296,6 +302,8 @@
 				/* Contractual Documents */
 				'access_contractual_documents',
 				'download_contractual_documents',
+				/* Chat */
+				'access_chat',
 			]);
 			// Technical Asseverator base permissions
 			$technical_asseverator->givePermissionTo([
@@ -325,6 +333,8 @@
 				/* Contractual Documents */
 				'access_contractual_documents',
 				'download_contractual_documents',
+				/* Chat */
+				'access_chat',
 			]);
 			// Fiscal Asseverator base permissions
 			$fiscal_asseverator->givePermissionTo([
@@ -354,10 +364,14 @@
 				/* Contractual Documents */
 				'access_contractual_documents',
 				'download_contractual_documents',
+				/* Chat */
+				'access_chat',
 			]);
 			$fornitore->givePermissionTo([
 				/* Calendar */
 				'access_calendar',
+				/* Chat */
+				'access_chat',
 			]);
 		}
 	}
