@@ -181,7 +181,7 @@
 										<x-slot name="trigger">
 											<div class="relative">
 												{{-- new notification badge--}}
-												{{--<div class="absolute -top-0.5 right-0 w-2.5 h-2.5 bg-red-500 rounded-full"></div>--}}
+												{{-- <div class="absolute -top-0.5 right-0 w-2.5 h-2.5 bg-red-500 rounded-full"></div> --}}
 												<x-icon
 														name="bell"
 														class="w-5 h-5 text-gray-400"

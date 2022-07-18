@@ -10,8 +10,8 @@
             </td>
             {{-- center side --}}
             <td>
-                <p data-id="{{ Auth::user()->id }}" data-type="user">Saved Messages <span>You</span></p>
-                <span>Save messages secretly</span>
+                <p data-id="{{ Auth::user()->id }}" data-type="user">Messaggi salvati <span>Tu</span></p>
+                <span>Salva i messaggi privati</span>
             </td>
         </tr>
     </table>
@@ -33,7 +33,7 @@
         {{-- center side --}}
         <td>
         <p data-id="{{ $user->id }}" data-type="user">
-            {{ strlen($user->name) > 12 ? trim(substr($user->name,0,12)).'..' : $user->name }}
+            {{ $user->name }}
             <span>{{ $lastMessage->created_at->diffForHumans() }}</span></p>
         <span>
             {{-- Last Message user indicator --}}

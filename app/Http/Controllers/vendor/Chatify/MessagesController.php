@@ -328,9 +328,19 @@
 		public function search(Request $request) {
 			$getRecords = null;
 			$input = trim(filter_var($request['input']));
-			$records = User::whereHas('user_data', function($q) use($input) {
-				$q->where('name', 'LIKE', "%{$input}%");
-			})->where('id', '!=', Auth::user()->id)->paginate($request->per_page ?? $this->perPage);
+			if(Auth::user()->childs->count()) {
+				$records = Auth::user()->childs()->whereHas('user_data', function($q) use($input) {
+					$q->where('name', 'LIKE', "%{$input}%");
+				})->where('id', '!=', Auth::user()->id)->paginate($request->per_page ?? $this->perPage);
+			} elseif(Auth::user()->parents->count()) {
+				$records = Auth::user()->parents()->whereHas('user_data', function($q) use($input) {
+					$q->where('name', 'LIKE', "%{$input}%");
+				})->where('id', '!=', Auth::user()->id)->paginate($request->per_page ?? $this->perPage);
+			}
+
+//			$records = User::whereHas('user_data', function($q) use($input) {
+//				$q->where('name', 'LIKE', "%{$input}%");
+//			})->where('id', '!=', Auth::user()->id)->paginate($request->per_page ?? $this->perPage);
 			foreach ($records->items() as $record) {
 				$getRecords .= view('Chatify::layouts.listItem', [
 					'get'  => 'search_item',

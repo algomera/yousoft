@@ -72,7 +72,7 @@
 				[
 					'name'       => 'Chat',
 					'url'        => route('chat'),
-					'active'     => $this->isActiveRoute('price_list*'),
+					'active'     => $this->isActiveRoute('chat*'),
 					'icon'       => 'chat',
 					'permission' => 'access_chat'
 				],

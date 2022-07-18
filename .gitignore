@@ -6,6 +6,7 @@
 /storage/app/public/practices
 /storage/app/public/folder
 /storage/app/public/price_lists
+/storage/app/public/attachments
 .env
 .env.backup
 .phpunit.result.cache
