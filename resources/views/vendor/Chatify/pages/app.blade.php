@@ -368,12 +368,12 @@
 				<div>
 					<div class="messenger">
 						{{-- ----------------------Users/Groups lists side---------------------- --}}
-						<div class="messenger-listView">
+						<div class="messenger-listView border-0 border-r">
 							{{-- Header and search bar --}}
 							<div class="m-header">
 								<nav>
 									<a href="#"><i class="fas fa-inbox"></i> <span
-												class="messenger-headTitle">MESSAGES</span> </a>
+												class="messenger-headTitle">Messaggi</span> </a>
 									{{-- header buttons --}}
 									<nav class="m-header-right">
 										<a href="#"><i class="fas fa-cog settings-btn"></i></a>
@@ -383,15 +383,15 @@
 								{{-- Search input --}}
 								<input type="text" class="messenger-search" placeholder="Search"/>
 								{{-- Tabs --}}
-								<div class="messenger-listView-tabs">
-									<a href="#" @if($type == 'user') class="active-tab" @endif data-view="users">
-										<span class="far fa-user"></span> People</a>
-									<a href="#" @if($type == 'group') class="active-tab" @endif data-view="groups">
-										<span class="fas fa-users"></span> Groups</a>
-								</div>
+								{{--								<div class="messenger-listView-tabs">--}}
+								{{--									<a href="#" @if($type == 'user') class="active-tab" @endif data-view="users">--}}
+								{{--										<span class="far fa-user"></span> People</a>--}}
+								{{--									<a href="#" @if($type == 'group') class="active-tab" @endif data-view="groups">--}}
+								{{--										<span class="fas fa-users"></span> Groups</a>--}}
+								{{--								</div>--}}
 							</div>
 							{{-- tabs and lists --}}
-							<div class="m-body contacts-container">
+							<div class="m-body contacts-container !mt-[90px]">
 								{{-- Lists [Users/Group] --}}
 								{{-- ---------------- [ User Tab ] ---------------- --}}
 								<div class="@if($type == 'user') show @endif messenger-tab users-tab app-scroll"
@@ -399,7 +399,7 @@
 
 									{{-- Favorites --}}
 									<div class="favorites-section">
-										<p class="messenger-title">Favorites</p>
+										<p class="messenger-title">Preferiti</p>
 										<div class="messenger-favorites app-scroll-thin"></div>
 									</div>
 
@@ -408,8 +408,8 @@
 
 									{{-- Contact --}}
 									<div class="listOfContacts"
-									     style="width: 100%;height: calc(100% - 200px);position: relative;"></div>
-
+									     style="width: 100%;height: calc(100% - 200px);position: relative;">
+									</div>
 								</div>
 
 								{{-- ---------------- [ Group Tab ] ---------------- --}}
@@ -435,16 +435,14 @@
 						</div>
 
 						{{-- ----------------------Messaging side---------------------- --}}
-						<div class="messenger-messagingView">
+						<div class="messenger-messagingView border-0">
 							{{-- header title [conversation name] amd buttons --}}
 							<div class="m-header m-header-messaging">
 								<nav class="chatify-d-flex chatify-justify-content-between chatify-align-items-center">
 									{{-- header back button, avatar and user name --}}
-									<div class="chatify-d-flex chatify-justify-content-between chatify-align-items-center">
+									<div class="flex items-center space-x-3">
 										<a href="#" class="show-listView"><i class="fas fa-arrow-left"></i></a>
-										<div class="avatar av-s header-avatar"
-										     style="margin: 0px 10px; margin-top: -5px; margin-bottom: -5px;">
-										</div>
+										<div class="avatar av-s header-avatar inline-block !h-9 !w-9 rounded-full"></div>
 										<a href="#" class="user-name">{{ config('chatify.name') }}</a>
 									</div>
 									{{-- header buttons --}}
@@ -456,26 +454,27 @@
 								</nav>
 							</div>
 							{{-- Internet connection --}}
-							<div class="internet-connection">
-								<span class="ic-connected">Connected</span>
-								<span class="ic-connecting">Connecting...</span>
-								<span class="ic-noInternet">No internet access</span>
+							<div class="internet-connection top-14">
+								<span class="ic-connected">Connesso</span>
+								<span class="ic-connecting">Connetto...</span>
+								<span class="ic-noInternet">Nessun accesso ad internet</span>
 							</div>
 							{{-- Messaging area --}}
 							<div class="m-body messages-container app-scroll">
 								<div class="messages">
 									<p class="message-hint center-el">
-										<span>Please select a chat to start messaging</span></p>
+										<span>Seleziona una chat per iniziare</span>
+									</p>
 								</div>
 								{{-- Typing indicator --}}
 								<div class="typing-indicator">
 									<div class="message-card typing">
 										<p>
-                        <span class="typing-dots">
-                            <span class="dot dot-1"></span>
-                            <span class="dot dot-2"></span>
-                            <span class="dot dot-3"></span>
-                        </span>
+					                        <span class="typing-dots">
+					                            <span class="dot dot-1"></span>
+					                            <span class="dot dot-2"></span>
+					                            <span class="dot dot-3"></span>
+					                        </span>
 										</p>
 									</div>
 								</div>
@@ -484,7 +483,7 @@
 							</div>
 						</div>
 						{{-- ---------------------- Info side ---------------------- --}}
-						<div class="messenger-infoView app-scroll">
+						<div class="messenger-infoView app-scroll border-0 border-l">
 							{{-- nav actions --}}
 							<nav>
 								<a href="#"><i class="fas fa-times"></i></a>
