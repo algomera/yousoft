@@ -190,10 +190,11 @@
 				'last_page'       => $lastPage,
 				'last_message_id' => collect($messages->items())->last()->id ?? null,
 				'messages'        => '',
+				'user'            => User::where('id', $request['id'])->first()
 			];
 			// if there is no messages yet.
 			if ($totalMessages < 1) {
-				$response['messages'] = '<p class="message-hint center-el"><span>Say \'hi\' and start messaging</span></p>';
+				$response['messages'] = '<p class="message-hint center-el"><span>Scrivi un messaggio per iniziare la conversazione con <strong>'. $response['user']->name .'</strong></span></p>';
 				return Response::json($response);
 			}
 			if (count($messages->items()) < 1) {
@@ -234,8 +235,8 @@
 			$users = Message::join('users', function ($join) {
 				$join->on('ch_messages.from_id', '=', 'users.id')->orOn('ch_messages.to_id', '=', 'users.id');
 			})->where(function ($q) {
-					$q->where('ch_messages.from_id', Auth::user()->id)->orWhere('ch_messages.to_id', Auth::user()->id);
-				})->where('users.id', '!=', Auth::user()->id)->select('users.*', DB::raw('MAX(ch_messages.created_at) max_created_at'))->orderBy('max_created_at', 'desc')->groupBy('users.id')->paginate($request->per_page ?? $this->perPage);
+				$q->where('ch_messages.from_id', Auth::user()->id)->orWhere('ch_messages.to_id', Auth::user()->id);
+			})->where('users.id', '!=', Auth::user()->id)->select('users.*', DB::raw('MAX(ch_messages.created_at) max_created_at'))->orderBy('max_created_at', 'desc')->groupBy('users.id')->paginate($request->per_page ?? $this->perPage);
 			$usersList = $users->items();
 			if (count($usersList) > 0) {
 				$contacts = '';
@@ -243,7 +244,8 @@
 					$contacts .= Chatify::getContactItem($user);
 				}
 			} else {
-				$contacts = '<p class="message-hint center-el"><span>Your contact list is empty</span></p>';
+//				$contacts = '<p class="message-hint center-el"><span>Your contact list is empty</span></p>';
+				$contacts = '';
 			}
 			return Response::json([
 				'contacts'  => $contacts,
@@ -328,24 +330,23 @@
 		public function search(Request $request) {
 			$getRecords = null;
 			$input = trim(filter_var($request['input']));
-			if(Auth::user()->isAdmin()) {
-				$records = Auth::user()->whereHas('user_data', function($q) use($input) {
+			if (Auth::user()->isAdmin()) {
+				$records = Auth::user()->whereHas('user_data', function ($q) use ($input) {
 					$q->where('name', 'LIKE', "%{$input}%");
 				})->where('id', '!=', Auth::user()->id)->paginate($request->per_page ?? $this->perPage);
 			}
-			if(Auth::user()->childs->count()) {
-				$records = Auth::user()->childs()->whereHas('user_data', function($q) use($input) {
+			if (Auth::user()->childs->count()) {
+				$records = Auth::user()->childs()->whereHas('user_data', function ($q) use ($input) {
 					$q->where('name', 'LIKE', "%{$input}%");
 				})->where('id', '!=', Auth::user()->id)->paginate($request->per_page ?? $this->perPage);
-			} elseif(Auth::user()->parents->count()) {
-				$records = Auth::user()->parents()->whereHas('user_data', function($q) use($input) {
+			} else if (Auth::user()->parents->count()) {
+				$records = Auth::user()->parents()->whereHas('user_data', function ($q) use ($input) {
 					$q->where('name', 'LIKE', "%{$input}%");
 				})->where('id', '!=', Auth::user()->id)->paginate($request->per_page ?? $this->perPage);
 			}
-
-//			$records = User::whereHas('user_data', function($q) use($input) {
-//				$q->where('name', 'LIKE', "%{$input}%");
-//			})->where('id', '!=', Auth::user()->id)->paginate($request->per_page ?? $this->perPage);
+			//			$records = User::whereHas('user_data', function($q) use($input) {
+			//				$q->where('name', 'LIKE', "%{$input}%");
+			//			})->where('id', '!=', Auth::user()->id)->paginate($request->per_page ?? $this->perPage);
 			foreach ($records->items() as $record) {
 				$getRecords .= view('Chatify::layouts.listItem', [
 					'get'  => 'search_item',

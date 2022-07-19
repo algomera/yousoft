@@ -376,14 +376,17 @@
 									<span class="text-gray-700">Messaggi</span>
 								</div>
 								{{-- header buttons --}}
-								<nav class="m-header-right">
-									<x-icon name="cog"
-									        class="settings-btn w-5 h-5 cursor-pointer !text-gray-500 hover:!text-indigo-500"></x-icon>
-									<a href="#" class="listView-x"><i class="fas fa-times"></i></a>
+								<nav class="m-header-right flex items-center">
+{{--									<x-icon name="cog"--}}
+{{--									        class="settings-btn w-5 h-5 cursor-pointer !text-gray-500 hover:!text-indigo-500"></x-icon>--}}
+									<a href="#" class="listView-x">
+										<x-icon name="close"
+										        class="w-5 h-5 cursor-pointer !text-gray-500 hover:!text-indigo-500"></x-icon>
+									</a>
 								</nav>
 							</nav>
 							{{-- Search input --}}
-							<input type="text" class="messenger-search" placeholder="Cerca.."/>
+							<x-input type="text" name="search" class="messenger-search" placeholder="Cerca.."/>
 						</div>
 						{{-- tabs and lists --}}
 						<div class="m-body contacts-container !mt-[80px]">
@@ -423,14 +426,16 @@
 							<nav class="chatify-d-flex chatify-justify-content-between chatify-align-items-center">
 								{{-- header back button, avatar and user name --}}
 								<div class="flex items-center space-x-3">
-									<a href="#" class="show-listView"><i class="fas fa-arrow-left"></i></a>
+									<a href="#" class="show-listView">
+										<x-icon name="arrow-left" class="w-5 h-5 cursor-pointer !text-indigo-500"></x-icon>
+									</a>
 									<div class="avatar av-s header-avatar inline-block !h-9 !w-9 rounded-full"></div>
 									<a href="#" class="user-name">{{ config('chatify.name') }}</a>
 								</div>
 								{{-- header buttons --}}
 								<nav class="m-header-right">
 									{{--										<x-icon name="star" class="add-to-favorite w-5 h-5"></x-icon>--}}
-									<x-icon name="information-circle" class="show-infoSide w-5 h-5"></x-icon>
+									<x-icon name="information-circle" class="show-infoSide w-5 h-5 cursor-pointer !text-indigo-500"></x-icon>
 								</nav>
 							</nav>
 						</div>
@@ -467,7 +472,10 @@
 					<div class="messenger-infoView hidden app-scroll border-0 border-l">
 						{{-- nav actions --}}
 						<nav>
-							<a href="#"><i class="fas fa-times"></i></a>
+							<a href="#" class="block">
+							<x-icon name="close"
+							        class="w-5 h-5 cursor-pointer !text-gray-500 hover:!text-indigo-500"></x-icon>
+							</a>
 						</nav>
 						{!! view('Chatify::layouts.info')->render() !!}
 					</div>
