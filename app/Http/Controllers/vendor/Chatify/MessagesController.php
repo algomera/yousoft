@@ -21,7 +21,7 @@
 	class MessagesController extends Controller
 	{
 		protected $perPage = 30;
-		protected $messengerFallbackColor = '#2180f3';
+		protected $messengerFallbackColor = '#5f6fe1';
 
 		/**
 		 * Authenticate the connection for pusher
