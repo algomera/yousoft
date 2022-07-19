@@ -328,6 +328,11 @@
 		public function search(Request $request) {
 			$getRecords = null;
 			$input = trim(filter_var($request['input']));
+			if(Auth::user()->isAdmin()) {
+				$records = Auth::user()->whereHas('user_data', function($q) use($input) {
+					$q->where('name', 'LIKE', "%{$input}%");
+				})->where('id', '!=', Auth::user()->id)->paginate($request->per_page ?? $this->perPage);
+			}
 			if(Auth::user()->childs->count()) {
 				$records = Auth::user()->childs()->whereHas('user_data', function($q) use($input) {
 					$q->where('name', 'LIKE', "%{$input}%");
