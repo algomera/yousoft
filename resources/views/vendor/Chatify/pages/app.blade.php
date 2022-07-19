@@ -365,131 +365,111 @@
 						class="absolute inset-0 z-10 h-screen bg-gray-500/75 xl:hidden"
 				></div>
 				<!-- Start main area-->
-				<div>
-					<div class="messenger">
-						{{-- ----------------------Users/Groups lists side---------------------- --}}
-						<div class="messenger-listView border-0 border-r">
-							{{-- Header and search bar --}}
-							<div class="m-header">
-								<nav>
-									<a href="#"><i class="fas fa-inbox"></i> <span
-												class="messenger-headTitle">Messaggi</span> </a>
-									{{-- header buttons --}}
-									<nav class="m-header-right">
-										<a href="#"><i class="fas fa-cog settings-btn"></i></a>
-										<a href="#" class="listView-x"><i class="fas fa-times"></i></a>
-									</nav>
+				<div class="messenger">
+					{{-- ----------------------Users/Groups lists side---------------------- --}}
+					<div class="messenger-listView xl:max-w-sm border-0 border-r">
+						{{-- Header and search bar --}}
+						<div class="m-header">
+							<nav class="flex items-center justify-between">
+								<div class="flex items-center">
+									<x-icon name="chat" class="w-5 h-5 !text-gray-700"></x-icon>
+									<span class="text-gray-700">Messaggi</span>
+								</div>
+								{{-- header buttons --}}
+								<nav class="m-header-right">
+									<x-icon name="cog"
+									        class="settings-btn w-5 h-5 cursor-pointer !text-gray-500 hover:!text-indigo-500"></x-icon>
+									<a href="#" class="listView-x"><i class="fas fa-times"></i></a>
 								</nav>
-								{{-- Search input --}}
-								<input type="text" class="messenger-search" placeholder="Search"/>
-								{{-- Tabs --}}
-								{{--								<div class="messenger-listView-tabs">--}}
-								{{--									<a href="#" @if($type == 'user') class="active-tab" @endif data-view="users">--}}
-								{{--										<span class="far fa-user"></span> People</a>--}}
-								{{--									<a href="#" @if($type == 'group') class="active-tab" @endif data-view="groups">--}}
-								{{--										<span class="fas fa-users"></span> Groups</a>--}}
-								{{--								</div>--}}
+							</nav>
+							{{-- Search input --}}
+							<input type="text" class="messenger-search" placeholder="Cerca.."/>
+						</div>
+						{{-- tabs and lists --}}
+						<div class="m-body contacts-container !mt-[80px]">
+							{{-- Lists [Users] --}}
+							{{-- ---------------- [ User Tab ] ---------------- --}}
+							<div class="@if($type == 'user') show @endif messenger-tab users-tab app-scroll"
+							     data-view="users">
+
+								{{-- Favorites --}}
+								<div class="favorites-section hidden">
+									<p class="messenger-title">Preferiti</p>
+									<div class="messenger-favorites app-scroll-thin"></div>
+								</div>
+
+								{{-- Saved Messages --}}
+								{!! view('Chatify::layouts.listItem', ['get' => 'saved']) !!}
+
+								{{-- Contact --}}
+								<div class="listOfContacts"></div>
 							</div>
-							{{-- tabs and lists --}}
-							<div class="m-body contacts-container !mt-[90px]">
-								{{-- Lists [Users/Group] --}}
-								{{-- ---------------- [ User Tab ] ---------------- --}}
-								<div class="@if($type == 'user') show @endif messenger-tab users-tab app-scroll"
-								     data-view="users">
 
-									{{-- Favorites --}}
-									<div class="favorites-section">
-										<p class="messenger-title">Preferiti</p>
-										<div class="messenger-favorites app-scroll-thin"></div>
-									</div>
-
-									{{-- Saved Messages --}}
-									{!! view('Chatify::layouts.listItem', ['get' => 'saved']) !!}
-
-									{{-- Contact --}}
-									<div class="listOfContacts"
-									     style="width: 100%;height: calc(100% - 200px);position: relative;">
-									</div>
-								</div>
-
-								{{-- ---------------- [ Group Tab ] ---------------- --}}
-								<div class="@if($type == 'group') show @endif messenger-tab groups-tab app-scroll"
-								     data-view="groups">
-									{{-- items --}}
-									<p style="text-align: center;color:grey;margin-top:30px">
-										<a target="_blank" style="color:{{$messengerColor}};"
-										   href="https://chatify.munafio.com/notes#groups-feature">Click here</a> for
-										more info!
-									</p>
-								</div>
-
-								{{-- ---------------- [ Search Tab ] ---------------- --}}
-								<div class="messenger-tab search-tab app-scroll" data-view="search">
-									{{-- items --}}
-									<p class="messenger-title">Search</p>
-									<div class="search-records">
-										<p class="message-hint center-el"><span>Type to search..</span></p>
-									</div>
+							{{-- ---------------- [ Search Tab ] ---------------- --}}
+							<div class="messenger-tab search-tab app-scroll" data-view="search">
+								{{-- items --}}
+								<p class="messenger-title">Risultati trovati</p>
+								<div class="search-records">
+									<p class="message-hint center-el"><span>Type to search..</span></p>
 								</div>
 							</div>
 						</div>
+					</div>
 
-						{{-- ----------------------Messaging side---------------------- --}}
-						<div class="messenger-messagingView border-0">
-							{{-- header title [conversation name] amd buttons --}}
-							<div class="m-header m-header-messaging">
-								<nav class="chatify-d-flex chatify-justify-content-between chatify-align-items-center">
-									{{-- header back button, avatar and user name --}}
-									<div class="flex items-center space-x-3">
-										<a href="#" class="show-listView"><i class="fas fa-arrow-left"></i></a>
-										<div class="avatar av-s header-avatar inline-block !h-9 !w-9 rounded-full"></div>
-										<a href="#" class="user-name">{{ config('chatify.name') }}</a>
-									</div>
-									{{-- header buttons --}}
-									<nav class="m-header-right">
-										<a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a>
-										<a href="/"><i class="fas fa-home"></i></a>
-										<a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
-									</nav>
-								</nav>
-							</div>
-							{{-- Internet connection --}}
-							<div class="internet-connection top-14">
-								<span class="ic-connected">Connesso</span>
-								<span class="ic-connecting">Connetto...</span>
-								<span class="ic-noInternet">Nessun accesso ad internet</span>
-							</div>
-							{{-- Messaging area --}}
-							<div class="m-body messages-container app-scroll">
-								<div class="messages">
-									<p class="message-hint center-el">
-										<span>Seleziona una chat per iniziare</span>
-									</p>
+					{{-- ----------------------Messaging side---------------------- --}}
+					<div class="messenger-messagingView border-0">
+						{{-- header title [conversation name] amd buttons --}}
+						<div class="m-header m-header-messaging">
+							<nav class="chatify-d-flex chatify-justify-content-between chatify-align-items-center">
+								{{-- header back button, avatar and user name --}}
+								<div class="flex items-center space-x-3">
+									<a href="#" class="show-listView"><i class="fas fa-arrow-left"></i></a>
+									<div class="avatar av-s header-avatar inline-block !h-9 !w-9 rounded-full"></div>
+									<a href="#" class="user-name">{{ config('chatify.name') }}</a>
 								</div>
-								{{-- Typing indicator --}}
-								<div class="typing-indicator">
-									<div class="message-card typing">
-										<p>
+								{{-- header buttons --}}
+								<nav class="m-header-right">
+									{{--										<x-icon name="star" class="add-to-favorite w-5 h-5"></x-icon>--}}
+									<x-icon name="information-circle" class="show-infoSide w-5 h-5"></x-icon>
+								</nav>
+							</nav>
+						</div>
+						{{-- Internet connection --}}
+						<div class="internet-connection top-14">
+							<span class="ic-connected">Connesso</span>
+							<span class="ic-connecting">Connetto...</span>
+							<span class="ic-noInternet">Nessun accesso ad internet</span>
+						</div>
+						{{-- Messaging area --}}
+						<div class="m-body messages-container app-scroll !py-4">
+							<div class="messages">
+								<p class="message-hint center-el">
+									<span>Seleziona una chat per iniziare</span>
+								</p>
+							</div>
+							{{-- Typing indicator --}}
+							<div class="typing-indicator">
+								<div class="message-card typing">
+									<p>
 					                        <span class="typing-dots">
 					                            <span class="dot dot-1"></span>
 					                            <span class="dot dot-2"></span>
 					                            <span class="dot dot-3"></span>
 					                        </span>
-										</p>
-									</div>
+									</p>
 								</div>
-								{{-- Send Message Form --}}
-								@include('Chatify::layouts.sendForm')
 							</div>
+							{{-- Send Message Form --}}
+							@include('Chatify::layouts.sendForm')
 						</div>
-						{{-- ---------------------- Info side ---------------------- --}}
-						<div class="messenger-infoView app-scroll border-0 border-l">
-							{{-- nav actions --}}
-							<nav>
-								<a href="#"><i class="fas fa-times"></i></a>
-							</nav>
-							{!! view('Chatify::layouts.info')->render() !!}
-						</div>
+					</div>
+					{{-- ---------------------- Info side ---------------------- --}}
+					<div class="messenger-infoView hidden app-scroll border-0 border-l">
+						{{-- nav actions --}}
+						<nav>
+							<a href="#"><i class="fas fa-times"></i></a>
+						</nav>
+						{!! view('Chatify::layouts.info')->render() !!}
 					</div>
 				</div>
 				<!-- End main area -->

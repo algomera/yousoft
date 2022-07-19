@@ -354,7 +354,7 @@
 				])->render();
 			}
 			if ($records->total() < 1) {
-				$getRecords = '<p class="message-hint center-el"><span>Nothing to show.</span></p>';
+				$getRecords = '<p class="message-hint center-el"><span>Nessun risultato</span></p>';
 			}
 			// send the response
 			return Response::json([

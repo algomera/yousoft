@@ -130,7 +130,7 @@
 	@case('chevron-right')
 		<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
 		     stroke="currentColor" stroke-width="2">
-			<path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+			<path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
 		</svg>
 		@break
 	@case('chevron-left')
@@ -511,30 +511,71 @@
 		@break
 
 	@case('sparkles')
-		<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+		<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
 		     stroke="currentColor">
 			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
 			      d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
 		</svg>
 		@break
 	@case('copy')
-		<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+		<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
 		     stroke="currentColor">
 			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
 			      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
 		</svg>
 		@break
 	@case('paste')
-		<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+		<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
 		     stroke="currentColor">
 			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
 			      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
 		</svg>
 		@break
-		@case('chat')
-		<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+	@case('chat')
+		<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
 		     stroke="currentColor">
-			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+			      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+		</svg>
+		@break
+	@case('information-circle')
+		<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+		     stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+			      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+		</svg>
+		@break
+	@case('star')
+		<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+		     stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+			      d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+		</svg>
+		@break
+
+	@case('cog')
+		<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+		     stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+			      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+			      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+		</svg>
+		@break
+
+	@case('bookmark')
+		<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+		     stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+			      d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+		</svg>
+		@break
+
+	@case('paper-clip')
+		<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+		     stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+			      d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/>
 		</svg>
 		@break
 
