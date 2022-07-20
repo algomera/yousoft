@@ -2,6 +2,7 @@
 /public/js/*
 /node_modules
 /vendor
+/storage/**
 /storage/app/public/livewire-tmp
 /storage/app/public/practices
 /storage/app/public/folder
