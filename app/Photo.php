@@ -21,7 +21,7 @@
 		}
 
 		public function getPathAttribute() {
-			return '/storage/' . $this->image;
+			return 'storage/' . $this->image;
 		}
 
 		public function practice() {
