@@ -22,8 +22,9 @@
 			$this->practice_id = $practice_id;
 		}
 
-		public static function modalMaxWidth(): string {
-			return 'full';
+		public static function modalMaxWidthClass(): string
+		{
+			return 'sm:max-w-[98vw] sm:min-h-[850px] sm:max-h-[92vh]';
 		}
 
 		public function render() {
