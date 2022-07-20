@@ -54,7 +54,7 @@
 				'position'    => 'nullable'
 			]);
 			$extension = $request->file('image')->extension();
-			$pathFile = $request->file('image')->storePubliclyAs('practices/' . $validated['practice_id'] . '/images', $request->name . '_#_' . now()->timestamp . '.' . $extension);
+			$pathFile = $request->file('image')->storeAs('practices/' . $validated['practice_id'] . '/images', $request->name . '_#_' . now()->timestamp . '.' . $extension);
 			$validated['image'] = $pathFile;
 			Photo::create($validated);
 			return response('Upload photo success!');
