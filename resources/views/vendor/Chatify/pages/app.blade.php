@@ -371,14 +371,14 @@
 						{{-- Header and search bar --}}
 						<div class="m-header">
 							<nav class="flex items-center justify-between !my-1 sm:!my-2">
-{{--								<div class="flex items-center">--}}
-{{--									<x-icon name="chat" class="w-5 h-5 !text-gray-700"></x-icon>--}}
-{{--									<span class="text-gray-700">Messaggi</span>--}}
-{{--								</div>--}}
+								{{--								<div class="flex items-center">--}}
+								{{--									<x-icon name="chat" class="w-5 h-5 !text-gray-700"></x-icon>--}}
+								{{--									<span class="text-gray-700">Messaggi</span>--}}
+								{{--								</div>--}}
 								{{-- header buttons --}}
 								<nav class="m-header-right flex items-center">
-{{--									<x-icon name="cog"--}}
-{{--									        class="settings-btn w-5 h-5 cursor-pointer !text-gray-500 hover:!text-indigo-500"></x-icon>--}}
+									{{--									<x-icon name="cog"--}}
+									{{--									        class="settings-btn w-5 h-5 cursor-pointer !text-gray-500 hover:!text-indigo-500"></x-icon>--}}
 									<a href="#" class="listView-x md:!hidden">
 										<x-icon name="close"
 										        class="w-5 h-5 cursor-pointer !text-gray-500 hover:!text-indigo-500"></x-icon>
@@ -386,7 +386,8 @@
 								</nav>
 							</nav>
 							{{-- Search input --}}
-							<x-input type="text" name="search" class="messenger-search !placeholder-gray-400" placeholder="Cerca.."/>
+							<x-input type="text" name="search" class="messenger-search !placeholder-gray-400"
+							         placeholder="Cerca.."/>
 						</div>
 						{{-- tabs and lists --}}
 						<div class="m-body contacts-container !mt-[40px] sm:!mt-[71px] md:!mt-[48px]">
@@ -427,7 +428,8 @@
 								{{-- header back button, avatar and user name --}}
 								<div class="flex items-center space-x-3">
 									<a href="#" class="show-listView md:!hidden">
-										<x-icon name="arrow-left" class="w-5 h-5 cursor-pointer !text-indigo-500"></x-icon>
+										<x-icon name="arrow-left"
+										        class="w-5 h-5 cursor-pointer !text-indigo-500"></x-icon>
 									</a>
 									<div class="avatar av-s header-avatar inline-block !h-9 !w-9 rounded-full"></div>
 									<a href="#" class="user-name">{{ config('chatify.name') }}</a>
@@ -435,7 +437,8 @@
 								{{-- header buttons --}}
 								<nav class="m-header-right">
 									{{--										<x-icon name="star" class="add-to-favorite w-5 h-5"></x-icon>--}}
-									<x-icon name="information-circle" class="show-infoSide w-5 h-5 cursor-pointer !text-indigo-500"></x-icon>
+									<x-icon name="information-circle"
+									        class="show-infoSide w-5 h-5 cursor-pointer !text-indigo-500"></x-icon>
 								</nav>
 							</nav>
 						</div>
@@ -473,8 +476,8 @@
 						{{-- nav actions --}}
 						<nav>
 							<a href="#" class="block">
-							<x-icon name="close"
-							        class="w-5 h-5 cursor-pointer !text-gray-500 hover:!text-indigo-500"></x-icon>
+								<x-icon name="close"
+								        class="w-5 h-5 cursor-pointer !text-gray-500 hover:!text-indigo-500"></x-icon>
 							</a>
 						</nav>
 						{!! view('Chatify::layouts.info')->render() !!}
