@@ -389,7 +389,7 @@
 							<x-input type="text" name="search" class="messenger-search !placeholder-gray-400" placeholder="Cerca.."/>
 						</div>
 						{{-- tabs and lists --}}
-						<div class="m-body contacts-container !mt-[40px] sm:!mt-[71px] md:!mt-[50px]">
+						<div class="m-body contacts-container !mt-[40px] sm:!mt-[71px] md:!mt-[48px]">
 							{{-- Lists [Users] --}}
 							{{-- ---------------- [ User Tab ] ---------------- --}}
 							<div class="@if($type == 'user') show @endif messenger-tab users-tab app-scroll"

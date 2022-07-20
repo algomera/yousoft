@@ -84,7 +84,16 @@
 			'allowed_files'       => (array)[
 				'zip',
 				'rar',
-				'txt'
+				'txt',
+				'pdf',
+				'doc',
+				'docx',
+				'xls',
+				'xlsx',
+				'ppt',
+				'pptx',
+				'dgn',
+				'cad'
 			],
 			'max_upload_size'     => env('CHATIFY_MAX_FILE_SIZE', 150),
 			// MB

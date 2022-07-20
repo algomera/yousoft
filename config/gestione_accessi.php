@@ -20,6 +20,7 @@
 		],
 		'business' => [
 			'collaborator' => 'Collaboratore', // se creato da business, viene automaticamente associato SOLO ad esso
+			'fornitore' => 'Fornitore', // se creato da business, viene automaticamente associato SOLO ad esso
 		],
 		'collaborator' => [
 			//
