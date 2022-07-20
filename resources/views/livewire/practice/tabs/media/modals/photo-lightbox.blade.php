@@ -24,7 +24,7 @@
 			@isset($photo->position)
 				<div class="flex flex-col text-xs text-gray-500">
 					<span class="font-bold">Posizione:</span>
-					<span>{{ $photo->position }}</span>
+					<span class="underline" x-on:click.stop="window.open('http://www.google.com/maps/place/{{$photo->position}}', '_blank')">{{ $photo->position }}</span>
 				</div>
 			@endisset
 		</div>

@@ -14,7 +14,9 @@
 					<p class="block text-xs font-medium text-gray-500 pointer-events-none">{{ $video->created_at->format('d/m/Y') }}</p>
 				</div>
 				@isset($video->position)
-					<x-icon name="location-marker" class="w-6 h-6 text-indigo-500"></x-icon>
+					<div x-on:click.stop="window.open('http://www.google.com/maps/place/{{$video->position}}', '_blank')">
+						<x-icon name="location-marker" class="w-6 h-6 text-indigo-500"></x-icon>
+					</div>
 				@endisset
 			</div>
 		</div>
