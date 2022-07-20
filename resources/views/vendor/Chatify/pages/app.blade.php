@@ -367,7 +367,7 @@
 				<!-- Start main area-->
 				<div class="messenger">
 					{{-- ----------------------Users/Groups lists side---------------------- --}}
-					<div class="messenger-listView xl:max-w-sm border-0 border-r">
+					<div class="messenger-listView fixed border-0 border-r shadow-none top-16 w-full md:max-w-xs lg:relative lg:top-0 xl:max-w-sm xl:top-0 ">
 						{{-- Header and search bar --}}
 						<div class="m-header">
 							<nav class="flex items-center justify-between">
@@ -420,7 +420,7 @@
 					</div>
 
 					{{-- ----------------------Messaging side---------------------- --}}
-					<div class="messenger-messagingView border-0">
+					<div class="messenger-messagingView !relative border-0">
 						{{-- header title [conversation name] amd buttons --}}
 						<div class="m-header m-header-messaging">
 							<nav class="chatify-d-flex chatify-justify-content-between chatify-align-items-center">
