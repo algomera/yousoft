@@ -1,5 +1,5 @@
 <div class="lg:flex">
-	<video x-ref="video" src="{{ $video->path }}" class="w-full h-full lg:max-w-[450px] lg:max-h-[450px] aspect-square" controls
+	<video x-ref="video" src="{{ asset($video->path) }}" class="w-full h-full lg:max-w-[450px] lg:max-h-[450px] aspect-square" controls
 	       preload="auto"></video>
 	<div class="p-4 w-full">
 		<div class="flex flex-col space-y-2">

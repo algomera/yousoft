@@ -21,7 +21,7 @@
 		}
 
 		public function getPathAttribute() {
-			return '/storage/' . $this->video;
+			return 'storage/' . $this->video;
 		}
 
 		public function practice() {
