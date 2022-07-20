@@ -16,7 +16,7 @@
 		];
 
 		public function getNameAttribute($value) {
-			$v = explode('_#_', $value);
+			$v = explode('_xxx_', $value);
 			return $v[0];
 		}
 
