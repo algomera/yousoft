@@ -19,6 +19,7 @@ class CreateVideosTable extends Migration
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
             $table->string('name')->nullable();
             $table->string('video')->nullable();
+			$table->string('poster')->nullable();
             $table->longText('description')->nullable();
             $table->string('reference')->nullable();
             $table->string('position')->nullable();

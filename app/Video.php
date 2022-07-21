@@ -6,19 +6,7 @@
 
 	class Video extends Model
 	{
-		protected $fillable = [
-			'practice_id',
-			'name',
-			'video',
-			'description',
-			'reference',
-			'inspection_date',
-		];
-
-		public function getNameAttribute($value) {
-			$v = explode('_xxx_', $value);
-			return $v[0];
-		}
+		protected $guarded = [];
 
 		public function getPathAttribute() {
 			return 'storage/' . $this->video;

@@ -2,6 +2,7 @@
 
 	namespace App\Http\Controllers;
 
+	use FFMpeg\FFMpeg;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Auth;
 	use App\{Anagrafica, Applicant, Practice, Photo, User, Video};
@@ -9,6 +10,7 @@
 	use App\Http\Resources\PhotoResource;
 	use App\Http\Resources\PracticeResource;
 	use Illuminate\Support\Facades\Log;
+	use Illuminate\Support\Str;
 
 	class ApiController extends Controller
 	{
@@ -54,7 +56,7 @@
 				'position'    => 'nullable'
 			]);
 			$extension = $request->file('image')->extension();
-			$pathFile = $request->file('image')->storeAs('practices/' . $validated['practice_id'] . '/images', $request->name . '_xxx_' . now()->timestamp . '.' . $extension);
+			$pathFile = $request->file('image')->storeAs('practices/' . $validated['practice_id'] . '/photos/' . now()->timestamp, Str::slug($request->name) . '.' . $extension);
 			$validated['image'] = $pathFile;
 			Photo::create($validated);
 			return response('Upload photo success!');
@@ -74,14 +76,19 @@
 			$validated = $request->validate([
 				'practice_id'     => 'required',
 				'name'            => 'required|string',
-				'video'           => 'required|mimes:mp4,avi',
+				'video'           => 'required|mimes:mp4,avi,mov',
+				'poster'          => 'nullable',
 				'description'     => 'nullable',
 				'reference'       => 'nullable',
 				'inspection_date' => 'nullable'
 			]);
 			$extension = $request->file('video')->extension();
-			$pathFile = $request->file('video')->storeAs('practices/' . $validated['practice_id'] . '/videos', $request->name . '_xxx_' . now()->timestamp . '.' . $extension);
+			$pathFile = $request->file('video')->storeAs('practices/' . $validated['practice_id'] . '/videos/' . now()->timestamp, Str::slug($request->name) . '.' . $extension);
 			$validated['video'] = $pathFile;
+//			$ffmpeg = \FFMpeg\FFMpeg::create();
+//			$v = $ffmpeg->open($pathFile);
+//			$poster = $v->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(1));
+//			$validated['poster'] = $poster->save('practices/' . $validated['practice_id'] . '/videos/' . now()->timestamp . '/' . $request->name . '_poster.jpg');
 			Video::create($validated);
 			return response('Upload video success!');
 		}

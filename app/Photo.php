@@ -6,19 +6,7 @@
 
 	class Photo extends Model
 	{
-		protected $fillable = [
-			'practice_id',
-			'name',
-			'image',
-			'description',
-			'reference',
-			'position'
-		];
-
-		public function getNameAttribute($value) {
-			$v = explode('_xxx_', $value);
-			return $v[0];
-		}
+		protected $guarded = [];
 
 		public function getPathAttribute() {
 			return 'storage/' . $this->image;
