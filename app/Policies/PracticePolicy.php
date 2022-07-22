@@ -22,7 +22,7 @@
 		public function view(User $user, Practice $practice) {
 			if ($user->can('read_practices')) {
 				// Se Practice appartiene a User
-				if ($practice->user_id === $user->id) {
+				if ($practice->user_id == $user->id) {
 					return true;
 				}
 				// Se User è collegato ad un altro User
