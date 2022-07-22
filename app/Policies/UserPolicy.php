@@ -61,7 +61,7 @@ class UserPolicy
     {
 	    if ($user->can('update_users')) {
 		    // Se Practice appartiene a User
-		    if ($model->created_by->id === $user->id) {
+		    if ($model->created_by->id == $user->id) {
 			    return true;
 		    }
 	    }
@@ -79,7 +79,7 @@ class UserPolicy
     {
 	    if ($user->can('delete_users')) {
 		    // Se Practice appartiene a User
-		    if ($model->created_by->id === $user->id) {
+		    if ($model->created_by->id == $user->id) {
 			    return true;
 		    }
 	    }

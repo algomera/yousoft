@@ -71,7 +71,7 @@ class ContractualDocumentPolicy
     {
 	    if ($user->can('delete_contractual_documents')) {
 		    // Se Practice appartiene a User
-		    if ($contractualDocument->user_id === $user->id) {
+		    if ($contractualDocument->user_id == $user->id) {
 			    return true;
 		    }
 		    // Se User è collegato ad un altro User
@@ -85,7 +85,7 @@ class ContractualDocumentPolicy
 	public function upload(User $user, ContractualDocument $contractualDocument) {
 		if ($user->can('upload_contractual_documents')) {
 			// Se Practice appartiene a User
-			if ($contractualDocument->user_id === $user->id) {
+			if ($contractualDocument->user_id == $user->id) {
 				return true;
 			}
 		}
@@ -95,7 +95,7 @@ class ContractualDocumentPolicy
 	public function download(User $user, ContractualDocument $contractualDocument) {
 		if ($user->can('download_contractual_documents')) {
 			// Se Practice appartiene a User
-			if ($contractualDocument->user_id === $user->id) {
+			if ($contractualDocument->user_id == $user->id) {
 				return true;
 			}
 			// Se User è collegato ad un altro User

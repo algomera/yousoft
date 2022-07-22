@@ -36,7 +36,7 @@ class AnagraficaPolicy
     {
 	    if ($user->can('read_anagrafiche')) {
 		    // Se Practice appartiene a User
-		    if ($anagrafica->user_id === $user->id) {
+		    if ($anagrafica->user_id == $user->id) {
 			    return true;
 		    }
 		    // Se User è collegato ad un altro User
@@ -72,7 +72,7 @@ class AnagraficaPolicy
     {
 	    if ($user->can('update_anagrafiche')) {
 		    // Se Practice appartiene a User
-		    if ($anagrafica->user_id === $user->id) {
+		    if ($anagrafica->user_id == $user->id) {
 			    return true;
 		    }
 		    // Se User è collegato ad un altro User

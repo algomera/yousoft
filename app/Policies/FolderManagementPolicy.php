@@ -34,7 +34,7 @@
 		public function view(User $user, Folder $folder) {
 			if ($user->can('read_folders')) {
 				// Se Practice appartiene a User
-				if ($folder->user_id === $user->id) {
+				if ($folder->user_id == $user->id) {
 					return true;
 				}
 				// Se User è collegato ad un altro User
@@ -68,7 +68,7 @@
 		public function update(User $user, Folder $folder) {
 			if ($user->can('update_folders')) {
 				// Se Practice appartiene a User
-				if ($folder->user_id === $user->id) {
+				if ($folder->user_id == $user->id) {
 					return true;
 				}
 				// Se User è collegato ad un altro User
@@ -89,7 +89,7 @@
 		public function delete(User $user, Folder $folder) {
 			if ($user->can('delete_folders')) {
 				// Se Practice appartiene a User
-				if ($folder->user_id === $user->id) {
+				if ($folder->user_id == $user->id) {
 					return true;
 				}
 				// Se User è collegato ad un altro User
@@ -110,7 +110,7 @@
 		public function uploadFiles(User $user, Folder $folder) {
 			if ($user->can('upload_folder_files')) {
 				// Se Practice appartiene a User
-				if ($folder->user_id === $user->id) {
+				if ($folder->user_id == $user->id) {
 					return true;
 				}
 				// Se User è collegato ad un altro User
@@ -131,7 +131,7 @@
 		public function downloadFiles(User $user, Folder $folder) {
 			if ($user->can('download_folder_files')) {
 				// Se Practice appartiene a User
-				if ($folder->user_id === $user->id) {
+				if ($folder->user_id == $user->id) {
 					return true;
 				}
 				// Se User è collegato ad un altro User
@@ -152,7 +152,7 @@
 		public function deleteFiles(User $user, Folder $folder) {
 			if ($user->can('delete_folder_files')) {
 				// Se Practice appartiene a User
-				if ($folder->user_id === $user->id) {
+				if ($folder->user_id == $user->id) {
 					return true;
 				}
 				// Se User è collegato ad un altro User

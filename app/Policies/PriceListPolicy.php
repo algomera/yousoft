@@ -74,7 +74,7 @@ class PriceListPolicy
     {
 	    if ($user->can('delete_price_lists')) {
 		    // Se Practice appartiene a User
-		    if ($computoPriceList->user_id === $user->id) {
+		    if ($computoPriceList->user_id == $user->id) {
 			    return true;
 		    }
 		    // Se User è collegato ad un altro User
@@ -88,7 +88,7 @@ class PriceListPolicy
 	public function upload(User $user, ComputoPriceList $computoPriceList) {
 		if ($user->can('upload_price_lists')) {
 			// Se Practice appartiene a User
-			if ($computoPriceList->user_id === $user->id) {
+			if ($computoPriceList->user_id == $user->id) {
 				return true;
 			}
 			// Se User è collegato ad un altro User
