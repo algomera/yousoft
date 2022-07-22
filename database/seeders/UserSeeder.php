@@ -1,5 +1,7 @@
 <?php
 
+	namespace Database\Seeders;
+
 	use App\Helpers\ContractualDocuments;
 	use App\UserData;
 	use Illuminate\Database\Seeder;
@@ -57,7 +59,7 @@
 				'password' => bcrypt('password'),
 			]);
 			$forn = User::create([
-				'email' => 'fornitore@example.test',
+				'email'    => 'fornitore@example.test',
 				'password' => bcrypt('password'),
 			]);
 			// Creo UserData per admin

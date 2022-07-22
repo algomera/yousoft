@@ -19,16 +19,16 @@
 
 	<!-- Styles -->
 	<link rel='stylesheet' href='https://unpkg.com/nprogress@0.2.0/nprogress.css'/>
-	<link href="{{ mix('css/chatify/style.css') }}" rel="stylesheet"/>
-	<link href="{{ mix('css/chatify/'.$dark_mode.'.mode.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('css/chatify/style.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('css/chatify/'.$dark_mode.'.mode.css') }}" rel="stylesheet"/>
 	<link rel="stylesheet" href="{{ mix('css/app.css') }}">
 	<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css"/>
 
 	<!-- Scripts -->
 	<script
 			src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="{{ mix('js/chatify/font.awesome.min.js') }}"></script>
-	<script src="{{ mix('js/chatify/autosize.js') }}"></script>
+	<script src="{{ asset('js/chatify/font.awesome.min.js') }}"></script>
+	<script src="{{ asset('js/chatify/autosize.js') }}"></script>
 	<script src="{{ mix('js/app.js') }}" defer></script>
 	<script src='https://unpkg.com/nprogress@0.2.0/nprogress.js'></script>
 

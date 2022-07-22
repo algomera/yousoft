@@ -1,13 +1,15 @@
 <?php
 
-	use App\{Http\Controllers\PageController,
+	use App\{Http\Controllers\CondominiController,
+		Http\Controllers\PageController,
 		Http\Livewire\Practice\Index as PracticeIndex,
 		Http\Livewire\Practice\Show as PracticeShow,
 		Http\Livewire\Anagrafica\Index as AnagraficaIndex,
 		Http\Livewire\Users\Index as UserIndex,
 		Http\Livewire\ContractualDocument\Index as ContractualDocumentIndex,
 		Http\Livewire\PriceList\Index as PriceListIndex,
-		Http\Livewire\FolderFileManagement\Index as FolderFileManagementIndex};
+		Http\Livewire\FolderFileManagement\Index as FolderFileManagementIndex
+	};
 	use Illuminate\Support\Facades\Route;
 	use Illuminate\Support\Facades\Auth;
 
@@ -25,7 +27,10 @@
 			'dashboard'
 		])->name('dashboard');
 		// Profilo
-		Route::get('/profile', 'PageController@profile')->name('profile');
+		Route::get('/profile', [
+			PageController::class,
+			'profile'
+		])->name('profile');
 		// Common routes protected by permissions (es. [Practice::class, 'index'] => 'access_practices')
 		// Pratiche
 		Route::name('practice.')->middleware(['permission:access_practices'])->group(function () {
@@ -38,10 +43,13 @@
 				'__invoke'
 			])->name('edit');
 			// Building
-			Route::get('/condomini_export/{practice}', 'CondominiController@export')->name('condomini.export');
+			Route::get('/condomini_export/{practice}', [
+				CondominiController::class,
+				'export'
+			])->name('condomini.export');
 		});
 		// Calendario
-		Route::name('calendar.')->middleware(['permission:access_calendar'])->group(function() {
+		Route::name('calendar.')->middleware(['permission:access_calendar'])->group(function () {
 			Route::get('/calendar', function () {
 				return view('calendar.index');
 			})->name('index');

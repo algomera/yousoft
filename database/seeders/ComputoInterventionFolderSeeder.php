@@ -1,5 +1,7 @@
 <?php
 
+	namespace Database\Seeders;
+
 	use App\ComputoInterventionFolder;
 	use Illuminate\Database\Seeder;
 
