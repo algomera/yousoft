@@ -140,6 +140,7 @@
 			/*
 			 * Package Service Providers...
 			 */
+			Pawlox\VideoThumbnail\VideoThumbnailServiceProvider::class,
 			/*
 			 * Application Service Providers...
 			 */
@@ -199,5 +200,6 @@
 			'Validator'    => Illuminate\Support\Facades\Validator::class,
 			'View'         => Illuminate\Support\Facades\View::class,
 			'Money'        => \App\Helpers\Money::class,
+			'VideoThumbnail' => Pawlox\VideoThumbnail\Facade\VideoThumbnail::class,
 		],
 	];

@@ -2,15 +2,15 @@
 
 	namespace App\Http\Controllers;
 
-	use FFMpeg\FFMpeg;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Auth;
-	use App\{Anagrafica, Applicant, Practice, Photo, User, Video};
+	use App\{Anagrafica, Applicant, Practice, Photo, Video};
 	use App\Http\Resources\AnagraficheResource;
 	use App\Http\Resources\PhotoResource;
 	use App\Http\Resources\PracticeResource;
-	use Illuminate\Support\Facades\Log;
+	use Illuminate\Support\Facades\Storage;
 	use Illuminate\Support\Str;
+	use Pawlox\VideoThumbnail\VideoThumbnail;
 
 	class ApiController extends Controller
 	{
@@ -82,13 +82,18 @@
 				'reference'       => 'nullable',
 				'inspection_date' => 'nullable'
 			]);
+			$now = now()->timestamp;
 			$extension = $request->file('video')->extension();
-			$pathFile = $request->file('video')->storeAs('practices/' . $validated['practice_id'] . '/videos/' . now()->timestamp, Str::slug($request->name) . '.' . $extension);
+			$pathFile = $request->file('video')->storeAs('practices/' . $validated['practice_id'] . '/videos/' . $now, Str::slug($request->name) . '.' . $extension);
 			$validated['video'] = $pathFile;
-//			$ffmpeg = \FFMpeg\FFMpeg::create();
-//			$v = $ffmpeg->open($pathFile);
-//			$poster = $v->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(1));
-//			$validated['poster'] = $poster->save('practices/' . $validated['practice_id'] . '/videos/' . now()->timestamp . '/' . $request->name . '_poster.jpg');
+			$thumb = new VideoThumbnail();
+			$thumb->createThumbnail(
+				public_path('/storage/practices/' . $validated['practice_id'] . '/videos/' . $now .'/'.Str::slug($request->name) . '.' . $extension),
+				public_path('/storage/practices/' . $validated['practice_id'] . '/videos/' . $now .'/'),
+				'poster.jpg',
+				2,
+			);
+			 $validated['poster'] = 'practices/' . $validated['practice_id'] . '/videos/' . $now .'/poster.jpg';
 			Video::create($validated);
 			return response('Upload video success!');
 		}
