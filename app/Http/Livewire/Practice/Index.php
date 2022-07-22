@@ -48,7 +48,7 @@
 			// Create new Practice
 			$practice = Practice::create([
 				'applicant_id' => $applicant->id,
-				'user_id'      => auth()->user()->id
+				'user_id'      => (int) auth()->user()->id
 			]);
 			// Create all models related by Practice
 			$practice->subject()->create();
