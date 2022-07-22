@@ -20,7 +20,6 @@
 		}
 
 		public function view(User $user, Practice $practice) {
-			dd(gettype($practice->user_id), gettype($user->id));
 			if ($user->can('read_practices')) {
 				// Se Practice appartiene a User
 				if ($practice->user_id === $user->id) {
