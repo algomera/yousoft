@@ -8,21 +8,19 @@
   ],
   "license": "MIT",
   "require": {
-    "php": "^7.4",
-    "asantibanez/livewire-calendar": "^2.1",
+    "php": "^8.1",
+    "asantibanez/livewire-calendar": "dev-master",
     "fakerphp/faker": "^1.19",
-    "fideloper/proxy": "^4.2",
-    "fruitcake/laravel-cors": "^1.0",
+    "fruitcake/laravel-cors": "^2.0",
     "guzzlehttp/guzzle": "^7.4.5",
-    "lab404/laravel-impersonate": "^1.7",
-    "laravel/framework": "^8.0",
+    "lab404/laravel-impersonate": "^1.7.3",
+    "laravel/framework": "^9.0",
     "laravel/passport": "^10.0",
     "laravel/tinker": "^2.0",
     "laravel/ui": "^3.0",
     "livewire/livewire": "^2.10",
     "munafio/chatify": "^1.5",
     "nxp/math-executor": "^2.3",
-    "php-ffmpeg/php-ffmpeg": "^0.19.0",
     "phpoffice/phpspreadsheet": "^1.22",
     "spatie/laravel-permission": "^5.5",
     "staudenmeir/laravel-adjacency-list": "^1.0",
@@ -30,9 +28,9 @@
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.6",
-    "facade/ignition": "^2.3.6",
+    "spatie/laravel-ignition": "^1.0",
     "mockery/mockery": "^1.3.1",
-    "nunomaduro/collision": "^5.0",
+    "nunomaduro/collision": "^6.1",
     "phpunit/phpunit": "^9.0"
   },
   "config": {
@@ -72,5 +70,11 @@
     "post-create-project-cmd": [
       "@php artisan key:generate --ansi"
     ]
-  }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/Butochnikov/livewire-calendar"
+    }
+  ]
 }

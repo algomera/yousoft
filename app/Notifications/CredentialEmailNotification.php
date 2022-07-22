@@ -40,6 +40,7 @@
 		 */
 		public function toMail($notifiable) {
 			return (new MailMessage)
+				->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
 				->greeting('Benvenuto, ' . $this->user->name)
 				->line('Le tue credenziali di accesso sono:')
 				->line('Email: ' . $this->user->email)

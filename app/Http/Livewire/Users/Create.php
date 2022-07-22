@@ -27,7 +27,7 @@
 				'email'                 => 'required|email:rfc,dns|unique:users,email',
 				'password'              => 'required|string|min:8|confirmed',
 				'password_confirmation' => 'required|same:password',
-				'selectedParents'      => in_array($this->role, [
+				'selectedParents'       => in_array($this->role, [
 					'collaborator',
 					'consultant',
 					'technical_asseverator',
@@ -37,10 +37,10 @@
 		}
 
 		protected $validationAttributes = [
-			'role' => 'Tipologia Profilo',
-			'nome' => 'Nome',
-			'email' => 'Email',
-			'password' => 'Password',
+			'role'                  => 'Tipologia Profilo',
+			'nome'                  => 'Nome',
+			'email'                 => 'Email',
+			'password'              => 'Password',
 			'password_confirmation' => 'Conferma Password'
 		];
 
@@ -77,15 +77,14 @@
 			]);
 			// Creazione UserData
 			UserData::create([
-				'user_id' => $user->id,
-				'created_by'  => auth()->user()->id,
-				'name'    => $validated['name'],
+				'user_id'    => $user->id,
+				'created_by' => auth()->user()->id,
+				'name'       => $validated['name'],
 			]);
 			// Assegnazione ruolo
 			$role = Role::findByName($validated['role']);
 			$user->assignRole($role);
-
-			if($user->role->name === 'business') {
+			if ($user->role->name === 'business') {
 				ContractualDocuments::createInitialContractualDocuments($user->id);
 			}
 			// TODO: Assegnazione eventuali permessi
