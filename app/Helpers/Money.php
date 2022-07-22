@@ -7,7 +7,7 @@
 	class Money
 	{
 		public static function format($value) {
-			return numfmt_format_currency(new NumberFormatter("it-IT", NumberFormatter::CURRENCY), $value, "EUR");
+			return numfmt_format_currency(new NumberFormatter("it-IT", NumberFormatter::CURRENCY), (float)$value, "EUR");
 		}
 
 		public static function prepare($value) {
